@@ -195,7 +195,7 @@
     var yy=useState(now.getFullYear()); var year=yy[0],setYear=yy[1];
     var monthKey=year+'-'+month;
  
-    var nE=useState({name:'',amount:'',total:'',recurring:true,day:''}); var newExp=nE[0],setNewExp=nE[1];
+    var nE=useState({name:'',amount:'',total:'',recurring:false,day:'',endMonth:''}); var newExp=nE[0],setNewExp=nE[1];
     var sf=useState(false); var showAdd=sf[0],setShowAdd=sf[1];
     var ed=useState(null); var editId=ed[0],setEditId=ed[1];
     var edv=useState({}); var editVals=edv[0],setEditVals=edv[1];
@@ -291,10 +291,15 @@
       });
       return cnt;
     }
-    function currentRemaining(x){ if(x.total==null) return null; return Math.max(0, x.total - paidMonthsThrough(x.id,year,month)*x.amount); }
+    function currentRemaining(x){
+      if(x.total==null) return null;
+      var recFlag=x.isRec!==false;
+      var cnt=recFlag?paidMonthsThrough(x.id,year,month):(isPaid(x.id,false)?1:0);
+      return Math.max(0, x.total - cnt*x.amount);
+    }
     // Geçen aya kadar ödenmiş (bu ay hariç) — "diğer ay düşülmüş" görünümü için
     function remainingBeforeThisMonth(x){
-      if(x.total==null) return null;
+      if(x.total==null || x.isRec===false) return x.total==null?null:Math.max(0,x.total);
       var cnt=0; var curNum=monthNum(year,month);
       Object.keys(paid).forEach(function(mk){
         var parts=mk.split('-'); var num=monthNum(parseInt(parts[0],10),parseInt(parts[1],10));
@@ -337,15 +342,38 @@
       return arr;
     },[getMonthExp]);
  
+    function monthValue(y,m){ var mm=m+1; return y+'-'+(mm<10?'0':'')+mm; }
+    function parseMonthValue(v,fy,fm){
+      var p=String(v||'').split('-');
+      var y=parseInt(p[0],10), m=parseInt(p[1],10)-1;
+      if(!y || m<0 || m>11) return {year:fy,month:fm};
+      return {year:y,month:m};
+    }
+    function renewRow(checked,onChange){
+      return e('label',{style:S.recRow},
+        e('input',{type:'checkbox',checked:!!checked,onChange:onChange,style:{width:18,height:18,accentColor:'var(--green)',flexShrink:0}}),
+        e('span',{style:{fontSize:13,fontWeight:700,color:'var(--text)'}},'Her ay yenilensin')
+      );
+    }
+    function endMonthField(vals,setter,grp){
+      if(grp!=='loan' || !vals.recurring) return null;
+      return e('div',{style:{marginTop:8}},
+        e('label',{style:S.miniLabel},'Kredi bitiş ayı'),
+        e('input',{type:'month',value:vals.endMonth||'',onChange:function(ev){setter(Object.assign({},vals,{endMonth:ev.target.value}));},style:S.input})
+      );
+    }
+
     function addExp(grp){
       if(!newExp.name||!newExp.amount) return; vibrate();
       if(newExp.recurring){
-        save('fp-recurring', recurring.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),total:newExp.total?parseFloat(newExp.total):null,day:parseInt(newExp.day)||1,grp:grp||null,startMonth:month,startYear:year,endMonth:11,endYear:year+8}]), setRecurring);
+        var end=parseMonthValue(newExp.endMonth,year+8,11);
+        if(monthNum(end.year,end.month)<monthNum(year,month)) end={year:year,month:month};
+        save('fp-recurring', recurring.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),total:newExp.total?parseFloat(newExp.total):null,day:parseInt(newExp.day)||1,grp:grp||null,startMonth:month,startYear:year,endMonth:end.month,endYear:end.year}]), setRecurring);
       } else {
-        var cur=oneTime[monthKey]||[]; var o={}; o[monthKey]=cur.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),day:parseInt(newExp.day)||1,grp:grp||null}]);
+        var cur=oneTime[monthKey]||[]; var o={}; o[monthKey]=cur.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),total:newExp.total?parseFloat(newExp.total):null,day:parseInt(newExp.day)||1,grp:grp||null}]);
         save('fp-onetime', Object.assign({},oneTime,o), setOneTime);
       }
-      setNewExp({name:'',amount:'',total:'',recurring:true,day:''}); setShowAdd(false);
+      setNewExp({name:'',amount:'',total:'',recurring:false,day:'',endMonth:''}); setShowAdd(false);
     }
     function togglePaid(id,isRec,name){
       vibrate(); var key=(isRec?'r-':'o-')+id; var cur=paid[monthKey]||[];
@@ -368,11 +396,60 @@
       else { var cur=oneTime[monthKey]||[]; var prevO=Object.assign({},oneTime); var o=Object.assign({},oneTime); o[monthKey]=cur.filter(function(x){return x.id!==id;}); save('fp-onetime',o,setOneTime); setUndo({type:'delete',isRec:false,list:prevO,label:'Silindi: '+name}); }
       setTimeout(function(){ setUndo(function(u){ return (u&&u.label.indexOf(name)>-1)?null:u; }); }, 6000);
     }
-    function openEdit(x){ vibrate(5); setEditId((x.isRec?'r-':'o-')+x.id); setEditVals({name:x.name,amount:String(x.amount),total:x.total!=null?String(x.total):'',day:x.day?String(x.day):''}); }
+    function openEdit(x){
+      vibrate(5);
+      setEditId((x.isRec?'r-':'o-')+x.id);
+      setEditVals({
+        name:x.name,
+        amount:String(x.amount),
+        total:x.total!=null?String(x.total):'',
+        day:x.day?String(x.day):'',
+        recurring:!!x.isRec,
+        endMonth:x.isRec?monthValue(x.endYear,x.endMonth):''
+      });
+    }
     function saveEdit(x){
       vibrate();
-      if(x.isRec){ save('fp-recurring', recurring.map(function(r){ return r.id===x.id?Object.assign({},r,{name:editVals.name,amount:parseFloat(editVals.amount)||0,total:editVals.total!==''?parseFloat(editVals.total):r.total,day:parseInt(editVals.day)||r.day}):r; }), setRecurring); }
-      else { var cur=oneTime[monthKey]||[]; var o=Object.assign({},oneTime); o[monthKey]=cur.map(function(r){ return r.id===x.id?Object.assign({},r,{name:editVals.name,amount:parseFloat(editVals.amount)||0,day:parseInt(editVals.day)||r.day}):r; }); save('fp-onetime',o,setOneTime); }
+      var wantsRecurring=!!editVals.recurring;
+      var grp=x.grp||groupOf(x);
+      var totalVal=editVals.total!==''?parseFloat(editVals.total):null;
+      var base={id:x.id,name:editVals.name,amount:parseFloat(editVals.amount)||0,total:totalVal,day:parseInt(editVals.day)||x.day||1,grp:grp||null};
+      function movePaidKey(from,to){
+        var o=Object.assign({},paid), cur=(o[monthKey]||[]).slice();
+        if(cur.indexOf(from)>-1){
+          cur=cur.filter(function(k){return k!==from;});
+          if(cur.indexOf(to)<0) cur.push(to);
+          o[monthKey]=cur; save('fp-paid',o,setPaid);
+        }
+      }
+      if(wantsRecurring){
+        var sy=x.isRec?x.startYear:year, sm=x.isRec?x.startMonth:month;
+        var end=parseMonthValue(editVals.endMonth,x.isRec?x.endYear:year+8,x.isRec?x.endMonth:11);
+        if(monthNum(end.year,end.month)<monthNum(sy,sm)) end={year:sy,month:sm};
+        var recObj=Object.assign({},x.isRec?x:{},base,{startMonth:sm,startYear:sy,endMonth:end.month,endYear:end.year});
+        if(x.isRec){
+          save('fp-recurring', recurring.map(function(r){ return r.id===x.id?recObj:r; }), setRecurring);
+        } else {
+          var cur=oneTime[monthKey]||[]; var o=Object.assign({},oneTime);
+          o[monthKey]=cur.filter(function(r){return r.id!==x.id;});
+          save('fp-onetime',o,setOneTime);
+          save('fp-recurring', recurring.concat([recObj]), setRecurring);
+          movePaidKey('o-'+x.id,'r-'+x.id);
+        }
+      } else {
+        var oneObj=base;
+        if(x.isRec){
+          save('fp-recurring', recurring.filter(function(r){return r.id!==x.id;}), setRecurring);
+          var cur2=oneTime[monthKey]||[]; var o2=Object.assign({},oneTime);
+          o2[monthKey]=cur2.filter(function(r){return r.id!==x.id;}).concat([oneObj]);
+          save('fp-onetime',o2,setOneTime);
+          movePaidKey('r-'+x.id,'o-'+x.id);
+        } else {
+          var cur3=oneTime[monthKey]||[]; var o3=Object.assign({},oneTime);
+          o3[monthKey]=cur3.map(function(r){ return r.id===x.id?oneObj:r; });
+          save('fp-onetime',o3,setOneTime);
+        }
+      }
       setEditId(null);
     }
     function prevMonth(){ vibrate(5); if(month===0){setMonth(11);setYear(year-1);}else setMonth(month-1); }
@@ -467,6 +544,8 @@
             e('div',{style:{flex:1}}, e('label',{style:S.miniLabel},'Gün'), e('input',{type:'number',inputMode:'numeric',value:editVals.day,onChange:function(ev){setEditVals(Object.assign({},editVals,{day:ev.target.value}));},style:S.input}))
           ),
           e('div',{style:{marginTop:8}}, e('label',{style:S.miniLabel},'Toplam kalan borç ₺ (sabit giderde boş bırak)'), e('input',{type:'number',inputMode:'decimal',value:editVals.total,onChange:function(ev){setEditVals(Object.assign({},editVals,{total:ev.target.value}));},style:S.input})),
+          renewRow(editVals.recurring,function(ev){setEditVals(Object.assign({},editVals,{recurring:ev.target.checked}));}),
+          endMonthField(editVals,setEditVals,groupOf(x)),
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
             e('button',{onClick:function(){saveEdit(x);},style:Object.assign({},S.primaryBtn,{flex:1,padding:'11px'})},'Kaydet'),
             e('button',{onClick:function(){setEditId(null);},style:Object.assign({},S.ghostBtn,{padding:'11px'})},'İptal')
@@ -532,6 +611,8 @@
             e('div',{style:{flex:1}}, e('label',{style:S.miniLabel},'Gün'), e('input',{type:'number',inputMode:'numeric',value:editVals.day,onChange:function(ev){setEditVals(Object.assign({},editVals,{day:ev.target.value}));},style:S.input}))
           ),
           e('div',{style:{marginTop:8}}, e('label',{style:S.miniLabel},'Toplam kalan borç ₺ (sabit giderde boş)'), e('input',{type:'number',inputMode:'decimal',value:editVals.total,onChange:function(ev){setEditVals(Object.assign({},editVals,{total:ev.target.value}));},style:S.input})),
+          renewRow(editVals.recurring,function(ev){setEditVals(Object.assign({},editVals,{recurring:ev.target.checked}));}),
+          endMonthField(editVals,setEditVals,groupOf(x)),
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
             e('button',{onClick:function(){saveEdit(x);},style:Object.assign({},S.primaryBtn,{flex:1,padding:'11px'})},'Kaydet'),
             e('button',{onClick:function(){setEditId(null);},style:Object.assign({},S.ghostBtn,{padding:'11px'})},'İptal')
@@ -677,6 +758,8 @@
             e('input',{type:'number',inputMode:'numeric',placeholder:'Gün',value:newExp.day,onChange:function(ev){setNewExp(Object.assign({},newExp,{day:ev.target.value}));},style:Object.assign({},S.input,{flex:1})})
           ),
           (subTab!=='fixed') ? e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}) : null,
+          renewRow(newExp.recurring,function(ev){setNewExp(Object.assign({},newExp,{recurring:ev.target.checked}));}),
+          endMonthField(newExp,setNewExp,subTab),
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
             e('button',{onClick:function(){addExp(subTab);},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
             e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
@@ -726,6 +809,7 @@
             e('input',{type:'number',inputMode:'numeric',placeholder:'Gün',value:newExp.day,onChange:function(ev){setNewExp(Object.assign({},newExp,{day:ev.target.value}));},style:Object.assign({},S.input,{flex:1})})
           ),
           e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}),
+          renewRow(newExp.recurring,function(ev){setNewExp(Object.assign({},newExp,{recurring:ev.target.checked}));}),
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
             e('button',{onClick:function(){addExp('person');},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
             e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
