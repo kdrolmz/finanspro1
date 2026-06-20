@@ -30,7 +30,7 @@
       --amber: #c5901c;
       --gold: #f5b800;
       --gold-soft: #fdf3d6;
-      --navy: #1b3a8f;
+      --navy: #11635f;
       --pink: #e83e8c;
       --pink-soft: #fde8f1;
       --purple: #8a2be2;
@@ -59,7 +59,7 @@
       --amber: #d6a338;
       --gold: #f5c518;
       --gold-soft: #2e2614;
-      --navy: #4f7be0;
+      --navy: #2bbd84;
       --pink: #f25ba2;
       --pink-soft: #321726;
       --purple: #a564e8;
@@ -205,14 +205,25 @@
  
     useEffect(function(){ document.documentElement.className=dark?'dark':''; storage.set('dark-mode',dark); },[dark]);
     useEffect(function(){
-      setOneTime(storage.get('fp-onetime')||{});
+      var SEED_VERSION='v3-2026-06';  // bu değişince eski veri yeni seed'le sıfırlanır
       var seed=seedRecurring();
+      var savedVer=storage.get('fp-seedver');
+      if(savedVer!==SEED_VERSION){
+        // yeni sürüm → her şeyi temiz yeni seed'le başlat (eski karışık veri silinir)
+        storage.set('fp-recurring',seed);
+        storage.set('fp-onetime',{});
+        storage.set('fp-paid',{});
+        storage.set('fp-seedver',SEED_VERSION);
+        setRecurring(seed); setOneTime({}); setPaid({});
+        var sav0=storage.get('fp-savings'); if(!sav0){ sav0=seedSavings(); storage.set('fp-savings',sav0); } setSavings(sav0);
+        setLoading(false);
+        return;
+      }
+      // normal açılış: kayıtlı veriyi kullan, eksik seed kalemlerini ekle
+      setOneTime(storage.get('fp-onetime')||{});
       var rec=storage.get('fp-recurring');
-      if(!rec || !rec.length){
-        // hiç veri yok → tam seed
-        rec=seed; storage.set('fp-recurring',rec);
-      } else {
-        // veri var → eksik olan seed kalemlerini ekle (ev, aidat, SSK vb. kaybolmasın)
+      if(!rec || !rec.length){ rec=seed; storage.set('fp-recurring',rec); }
+      else {
         var existing={}; rec.forEach(function(r){ existing[(r.name||'').toLowerCase().trim()]=true; });
         var added=false;
         seed.forEach(function(s){ if(!existing[(s.name||'').toLowerCase().trim()]){ rec=rec.concat([s]); added=true; } });
@@ -227,34 +238,28 @@
     function seedRecurring(){
       var sm=now.getMonth(), sy=now.getFullYear();
       var id=0; function nid(){ id++; return Date.now()+id; }
-      function mk(name,total,amount,day){ return {id:nid(),name:name,amount:amount,total:total,day:day,startMonth:sm,startYear:sy,endMonth:11,endYear:sy+8}; }
+      function mk(name,total,amount,day,grp){ return {id:nid(),name:name,amount:amount,total:total,day:day,grp:grp,startMonth:sm,startYear:sy,endMonth:11,endYear:sy+8}; }
       return [
+        // Aylık giderler
+        mk('Ev Kirası',null,37850,1,'fixed'),
+        mk('Ev Aidatı',null,3500,1,'fixed'),
+        mk('SGK / SSK Primi',null,4500,15,'fixed'),
+        mk('Sağlık Sigortası',null,3400,15,'fixed'),
+        mk('Ev Giderleri',null,15000,1,'fixed'),
+        mk('EminEvim Ev',null,29500,28,'fixed'),
+        mk('EminEvim Araba',null,9100,28,'fixed'),
         // Krediler
-        mk('Akbank Kredi',262000,29110,3),
-        mk('Akbank Konut Kredisi',492500,30000,3),
-        mk('Garanti Kredi',317000,35200,7),
-        mk('İş Bankası Kredi',79000,15800,16),
-        mk('Albaraka Türk',50000,12500,9),
-        // Nakit avans (ayrı sekme)
-        mk('Akbank Nakit Hesap',210000,25000,3),
-        mk('Enpara Nakit Avans',59000,10000,20),
-        // Kartlar
-        mk('Akbank Kredi Kartı',85000,12000,23),
-        mk('Garanti Kredi Kartı',260000,30000,5),
-        mk('Enpara Kredi Kartı',71250,9000,12),
-        mk('Garanti Troy Kart',null,5000,13),
-        mk('Özüm Kredi Kartı',null,7500,5),
-        // Sabit aylık giderler (GERİ GELDİ)
-        mk('Ev Aidatı',null,3500,1),
-        mk('Ev Kirası',null,36500,1),
-        mk('SGK / SSK Primi',null,4500,15),
-        mk('Sağlık Sigortası',null,3400,15),
-        // EminEvim (ay sonu)
-        mk('EminEvim Ev',null,29500,28),
-        mk('EminEvim Araba',null,9100,28),
-        // Kişiler
-        mk('Murat',82500,10000,2),
-        mk('Teyzem',190900,15000,2)
+        mk('Akbank Kredi',null,31195,3,'loan'),
+        mk('Akbank Kredi 2',null,25190,3,'loan'),
+        mk('Garanti Kredi',null,37120,7,'loan'),
+        mk('Albaraka Türk',null,12500,9,'loan'),
+        mk('İş Bankası Kredi',null,15000,16,'loan'),
+        // Kredi kartları
+        mk('Garanti Kredi Kartı',null,20000,5,'card'),
+        mk('Özüm Kredi Kartı',null,7500,5,'card'),
+        mk('Enpara Kredi Kartı',null,9000,12,'card'),
+        mk('Garanti Troy Kart',null,5000,13,'card'),
+        mk('Akbank Kredi Kartı',null,15000,23,'card')
       ];
     }
     function seedSavings(){
@@ -278,13 +283,21 @@
     function isPaid(id,isRec){ return paidKeys.indexOf((isRec?'r-':'o-')+id)>-1; }
  
     function paidMonthsCount(recId){ var cnt=0; Object.keys(paid).forEach(function(mk){ if((paid[mk]||[]).indexOf('r-'+recId)>-1) cnt++; }); return cnt; }
-    function currentRemaining(x){ if(x.total==null) return null; return Math.max(0, x.total - paidMonthsCount(x.id)*x.amount); }
+    function paidMonthsThrough(recId,y,m){
+      var cnt=0, limit=monthNum(y,m);
+      Object.keys(paid).forEach(function(mk){
+        var parts=mk.split('-'); var num=monthNum(parseInt(parts[0],10),parseInt(parts[1],10));
+        if(num<=limit && (paid[mk]||[]).indexOf('r-'+recId)>-1) cnt++;
+      });
+      return cnt;
+    }
+    function currentRemaining(x){ if(x.total==null) return null; return Math.max(0, x.total - paidMonthsThrough(x.id,year,month)*x.amount); }
     // Geçen aya kadar ödenmiş (bu ay hariç) — "diğer ay düşülmüş" görünümü için
     function remainingBeforeThisMonth(x){
       if(x.total==null) return null;
       var cnt=0; var curNum=monthNum(year,month);
       Object.keys(paid).forEach(function(mk){
-        var parts=mk.split('-'); var num=monthNum(parseInt(parts[0]),parseInt(parts[1]));
+        var parts=mk.split('-'); var num=monthNum(parseInt(parts[0],10),parseInt(parts[1],10));
         if(num<curNum && (paid[mk]||[]).indexOf('r-'+x.id)>-1) cnt++;
       });
       return Math.max(0, x.total - cnt*x.amount);
@@ -306,7 +319,16 @@
     function gUnpaid(arr){ return arr.filter(function(x){return !isPaid(x.id,x.isRec);}).reduce(function(a,x){return a+x.amount;},0); }
     function gTotal(arr){ return arr.reduce(function(a,x){return a+x.amount;},0); }
  
-    var totalRemainingDebt = recurring.reduce(function(a,x){ if(groupOf(x)==='fixed'||x.total==null) return a; var r=currentRemaining(x); return a+(r||0); },0);
+    function recurringDebtTotal(grp){
+      return recurring.reduce(function(a,x){
+        if(groupOf(x)!==grp || x.total==null) return a;
+        var r=currentRemaining(x);
+        return a+(r||0);
+      },0);
+    }
+    var loanDebtTotal = recurringDebtTotal('loan');
+    var cardDebtTotal = recurringDebtTotal('card');
+    var totalRemainingDebt = loanDebtTotal + cardDebtTotal;
     var savingsTotal = savings.reduce(function(a,s){ return a+(Number(s.value)||0); },0);
  
     var chartData=useMemo(function(){
@@ -569,10 +591,15 @@
           summaryStat('KALAN','₺'+fmt(unpaidExp),'var(--red)')
         ),
         e('div',{style:S.dualRow},
-          e('div',{style:Object.assign({},S.dualCard,{borderTop:'3px solid var(--red)'}),onClick:function(){setTab('expenses');}},
+          e('div',{style:Object.assign({},S.dualCard,S.debtDualCard),onClick:function(){setTab('expenses');}},
             e('p',{style:S.dualLabel},'TOPLAM KALAN BORÇ'),
             e('p',{style:Object.assign({},S.dualVal,{color:'var(--red)'})},'₺'+fmt(totalRemainingDebt)),
-            e('span',{style:S.dualSub},'ödedikçe azalır')
+            e('span',{style:S.dualSub},'ödedikçe azalır'),
+            e('div',{style:S.debtBreakdown},
+              e('div',{style:S.debtBreakRow}, e('span',null,'Krediler'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(loanDebtTotal))),
+              e('div',{style:S.debtBreakRow}, e('span',null,'Kredi kartları'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(cardDebtTotal))),
+              e('div',{style:Object.assign({},S.debtBreakRow,S.debtBreakTotal)}, e('span',null,'TOPLAM BORÇ'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(totalRemainingDebt)))
+            )
           ),
           e('div',{style:Object.assign({},S.dualCard,{borderTop:'3px solid var(--gold)'}),onClick:function(){setTab('savings');}},
             e('p',{style:S.dualLabel},'TOPLAM BİRİKİM'),
@@ -612,7 +639,7 @@
           e('div',{style:{textAlign:'center'}}, e('div',{style:{fontSize:16,fontWeight:800}},MONTHS[month]), e('div',{style:{fontSize:11.5,color:'var(--text-soft)',marginTop:1}},year)),
           e('button',{onClick:nextMonth,style:S.navBtn},'›')
         ),
-        // ÖZET — aylık toplam ödeme (ödedikçe azalan kalan) + 4 grup aylık
+        // ÖZET — aylık toplam ödeme (ödedikçe azalan kalan) + 4 grup aylık kalan
         e('div',{style:S.summaryCard},
           e('div',{style:S.sumTop},
             e('span',{style:{fontSize:11.5,color:'rgba(255,255,255,0.72)',fontWeight:700,letterSpacing:0.6}},'BU AY KALAN ÖDEME'),
@@ -623,9 +650,14 @@
             GR.map(function(g){
               return e('div',{key:g.id,onClick:function(){vibrate(5);setSubTab(g.id);setOpenRow(null);},style:Object.assign({},S.sumCell, subTab===g.id?{background:'rgba(255,255,255,0.20)',boxShadow:'inset 0 0 0 1px rgba(255,255,255,0.25)'}:{})},
                 e('span',{style:{fontSize:10.5,color:'rgba(255,255,255,0.78)',fontWeight:600}},g.label),
-                e('span',{style:{fontSize:14.5,fontWeight:800,color:'#fff',marginTop:2}},'₺'+fmt(grpAylik(g)))
+                e('span',{style:{fontSize:14.5,fontWeight:800,color:'#fff',marginTop:2}},'₺'+fmt(grpKalan(g)))
               );
             })
+          ),
+          e('div',{style:S.summaryDebtBox},
+            e('div',{style:S.summaryDebtRow}, e('span',null,'Krediler toplamı'), e('strong',null,'₺'+fmt(loanDebtTotal))),
+            e('div',{style:S.summaryDebtRow}, e('span',null,'Kredi kartları toplamı'), e('strong',null,'₺'+fmt(cardDebtTotal))),
+            e('div',{style:Object.assign({},S.summaryDebtRow,S.summaryDebtTotal)}, e('span',null,'TOPLAM BORÇ'), e('strong',null,'₺'+fmt(totalRemainingDebt)))
           )
         ),
         // YATAY ALT-SEKMELER
@@ -646,7 +678,7 @@
           ),
           (subTab!=='fixed') ? e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}) : null,
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){addExp(subTab);},style:Object.assign({},S.primaryBtn,{flex:1})},'Ekle'),
+            e('button',{onClick:function(){addExp(subTab);},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
             e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
           )
         ) : e('button',{onClick:function(){setShowAdd(true);},style:S.addTop},'+ '+sel.label+' Ekle'),
@@ -695,7 +727,7 @@
           ),
           e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}),
           e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){addExp('person');},style:Object.assign({},S.primaryBtn,{flex:1})},'Ekle'),
+            e('button',{onClick:function(){addExp('person');},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
             e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
           )
         ) : e('button',{onClick:function(){setShowAdd(true);},style:S.addTop},'+ Yeni Borç Ekle'),
@@ -754,7 +786,7 @@
           e('input',{type:'text',placeholder:'Birikim adı (örn. Çeyrek Altın)',value:newSav.name,onChange:function(ev){setNewSav(Object.assign({},newSav,{name:ev.target.value}));},style:S.input}),
           e('div',{style:{display:'flex',gap:8,marginTop:8}},
             e('input',{type:'number',inputMode:'decimal',placeholder:'Başlangıç değeri ₺',value:newSav.value,onChange:function(ev){setNewSav(Object.assign({},newSav,{value:ev.target.value}));},style:Object.assign({},S.input,{flex:1})}),
-            e('button',{onClick:addSav,style:Object.assign({},S.primaryBtn,{background:'var(--gold)'})},'Ekle')
+            e('button',{onClick:addSav,style:Object.assign({},S.primaryBtn,S.addDebtBtn)},'Ekle')
           ),
           e('button',{onClick:function(){setShowAddSav(false);},style:Object.assign({},S.ghostBtn,{width:'100%',marginTop:8})},'Vazgeç')
         ) : e('button',{onClick:function(){setShowAddSav(true);},style:S.addFab},'+ Birikim Ekle')
@@ -806,9 +838,14 @@
  
     dualRow:{display:'flex',gap:9,marginBottom:12},
     dualCard:{flex:1,background:'var(--bg-card)',borderRadius:15,padding:'13px 13px',border:'1px solid var(--border)',cursor:'pointer',boxShadow:'var(--shadow-sm)'},
+    debtDualCard:{display:'flex',flexDirection:'column',background:'var(--red-soft)',border:'1px solid var(--red)',borderTop:'3px solid var(--red)'},
     dualLabel:{fontSize:9.5,color:'var(--text-dim)',fontWeight:700,letterSpacing:0.4,marginBottom:6},
     dualVal:{fontSize:18,fontWeight:800,lineHeight:1.1,wordBreak:'break-word'},
     dualSub:{fontSize:10,color:'var(--text-dim)',marginTop:5,display:'inline-block'},
+    debtBreakdown:{marginTop:'auto',paddingTop:9,textAlign:'right',alignSelf:'stretch',display:'flex',flexDirection:'column',gap:3},
+    debtBreakRow:{display:'flex',justifyContent:'flex-end',gap:7,fontSize:10.5,color:'var(--text-soft)',fontWeight:700,lineHeight:1.25},
+    debtBreakAmount:{color:'var(--red)',fontWeight:800},
+    debtBreakTotal:{fontSize:11.5,color:'var(--red)',paddingTop:3},
  
     card2:{background:'var(--bg-card)',borderRadius:16,padding:14,marginBottom:12,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
     cardTitle:{fontSize:14,fontWeight:800},
@@ -844,8 +881,9 @@
  
     grandTotal:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 16px',background:'var(--bg-tint)',borderRadius:13,marginTop:4,marginBottom:4},
  
-    addFab:{width:'100%',padding:14,marginTop:14,borderRadius:13,border:'2px dashed var(--border-strong)',background:'var(--bg-card)',color:'var(--text)',fontSize:14.5,fontWeight:700,cursor:'pointer'},
-    addTop:{width:'100%',padding:'14px',marginBottom:14,borderRadius:14,border:'none',background:'linear-gradient(135deg,var(--ink),var(--ink-soft))',color:'#fff',fontSize:15,fontWeight:700,cursor:'pointer',boxShadow:'var(--shadow)'},
+    addDebtBtn:{background:'var(--green-soft)',color:'var(--green)',border:'1px solid var(--green)',boxShadow:'var(--shadow-sm)'},
+    addFab:{width:'100%',padding:14,marginTop:14,borderRadius:13,border:'1px solid var(--green)',background:'var(--green-soft)',color:'var(--green)',fontSize:14.5,fontWeight:700,cursor:'pointer',boxShadow:'var(--shadow-sm)'},
+    addTop:{width:'100%',padding:'14px',marginBottom:14,borderRadius:14,border:'1px solid var(--green)',background:'var(--green-soft)',color:'var(--green)',fontSize:15,fontWeight:700,cursor:'pointer',boxShadow:'var(--shadow-sm)'},
     panel:{background:'var(--bg-card)',borderRadius:16,padding:'12px 11px 6px',border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
     panelHead:{display:'flex',alignItems:'center',gap:8,fontSize:11.5,fontWeight:800,color:'var(--red)',letterSpacing:0.6,marginBottom:10,padding:'2px 4px'},
     panelDot:{width:8,height:8,borderRadius:'50%',background:'var(--red)',flexShrink:0},
@@ -860,6 +898,9 @@
     sumTop:{marginBottom:13},
     sumGrid:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:7},
     sumCell:{display:'flex',flexDirection:'column',padding:'9px 11px',borderRadius:11,background:'rgba(255,255,255,0.10)',cursor:'pointer',transition:'background .15s'},
+    summaryDebtBox:{marginTop:10,padding:'10px 11px',borderRadius:11,background:'rgba(255,255,255,0.14)',display:'flex',flexDirection:'column',alignItems:'flex-end',gap:4},
+    summaryDebtRow:{display:'flex',justifyContent:'flex-end',gap:8,fontSize:11,color:'rgba(255,255,255,0.78)',fontWeight:700,lineHeight:1.25,textAlign:'right'},
+    summaryDebtTotal:{fontSize:13,color:'#fff',paddingTop:4},
     subTabRow:{display:'flex',gap:6,marginBottom:12,overflowX:'auto',paddingBottom:2},
     subTab:{flex:'1 0 auto',padding:'8px 11px',borderRadius:10,border:'1px solid var(--border-strong)',background:'var(--bg-card)',color:'var(--text-soft)',fontSize:12,fontWeight:700,cursor:'pointer',whiteSpace:'nowrap'},
     listPanel:{background:'var(--bg-card)',borderRadius:15,padding:'6px 7px',border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
