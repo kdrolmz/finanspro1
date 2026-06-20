@@ -188,7 +188,19 @@
     useEffect(function(){ document.documentElement.className=dark?'dark':''; storage.set('dark-mode',dark); },[dark]);
     useEffect(function(){
       setOneTime(storage.get('fp-onetime')||{});
-      var rec=storage.get('fp-recurring'); if(!rec){ rec=seedRecurring(); storage.set('fp-recurring',rec); } setRecurring(rec);
+      var seed=seedRecurring();
+      var rec=storage.get('fp-recurring');
+      if(!rec || !rec.length){
+        // hiç veri yok → tam seed
+        rec=seed; storage.set('fp-recurring',rec);
+      } else {
+        // veri var → eksik olan seed kalemlerini ekle (ev, aidat, SSK vb. kaybolmasın)
+        var existing={}; rec.forEach(function(r){ existing[(r.name||'').toLowerCase().trim()]=true; });
+        var added=false;
+        seed.forEach(function(s){ if(!existing[(s.name||'').toLowerCase().trim()]){ rec=rec.concat([s]); added=true; } });
+        if(added) storage.set('fp-recurring',rec);
+      }
+      setRecurring(rec);
       setPaid(storage.get('fp-paid')||{});
       var sav=storage.get('fp-savings'); if(!sav){ sav=seedSavings(); storage.set('fp-savings',sav); } setSavings(sav);
       setLoading(false);
