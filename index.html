@@ -1,1021 +1,2234 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Finans">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="apple-touch-icon" href="data:image/png;base64,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">
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAi+UlEQVR4nO2deXhU1d34v+ece+8sySSThSyEJKwRZN8UBUQUbVERl6p1X2prXXi1tdW21rUuv9cqaq1at7pVpaK+1oXihoqACIpAgARIWLKQPZNltruc8/39MUAQGUnuvZOZhPk8+SPPPLnnfGfymbMvBBEhSZJDQeMdQJLEJSlHkqgk5UgSlaQcSaKSlCNJVJJyJIlKUo4kUUnKkSQqSTmSRCUpR5KoJOVIEpWkHEmikpQjSVSSciSJSlKOJFFJypEkKkk5kkQlKUeSqEjxDiBOqJ0ABFBgzTegh4AQAAAETCfoIhBZOYmCpo4FKQMACVGAOuIacRw4AuRAAXoI92wAQ4Xtn4Daie010FAGhAEI6NgD3AAgAAAc9MmMFxLge58kci4wJ6AgUgZNmwooaPoJRM6krhFEzgaqxPN9xR7SbxcY+6qgaRvu+AKrVkNnI7RVgeCAAgCBMKD7vhWUdT3CQZ/I+KD9csDevwcAEIBG5AEAIEoeSOksbRr1TKapE6h7JJB++DXrX3IIDg2bsHwpbvsIWndBoBmEAVQCQrts+BF+KEc0kAMgoA5Agbmocwj1TGGZc2nasUTy2vBGEoN+IYcwoH4Tbv0Qty6F+s2gBYBKQBkQdvhnD6T7cnwPBDQADSAScRQx70yWOZemTesHlvRtOURTG2x+BcregoYt+5yQ97YuTWBSjgNAA1AHIhFHIUufKeVfRVPG9N0ap2/KwYVe2RT897fql7s8xS848zcjuM070ZWsZTn2goAcUAfqpqnjpIHXsow5hKVYDa/X6WtSGyL8xbbgv7/VKxowoIPkUH0TnIO2g7Bshp0QIBIQCUCIjjVa5zfEWSTlXCTlXkKUvHjH1gP6UskR/rQ8+O9vtNI9QIBIFAgBJEQKZ0x5kbmbAXvYwvghtpUcPwANEBpxFkl5l0l5VxI52+4MYkLfkMPY1hB4bU3owy1ACJG/JwFyxVOy1D14BXLLow6xkyMCchAhmjpeKvy9lHUaEDk22dhGossh2kP+51eG3t+IQZ04DlEJIjI5pdE75QVC9b1jWaaJtRwRUAdEmnasMvQBmjo+ljlZJYHlEBhassn//Epe105kBjT6Px6pd+KrcuYOENZqlt6RI4JQgbmlARfIxbcROTP2+ZkhQRukRrXP/4/l4WVbCSWHLDAOBAUN1UxRMisTVfNDQR2AulH/PO9YoQy+h2X+JN4BHYJEnJUNvbfRd8Pr4U/KiMJAOnyEhAqtrdAIZgERvRCefVCgLgxVqmWXapU3owjGO56DSSw5UDU6Fn7S8eBHojlAnN1urxEhVI/acDShvVAf2A2RgVBjz7Pq5vOEf328o/keCSSHXl7vu/nN4KK1QEh3CowDIVSojUcL3bVvnqxvQYCliPaV6paLjIZ/xTuYLhJFjtB/N7Xd8ra2dhdxKWb6HIQbnXl6+6A+WXhEoC7Um7TtN2o7/ohGe7yjAUgQOQKvrmm/+wPR2pOq5AcgkHDtJMSEGirtIUQCKhu1j6tbr0oEP+IsBxo88MrXnU98TmQGzFIwhHDNV8zD3r7WLD0IAswjfJ9oW3+BWn18Q4mnHOhX2255u/OJz4lEf2wYo5sQFFpquG4coUYP4xDf+4H9P/GDurlvWXjDHNHxVTyjiFfG6FfbbvuPurKSOCQbJlQBAIAQoTWXoOECEqVZiggowFDBUEEL7v2RHCC7QXaD4gbJDXTfj9CAB4AHQYRBqIBGr7Z2qQPVOrXssjj6EZ8RUuxU2/78H3X1DiuNjEOnLCTvhNcc2dtQHDB0JgwQHAQHxQ1KCuQeDbKTjDgFmARAyJAZoKTufVwB2DfKyju+BqMVgAr/dyK8E7VGVGtAqABi36Rr7Ns3qBMpwzHqZZp2XMzz+gFxkAM7w223v6uu2kFc9s88oZCcuaXpY95GpCA4cB2oBJlDSM5RUDyNDJ0F7kzIKDaTsuFDrVF0rhH+DaJzrQhVAu8EIgGRY2sJ6kTKUEa9zHrdj16XwxC+W99Wv6yIhRkAAEiAqJlTnmTuNsgYRobNJqNOg6JjwZlmay5cBMt564e8dakIbgYeACLHcMVXpPwY8w5NGR2rLA5Fb8sR+NfXnU98TpTYfI5coM6p15N2us952jFQeBw4PDHJqAshApt48/tG02JUqwAhVvsVRIh6T3SMfIlI6TFJ/1D0qhyBV9fs7ZvY1ALtggvUOMv1uOaNc80bx/J77xOMgNzPW/9r7PmH6PwOCAESA0V4kGWeohz1fK/50XtyhJdubrvrfaIwm80QiJrBcjyueeNc88ezXFurj56CmtH8H6P2H8L/HQCxvxThAZZ9tmPUSzYnG4VekkPf1tj2uzd5a4BYG+k6CFQNmuF2nzXedfZElhPrGqTbCI23vKvXPik6vwXmsrW5ioCGPPhuueB6+9KMSm/IgQHNd+vb2tpddnZcuUCNK8cP9Vw3Sy7JtS1Z+0DuN6oX6nueAhEG6rQxXaBO59j/o6mTbUszCr0hR8fCT4OvryFu28pYDOuswJv6i+nOU0bFqm1rE6JjtV7zKG9ZAsxtWxGCGnEOcY3/FGLc+Ii5HKElmzoeWAoE7GlqIGLYcBw/1LNgtjRsgA0J9gKo6bvv1/c8DajbtqhYhFn2WY6jnuvxrr6eEFs5eG1b67WviZZAT9dnRElOAKPucyamXjfroDXoiY/R9Ja++14M77KpikEQmjLiMSn3UjtSOzSxlENg2x3vhT/eYk9Tw+DEKXt+M8d1xlgbUosHIlSplV8uApvt8QMNImc7x75PXMNsSO1QxHDiLbR0c/jTcuKwwQxUDVaYmfn0xX3XDACgrmGOsUukvEvBluWiREK1Ttt1NwjNhtQORazkwI6w/9kVQIn1RhhqhjQ4y/vXc6XhOXaEFk+IlKYMWyjlXW6PH8zFW97lvo9tSOpQxEoO/3MreF07sdzUQM2QirO8fz1XKsywJbD4QyRl2EIp1yY/iKTtvhf1ZhuS+gExkcOobAq+V2q9zRgxI6M/mRGBSMrwhVLeFcAt+0FkDGw26mMyZhoDObgIvPI1hjSLi7vQ4FJxlvev57B+ZkYEIinDHpbyrwARtpoUdRr1L6BabUdY30/Y9hTVLytCSzcfdpvaYeCCOBXvfWdJhQm6VdAGiKQMe5h5Z1stPwhDtVrbdY9NYXVhsxxo8MBra4jFBaGIwGjab0+WhvWNowrMQyR52IM0ZSSgbikd6uItHwj/BpvC2peqvcmpKyq10lqw1trAsO4+d5Lr9D7ca+0+1DVcGf4YEMnaAlUCImjU/t3eVa62yqGL4KK1FtPAsO44fljqr2bYElGfgKZNU4bca7VyoU6j9QMR2GRTUAD2ymHsbtG3NVjqpHDBCryeG0+yfeFxgiPlXsZyzgehWkiDAA/w1qW2xWSnHIiB19diULcywYYaT716pjSkvzc1fghVlCH3E2XAvqNwTUEcRv3LNm6Fsk0O0RJQV1RYKTZQNRzHD3WefJRdIfUtiJIjF/4OhIWWKWGo7uattg2Y2iZH6MPNoj1kfmxDCJrh9tww22ofuC8j5V3Bsn5qqXIhstH4urXqqQt75ECdh5dttTLqhRp3nzNRGt5HlmjECCLLxbcBc4LpqXIiC/86EdhiSzj2yMF3tRiVzeZnUrhgOR73WRNsCaZPQ1PGsswzAE0PmxLgIe770J5gbElFXVGBIc10UxQ17po3ng5ItSWYvo5ccD3QFPMjFkTmvo8AbZjHt2eBVnhlpfkDFASyXI/r7Ak2RNIvoKnjpKzTzc+5UEkEykRgsw2RWE/C2NFkVDSZrlNQN1zzxrFksdEFkSwVHgR4iLfaULPYIIe6otJ8nSKQet2usyZaD6M/QVPHs4yTzXc6qMRbP7I0ZBJJxuLzAKB+tdN0nYIGVyYXs+y+d6NArGHZ84GY/e8QSQTLRHCrxRisysEbOnitz/w+NkpcZ4234ViffoeUdTpxDjc7W0tAhEXnNxZjsCqHsbNF+IIm/7tcsAKvMnqgxRj6J9TJMmZbqBqQ+7+1OElrVQ5tXRVyk8dnocEdUwfbuBOun8EyTzM/lU9k0bEWhKVmhyU5kAt9Q43JOgWBMOo4ocRKAP0bljaVuIaZLDwIQ7VaBC0NlVorOTTOWwLm+ikYqVPGJeuU6FAX855k9ttPQARRb7SUv5WH9W0NvL7d5FZHIaQh2cSVrFN+DJo6wfxuWBTct8xS7lYeBo2DMNvk4ShPGGQp9yMAmjYVmIWhdBGylLuVh9XVO8FcaxSRuGRlYpGV3I8EqKOQuo8yuciDyLxjNVpYfWitQRo2uzIFgbhkmu62kvsRAZGJkmv2OGUCImRlO6oFOQzO69rMjXCgIaSh2SzfzvO7NE2vrqmvqqnbXV0XCFoqThMK5p0FaFYO3onhGtNZm192hRo3djSbHhvt5u77js7Ah5+sNAzjEH0iRACYfcIxebnZALClvPLMCxYgYjisPvXY7T+bf6q5wBIO6jL5HSYU9VYMbQe3yfECa2vyLCwKdEwb2p0/rG9sXvC7+zv9AUoP/oAQERHff+OJiBwG5762jogcqmZtj1AiwdJngJwOImRKEWLl6FwLcgg0v5oNoJsdYEqIy+XknFNKOReqesAaFoQDA/Cmp53x01mIqGl64cBEPELOJBaPz7YwN2teDn1LHW/0m18a2MP3axh81FFDr7hk/vdeRSgZMTjy6/Chha+/8OBBTyGA2NefYowCQEenf+euWs7FoILcnAGH2Ijb1Nza3NIWDIYR0JPiLijITU05uOHMhYj0LiklhJBQKFy5s1pV9bzc7IKBhzhEpLnFV9/QHA5rksTS0z15udkup6Pbbx0tyIGG72OWdbq5hy20OVQduDAzAiaQepzKxMIePcQ5Ly7Kv/ryc6P9wZatO65ZcBciqqp2z+0L5p4yAwAqKqt+cd0dQnBV0/98yzX+QPDRJ16prqkXQgzIzvjVlect+PVF+yusN9/5+NkX36zd09je0RkOqwDgcjnzcrPnnz57wa8vTvPsXVfQ3OK79Oo/tnf4Nd245qqfFRbk3ffQs5WVVbphZHjTLjzvtD/9/pcOZe/gXu2exgcefu7zFWtbW9s1TWeMelJTBmR7p0wac/dt12dmHP44QKLksdRxvG050O77dOAHFzDzFABYqlasnA5ICUnp8VsVPzrgFgqFN5dVRtocbe0dkRfDYXVLeSXnHAEfePi5isqqQDDoUBRFkesamu+874mC/Jyfnb236frZl2s//nSV2+2SJEYIQURN9/v9wfv/+uz2yqpn/nanosgAoBu8fNvOVl8HEHj6n4vr6ppafG0ORXE4lFZf+0N/ezEzM/3Gay8BgLCqLbj5vqWfrnI6FW5wSqnBebCppXZPw87de2687pLuyAFEAuq2ML9q/t8Uv00iPWyvyLK0bkPZ2RfduP8VbvDhQ4sevPe3kiQBACFEliVEjDRQIn8TeTFS+JdtrSwalH/izKnVNfWrvl4vS1KYq68seu+c+XMif+92OeeeOnPuqTNLhhe73c66+uZFb/73ixVrU1Jc737w2SUXnDFn9jQAIACyLMmyxBit2FGdneW98vSz29o7P1u+BgAcivL64iW/vPxct9u1paxy5dfrU9xOl8t547UXT508Vtf1ih3VK1d/V7ple08+gPhcedlndhBRSlta2z79bPX+VzTdaG5t+/HiZD+c88KCvMWvLBxZMkTT9XMuvGnl6u8kSdpVtcfX1pmVmQ4Av11wWX7u93Zizj1lxrSTLq5vaDIMY8VX6yJy7EcITE9Lfenp+6ZPmwgAV19/5+J3PlJkqb6hpbauccSw4vaOTk3TKaVZmem/uuo8T2oKAJx84rRrrjqvdk9Dhjeux7R3gz4jBwAospSW2rWgUNeNjPTunneu6caZp80eWTIEABRZHj/uqOWrvmUSC4XVcDgMkA4A+bnZ2yurVny1rqJyd1u7n3OBKFRVJYQQSvfUNf0gTX3ujBkRMwBgysSjF7/zISFE0/RAIAwABfk5KSmucFit3dM49+xrx40eUVw0cORRQ8ePKRlcXGD9A4k1fUYOTdNPnDn1yUdv73oJMVK8d+dxRBw+rOuCJqdDAQCyd7AEAEAI/NtT/1r495fb2joNw9B1AwEJkPR0T6Sbo+sHj50IIYYN6WpWKw5lbwW/L9Hhw4ovu+jMJ55ZhGhs2LR1/cZyQgmjNDMjff4Zs++57QaPJ6EXz/YZORDR6XQcVOz3CEnqmvv+4QmYK1evu/fBpxFBUeTxY0t+espMb3qqbvBnX3izobElSkwHpXkwlJK//HnBccdMePeDZeXbdja1+Hy+DoPzTn/g6ecX5+fl3HLTlabfTi8QPzl63tmJ6UncX65ap2q60+FISXG98I97hw8tAoBwWH3+pbfQQnuQMTpv7qx5c2dpmt7U4quprb/zvifXfFOqOJQvV337+xuvIN36HOKzANvCxBua/dAoEX5V32B+QigWaPtG3A3DaGxsBYBwWL3/oWdrahskZnK5TVVN3cOPv7S+dKs/EFQUuSA/Z8qkMQPzBgjBCQDn3bpZHfVGEdgE1OxpNiYn7QCslBzSiFyanYIdYTMzLFyItsSaOJ06aQylhBBQVe3Ka/88dkxJQ0Pz9ordaWmpoZDJnYmBQPjBR/750GMvDi4amJuT5XAo9Q3N5dt2Kori9wenTBrTrWJDqMjbzRYehHlnmnoQwIoc1OsiTgnbzQ7udu+YF4EYCoWDobCuGd+bWPnhXwoRDIURMRxSjX1fysiLnPNQSDWMrm+qrhvBYJhz7nAokdrqlJOOu+SCea+8/i4QsqeuaeeuWq/Xc9efrnv5tXfXl27lXKja3txxX0hqWNP1rpkLw+CRNCXGhBAAIEksNcVd39C8oXSrQAREyihjjFH601Nm3PCrn3frgyJS1123PYc4zK/StTbxxk3vBCf6plo4a/xh/zAvJ/vxh/5kGIYQouBHp9OGFBc88/hdgMi5OP6YCZEXCwflPf3YHYjIuZh2TFd258yfM2J4MWNUUeTMzHQAUBT50QdvPXHm1E8++6q9w180KO9nZ516zJSxg4sG+to7EbG4cO+n7E33PPrgH1RVF0KMHT1if5onnjD1hX/8hVFKCIn0VIcMLlj8r4UbN23dVrG7rr4pGFKdDmVQQe7xx06Yc+I0h6Nb62eFfwNwv9ndb2jlEEvzV2pgWG+95lWjohGkHnuNGlcmDsp88iJzWR9RGHX/1CpuAmai04sA4Bj9Fkufbi5r8w1S4pTlMQPRMNPeIYzwZn+iNTsSExEsM7kAHQVRcmnqBNNZW1t9bnrpOSWioVO0J+U4PCJQZqErK6zMy1iSQ5lcbG4xGAFCwxw21lnJ/UgAtToMV5pczYUG9Uwl1GU6d0ty0IweLB8nABSJwqnTYARIq1Nd69sUn9nGvoMIbkO9xey+JkEkr5UbAi2NkLKiDJadKnwhYIcuPyJCMEEoEpXxNqdWkdWxIa9l24D2LRktAz2738TzuzdEeIQiOr8GoQIztYeDUOqZYiV3S3LQzBTicUJr8KBKkSGhgjAkGhMtLnVXRue6gS1bs9t3ZnQ2p4QFQYKECtjVXlPh21GSGav76/o+yNuWAzX9P6LEOcRK9pbkIJQq4wcFK5uIRCkSikQShBNsSA1VpQfW57dszvNVpfub9gkhCSLzroosYAQ+r/4qKUc0RHCr8K832+DgxFHA3KOtBGBt4o2AMnqgeLMUOW136HWe4Ib81i05vvX5La0uzaAiUoQcKMT38qbs86qvrh53ETV9vlG/Rvg+Au4Hcy1KNIj7aGCWjuGzOisbnpD9zuTatXmNOzP8e9KCqsQjJYQkiCQO0xSSqFTeUlHRtqsko1t7WI4w0Gj50PyxYCCYZ5KFxwGsn+yTWpCz6LSWjwbXVHkDCOAwmMIpxW61MQmQoB5auuNzizH0S0TnehHYAMTcERUIRGLpJ1iMwaocEmHHZo5jOkrCTK9DptL7FR+HDMuX4PU7jMZFwDtNDn+hII4CYnYX5H5sqOznFM9k1GRnmlFW66/7rGqV9TD6E6g38db/AjG1UQUAUGPps4hk9VZNG+SYkDt6kCffEN1auvJDEOHF0jdUbs8tEP0Do/4lVHdbGL9iLOs062HYIIdHST1u4GTD7MF1CpNLm8o+3b3CeiT9A9QbjfqXzLY2AJATZyFNO9Z6JPb0IU8uni6ZrVkAgBLyYukbKrfhoP9+gFH/CqpV5nfHC42lz7Rep4BdcozPGV3gyeNmaxaZyqVN5cnCAwBQbzLqXzTf2gAEwkzvnD4Ie+RIc3imDZykWbifjAJ5YeMiv275bvc+jlH3PKrVFk4Q5MQ5iHqOsSUY24YmLxx1tltymV5XJjN5Y1PZs+tftSuevghvX4cNDxFzu+kjoCYNuJDI9tzxbpscQ73FR2eX6BYKD6fkeHHTGxsb7bmfrM/BdXzrJuc3H/wcKDDJ1MeISFgKy5prV0i2yaEw+cqx5xML47UEiMa1J797KWwcid3ajW8GKr5MX/76He8+8veWPUMlWSW0h0swUaVZ82jqOLtCsnPGa/qgqYM8eYaFc4YcTFm2e+WT371kY1R9gj3r1U/u80kOwWR15/oTFt31+oo3fqOrLknu2fdEGnC+jdvj7JTDJbnOGjFX55ZO6ndJzpc3LV664zO7okp8/I38gz+2ch0jExBM1gzNufo/v377f5+rLj9GdgQp60Y3UGjUM4mmHWdjYDbPlZ8/cl5Bqvk+LQAQQnRhPLz26V3t1TYGlrBwDT9/qK1pm87krm88oUJWwvWVY995+MllL93u9+XIjtDhlgoLaeB1xNyasSjYLEeWK+P8UfPC1oazZCrVdNbd9OmdgSOgZ/vlY+0bFgdk1yHqAiZrXHd8u+TKN+9/oXzV6Uw2KItSKguVpk6Uss6wNzb7V9lcMPLM0dklpkfTIziYsrW18v+t/rvFdBKcsiXBb17pPKQZEQgRsjPY1li45Mm/fvTMvZ0t+ZKsEnJQQxWBOuSiP5g8US469suR4fTeMOlKgWjxJCsHU94of+/ulQtNT+klOGVLgh/c2sL1w6/IYZJOqdj0xTmv3fHGug8vRaTf6+uKsJQ9j2Xaf2Kz+e2QP4IhjCuW/GZdw0aFWr1OJWSEzx85764ZNzMLS+wTkL1mGNCjKSkUjBvykAlfzLzg4ZwhWwzViQhAZOfYD2jq4Tce95SYyAEAZS3bL3l/gc516+tD9/ox/WbTq0YSDXNm7MfQnCneprGzF0+e+6LiqGcF98hFv7c7RoBYVCsRRmWNmD/8J5odE60uyflG+Xt3rXzYSicocShbEnz/1hZuoGnVJSUc9nu/evuGxfc901h/rjzwMlsD7CJWJQcAtKkdF797/a6OGtn8zosuVK4dXzDl9uNvGpzes6OPEwdhwBcL2779VyfXTZYZB4IIXJPPfcpbMsdpR3SHIIZ7AryOtFunXc8IsXKm1n4cTPmy5usbPr5tbd1666n1Pp31fMmfWlY91SHM1iYHYag44QIldmZATOUAgBMKp/3sqHkh3Z71w27JtbO9+uqlv3t1y9sa70uXZtSsUxdd2bjxrYCSYmX2qQuhQ+Zg6cSbvTakFZ0YVisRAnrw1x/+YW3dd07JHscRMczDZww79ZZp1+a6B9iSZuwwVCx9K/DJ/T6hI5XtmfVAAUyGC1/OHTg+tndrxlwOANjSvO3aj/7YGvLZ2N3QuJblyvzV+It/Pmq+zMyetBdjar9TP77XV1+qUcmeAiMC13H2Ld5jfxHz07F7Qw4A+L/t//3z8v+V7PruAAAAR65z48Si466fdMXYAaPsS9gGAk183Wv+r5/rMFRkip3HCBgqlsxxnftUbxSZvSQHADzw1ePPly5KlW2+EVLlmktynlw84/Ix540ZMNLexE3gb+Qb3vCvXxxorzEkp83nSxgqZg2VL1uc60zrjd3FvSdHh9p582f3LK9e7bKp8bEfRFS55pZdJxVPv2LM+fFSxN/INyz2r/93oL3WYAqxfcSO6+jy0nOeGFA4xeY5lGj0nhwA0Kn5f7vs7hU1axzM/pbUfkWmD5p66uBZJw+e4ZbMn3jUk3yhvlQrfSdQsSzUVh0TLQBAcHB56dmPZ/eaGdDLcgBAc6j1vHeuaQg0KbFpRSKiJjRKaHFa4fRBU04qmjEuZ1SK3XVZhObtesVnoYrPQg1bNNWPMdICABDBCOP8R7NGz+vVWxZ6Ww4A+KZ+w42f3NGmdtgychoNQ3BDGBKVitIKpg+aMjr7qPE5o4vTCizO9XTW8ZYdes136u5V4fotuuoXlAKVY3h2FSJwFWfemD79+vRePsckDnIAwLf1G//nk9tj7UcEQ3BD6JQwl+wckTEk25V5XMFkJ3Mckz9RogyA5Kce4j5HAAi2Cj0kCIHGcr2t1mit1Bu36b5dRtAnuIpUiq0TERCBazhjQfrM/+nGbXB2Ex85oHf9iICIBhoCUaAgQNIcHgJACDk6q8QpOQCAS8bYVWcO3DVGMAMAGsv1cKcgBLQgGipSCoQClQghvXTFxf4yY8aCOJgBcZQD9vnREvJF/je9jNj7xtEQPDL7Y8ja7LduGlE6y5A0gH0eRG6G6fUTDwUHruEJN8XNDIj13MqPMzlv3HNzHzquYHJcDm+hhFBCKKEKkx1MifzICpMcJPJDGRAKhMbBjEivdf7CrDiaAfGVAwBGZY3425y/zBx0bFAP2TJ52w8wVHR52dl/yx49P843wMX/GD+PkvrIyXfNHXoSF5xbuFaoP4BghDFrqHzO37MLp8ahqj2I+MsBAB4l9bE59/x26jVOpljZbdunQQHcgJJTXJf+OzcRzIAEkSPCVeN+/vxpC4vSBqlcO9KqGK4jk2H279LPfWqAy5so/5REiSPCuAGjFp351E+GzNK53l93JBwEIuhh9BZKP38x59hfJtYd1YklBwCkOzwLT7rrrhk3Z7m8/f4ISqEjCph4Qeplb+QWTEyIquRAEvHSYUro+SPPnJo/4ZG1z3y0c7lEmdRbA2W9BgrQw5g9TJ59q7dkTm9MEJogcT/0IelFj5x896e7Vjz+7T+3tlY6JKV/7GtCBENFJYXMus478cKUlKzEfVOJKwcAMMJOHTJrSv74RWX/WVz+3h5/g5M5+vT9LIaGkkJGz3NPvTJt4LjYrgC1TkLLESHT6b1u4uVnDj/1kbXPLKtaGdLDDqb0OUW4hoiQP0aZfn36iEStRw6iD8gRYZAn/+GT7ixtKn+p9I1lu1cEjJDC5MSvaCLTqgCQP1aZerln5Fy3vUtKY0o8J95Ms6mp/Ivq1W9t+6C2s04iksQkYsf8hyFrs95ZMHzTzMjEm0UiM2dKCik5xT36TPfg45x9SIsIfabkOJAxA0aOGTDy/JHzPq9a9c72Dzc1l4eMsEQliTJbLLGC4CB0JAzS8qQxZ6eMOMmVn/Bti2j0yZLjQHRhlLVs/6Lqq+XVq7f7dlqxxErJ0eXEQKnoGMeIk11FU52ujIQbRuoRfV6O/RjCKGup+Lx61fKq1dt9O1WuIaJEJUZpN0XpqRyCg+CIApgEnnyp+FjniJNdhVMcfd2J/fQfOfbDBd/q21HaVLapqXxdw6Y6f0PICEfepkQlQoAAOeRK0h+TA0EIAABhIIq96zzS8qUBJXL+WGXwdGfWELnfOLGffijHgWhc3+7b0RLyrahZE+bauvrSkBEK6EFfuJ0SAgAHvntD0Wa/9ZuSjbMOkgMBJAdJHcAQsWCCw5FKCyY5vIOknFFy72wuihf9XI6DCBsqR14faNrZXsUI5Si+rP46oIcionBmHL32p3lVozgzAAAFFk9zpgxgIMCRRvJGK4CgpPZnGw7iyJIjSY84gr4HSXpKUo4kUUnKkSQqSTmSRCUpR5KoJOVIEpWkHEmikpQjSVSSciSJSlKOJFFJypEkKkk5kkQlKUeSqCTlSBKVpBxJopKUI0lUknIkiUpSjiRR+f812nSYPb3iJAAAAABJRU5ErkJggg==">
-  <title>Finans Pro</title>
-  <style>
-    :root {
-      --bg: #f7f9fc;
-      --bg-card: #ffffff;
-      --bg-soft: #f1f4f9;
-      --bg-tint: #e9eef6;
-      --text: #0f1620;
-      --text-soft: #586273;
-      --text-dim: #98a3b3;
-      --border: #e8ecf3;
-      --border-strong: #d8dee8;
-      --ink: #16213e;
-      --ink-soft: #243b6b;
-      --green: #2f9e44;
-      --green-soft: #e7f6ea;
-      --red: #d4453f;
-      --red-soft: #fceae9;
-      --amber: #c5901c;
-      --gold: #f5b800;
-      --gold-soft: #fdf3d6;
-      --navy: #11635f;
-      --pink: #e83e8c;
-      --pink-soft: #fde8f1;
-      --purple: #8a2be2;
-      --purple-soft: #f1e6fb;
-      --orange: #fd7e14;
-      --shadow-sm: 0 1px 2px rgba(15,22,32,0.04);
-      --shadow: 0 2px 6px rgba(15,22,32,0.05), 0 10px 28px rgba(15,22,32,0.05);
-      --shadow-md: 0 6px 24px rgba(15,22,32,0.10);
-    }
-    .dark {
-      --bg: #090d13;
-      --bg-card: #121922;
-      --bg-soft: #19212c;
-      --bg-tint: #202935;
-      --text: #f0f4f9;
-      --text-soft: #9aa6b5;
-      --text-dim: #64707e;
-      --border: #212a36;
-      --border-strong: #2c3744;
-      --ink: #f0f4f9;
-      --ink-soft: #c5cfdb;
-      --green: #2bbd84;
-      --green-soft: #112a20;
-      --red: #e8625c;
-      --red-soft: #2d1817;
-      --amber: #d6a338;
-      --gold: #f5c518;
-      --gold-soft: #2e2614;
-      --navy: #2bbd84;
-      --pink: #f25ba2;
-      --pink-soft: #321726;
-      --purple: #a564e8;
-      --purple-soft: #271633;
-      --orange: #ff9234;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-      --shadow: 0 2px 6px rgba(0,0,0,0.3), 0 10px 28px rgba(0,0,0,0.35);
-      --shadow-md: 0 6px 24px rgba(0,0,0,0.5);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html { height: 100%; }
-    body, #root { height: 100%; overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-      background: var(--bg); color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-    input, select, textarea { font-size: 16px; font-family: inherit; }
-    ::-webkit-scrollbar { display: none; }
-    button { font-family: inherit; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pop { 0% { transform: scale(0); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .fade-up { animation: fadeUp 0.35s ease-out forwards; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Giderim — Gider ve Abonelik Takibi</title>
+<style>
+:root{
+  --bg:#eef1f8;
+  --bg2:#e4e9f4;
+  --panel:rgba(255,255,255,0.82);
+  --panel-solid:#ffffff;
+  --card:rgba(255,255,255,0.9);
+  --card-hover:#ffffff;
+  --border:rgba(30,41,68,0.1);
+  --border-strong:rgba(30,41,68,0.16);
+  --text:#1f2a44;
+  --muted:#5a6785;
+  --muted2:#8a95af;
+  --green:#0ea862;
+  --green-soft:#0c9457;
+  --red:#e5486a;
+  --amber:#d99a1f;
+  --blue:#3d7bef;
+  --accent:#4571e8;
+  --gold:#c9a25a;
+  --radius:18px;
+  --radius-sm:12px;
+  --sidebar-w:290px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+  background:
+    radial-gradient(1300px 650px at 12% -8%, #f4f6fc 0%, transparent 55%),
+    radial-gradient(1100px 750px at 102% 2%, #e8edf8 0%, transparent 52%),
+    radial-gradient(900px 900px at 80% 110%, #eaeef9 0%, transparent 60%),
+    linear-gradient(160deg,#eef1f8 0%,#e6ebf5 100%);
+  color:var(--text);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,select{font-family:inherit;}
+
+/* ===== App shell ===== */
+.app{display:flex;height:100vh;height:100dvh;overflow:hidden;position:relative;}
+
+/* ===== Sidebar ===== */
+.sidebar{
+  width:var(--sidebar-w);
+  min-width:var(--sidebar-w);
+  background:var(--panel);
+  backdrop-filter:blur(30px) saturate(140%);
+  -webkit-backdrop-filter:blur(30px) saturate(140%);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  transition:margin-left .28s cubic-bezier(.4,0,.2,1);
+  z-index:40;
+  padding-top:env(safe-area-inset-top);
+}
+.sidebar.collapsed{margin-left:calc(-1 * var(--sidebar-w));}
+.sb-head{
+  padding:18px 18px 12px;
+  display:flex;align-items:center;gap:10px;
+}
+.sb-logo{
+  width:36px;height:36px;border-radius:11px;
+  background:linear-gradient(135deg,#a3c0ff,#ecd4a8);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:18px;color:#2c3a54;
+  box-shadow:0 4px 16px rgba(143,176,255,.4);
+}
+.sb-title{font-size:15px;font-weight:600;letter-spacing:.1px;}
+.sb-sub{font-size:11px;color:var(--muted2);margin-top:1px;}
+.sb-close{width:36px;height:36px;border-radius:10px;flex:0 0 36px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(30,41,68,.045);border:1px solid var(--border);color:var(--muted);transition:.15s;}
+.sb-close:hover{background:rgba(30,41,68,.09);color:var(--text);}
+#menuIcon{transition:transform .28s cubic-bezier(.3,.7,.4,1);}
+.sidebar.collapsed ~ .main #menuIcon,
+body.sidebar-closed #menuIcon{transform:rotate(0deg);}
+
+.sb-scroll{flex:1;overflow-y:auto;padding:6px 10px 10px;}
+.sb-scroll::-webkit-scrollbar{width:6px;}
+.sb-scroll::-webkit-scrollbar-thumb{background:rgba(30,41,68,.05);border-radius:3px;}
+
+.nav-item{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 12px;border-radius:12px;min-height:44px;
+  font-size:14px;color:var(--muted);font-weight:500;letter-spacing:.1px;
+  margin:2px 0;transition:.15s;position:relative;
+}
+.nav-item .ico{width:22px;height:22px;flex:0 0 22px;display:flex;align-items:center;justify-content:center;font-size:17px;}
+.nav-item:hover{background:rgba(30,41,68,.04);color:var(--text);}
+.nav-item.active{background:rgba(69,113,232,.12);color:var(--text);}
+.nav-item.active::before{
+  content:"";position:absolute;left:-10px;top:50%;transform:translateY(-50%);
+  width:3px;height:20px;border-radius:3px;background:var(--accent);
+}
+.nav-count{margin-left:auto;font-size:12px;color:var(--muted2);background:rgba(30,41,68,.045);
+  padding:1px 8px;border-radius:20px;font-weight:600;}
+
+.sb-section-label{
+  font-size:11.5px;text-transform:uppercase;letter-spacing:1px;
+  color:var(--muted2);padding:16px 12px 6px;font-weight:700;
+}
+
+.cat-group{margin:3px 0;}
+.cat-head{
+  display:flex;align-items:center;gap:11px;padding:12px 12px;border-radius:12px;
+  font-size:14px;font-weight:500;letter-spacing:.1px;color:var(--text);transition:.15s;
+  min-height:44px;
+}
+.cat-head:hover{background:rgba(30,41,68,.045);}
+.cat-group.open .cat-head{background:rgba(30,41,68,.03);}
+.cat-chev{width:15px;height:15px;transition:transform .22s cubic-bezier(.3,.7,.4,1);color:var(--muted2);flex:0 0 15px;}
+.cat-group.open .cat-chev{transform:rotate(90deg);color:var(--accent);}
+.cat-emoji{font-size:18px;width:22px;text-align:center;flex:0 0 22px;}
+.cat-name-txt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cat-total{font-size:11px;color:var(--green);font-weight:600;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.cat-edit{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  background:rgba(30,41,68,.03);color:var(--muted2);flex:0 0 26px;transition:.15s;opacity:.6;}
+.cat-edit:hover{background:rgba(30,41,68,.08);color:#fff;opacity:1;}
+.cat-count{font-size:12px;color:var(--muted2);font-weight:500;
+  background:rgba(30,41,68,.04);padding:1px 9px;border-radius:20px;min-width:24px;text-align:center;}
+.cat-items{display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .24s cubic-bezier(.3,.7,.4,1);
+  margin-left:6px;padding-left:14px;border-left:1.5px solid var(--border);}
+.cat-items-inner{overflow:hidden;min-height:0;}
+.cat-group.open .cat-items{grid-template-rows:1fr;margin-top:2px;margin-bottom:6px;}
+.cat-sub{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:10px;margin:2px 0;
+  font-size:12.5px;color:var(--muted);transition:.15s;min-height:40px;
+}
+.cat-sub:hover{background:rgba(30,41,68,.04);color:var(--text);}
+.cat-sub .mini-logo{width:24px;height:24px;border-radius:7px;
+  background:linear-gradient(160deg,#fff,#eef1f7);object-fit:contain;flex:0 0 24px;padding:3px;
+  box-shadow:0 1px 3px rgba(31,42,68,.12);}
+.cat-sub .mini-fb{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:11px;padding:0;}
+.cat-sub-amt{font-size:11px;color:var(--muted2);font-weight:500;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.cat-add-btn{display:flex;align-items:center;justify-content:center;gap:7px;
+  margin:10px 4px 6px;padding:11px;border-radius:12px;
+  background:rgba(69,113,232,.08);border:1px dashed var(--border-strong);
+  color:var(--accent);font-size:13.5px;font-weight:600;cursor:pointer;transition:.15s;}
+.cat-add-btn:hover{background:rgba(69,113,232,.12);}
+.emoji-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.emoji-row button{width:38px;height:38px;border-radius:10px;font-size:19px;
+  background:rgba(30,41,68,.04);border:1px solid var(--border);transition:.12s;}
+.emoji-row button:hover{background:rgba(69,113,232,.12);transform:scale(1.08);}
+
+.sb-foot{border-top:1px solid var(--border);padding:8px 10px calc(8px + env(safe-area-inset-bottom));}
+
+/* ===== Main ===== */
+.main{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden;}
+.topbar{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top));
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.7);backdrop-filter:blur(20px);
+}
+.menu-btn{
+  width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  background:rgba(30,41,68,.045);border:1px solid var(--border);transition:.15s;
+}
+.menu-btn:hover{background:rgba(30,41,68,.08);}
+.view-title{font-size:16.5px;font-weight:600;letter-spacing:-.2px;}
+.view-title .vt-count{color:var(--muted2);font-weight:500;font-size:16px;margin-left:4px;}
+.topbar-spacer{flex:1;}
+.add-btn{
+  height:38px;padding:0 16px;border-radius:11px;display:flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,#a3c0ff,#b6a9ff);color:#2c3a54;font-weight:700;font-size:14px;
+  box-shadow:0 5px 18px rgba(143,176,255,.4);transition:.15s;
+}
+.add-btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(143,176,255,.5);}
+.cur-select{
+  height:38px;padding:0 10px;border-radius:11px;background:rgba(30,41,68,.045);
+  border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;
+}
+
+.content{flex:1;overflow-y:auto;padding:20px;padding-bottom:120px;}
+.content::-webkit-scrollbar{width:8px;}
+.content::-webkit-scrollbar-thumb{background:rgba(30,41,68,.05);border-radius:4px;}
+
+/* Hero summary */
+.hero{
+  border-radius:var(--radius);padding:24px 26px;margin-bottom:20px;
+  background:
+    linear-gradient(120deg,rgba(69,113,232,.09),rgba(201,162,90,.05)),
+    #ffffff;
+  border:1px solid var(--border);position:relative;overflow:hidden;
+  box-shadow:0 8px 26px rgba(31,42,68,.08);
+}
+.hero::after{
+  content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(69,113,232,.12),transparent 70%);
+}
+.hero::before{
+  content:"";position:absolute;left:-30px;bottom:-60px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,162,90,.1),transparent 70%);
+}
+.hero-row{display:flex;gap:40px;flex-wrap:wrap;position:relative;z-index:1;}
+.hero-cell .hc-label{font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:500;letter-spacing:.3px;}
+.hero-cell .hc-val{font-size:21px;font-weight:600;letter-spacing:-.4px;font-variant-numeric:tabular-nums;}
+.hero-cell .hc-val.red{color:var(--red);}
+.hero-cell .hc-val.green{color:var(--green);}
+.hero-cell .hc-sub{font-size:11px;color:var(--muted2);margin-top:2px;}
+
+/* Cards grid */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;}
+.card{
+  background:#ffffff;
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;transition:.2s cubic-bezier(.3,.7,.4,1);position:relative;overflow:hidden;
+  box-shadow:0 4px 16px rgba(31,42,68,.07);
+}
+.card:hover{border-color:var(--border-strong);
+  transform:translateY(-3px);box-shadow:0 14px 34px rgba(31,42,68,.13);}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.card-logo{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(160deg,#ffffff,#eef1f7);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 48px;
+  box-shadow:0 2px 8px rgba(31,42,68,.14), inset 0 0 0 1px rgba(0,0,0,.04);
+}
+.card-logo img{width:100%;height:100%;object-fit:contain;padding:7px;}
+.card-logo .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:19px;color:#fff;letter-spacing:-.5px;}
+.brand-badge{font-weight:700;line-height:1;text-align:center;
+  overflow:hidden;letter-spacing:-.3px;
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.18), inset 0 -1px 2px rgba(0,0,0,.15);
+  text-shadow:0 1px 1px rgba(0,0,0,.12);}
+.card-logo .brand-badge{font-size:clamp(11px,42%,20px);padding:2px;}
+.debt-logo .brand-badge{font-size:clamp(11px,42%,19px);padding:2px;}
+.brand-opt .brand-badge{font-size:clamp(9px,40%,15px);padding:1px;}
+.mini-fb.brand-badge{font-size:clamp(7px,44%,11px);padding:1px;}
+.card-name{font-size:14px;font-weight:600;line-height:1.25;letter-spacing:-.1px;}
+.card-meta{font-size:11px;color:var(--muted);margin-top:3px;}
+.card-actions{margin-left:auto;display:flex;gap:4px;}
+.icon-mini{
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(30,41,68,.04);color:var(--muted);transition:.15s;
+}
+.icon-mini:hover{background:rgba(30,41,68,.09);color:var(--text);}
+.icon-mini.del:hover{background:rgba(251,113,133,.2);color:var(--red);}
+.card-price{font-size:18px;font-weight:600;letter-spacing:-.3px;margin-bottom:2px;font-variant-numeric:tabular-nums;}
+.card-price.free{color:var(--green);}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px;
+  padding-top:12px;border-top:1px solid var(--border);}
+.card-due{font-size:12px;color:var(--muted);}
+.card-due b{color:var(--text);font-weight:600;}
+.pay-chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);
+  background:rgba(30,41,68,.04);padding:3px 9px;border-radius:20px;}
+.cycle-tag{display:inline-block;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;
+  padding:2px 8px;border-radius:6px;background:rgba(69,113,232,.12);color:var(--accent);margin-top:4px;}
+.cycle-tag.yil{background:rgba(52,211,153,.16);color:var(--green);}
+.progress{height:4px;border-radius:3px;background:rgba(30,41,68,.05);margin-top:12px;overflow:hidden;}
+.progress > i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),#6c8ff0);}
+.progress.soon > i{background:linear-gradient(90deg,var(--amber),var(--red));}
+
+.empty{
+  text-align:center;padding:60px 20px;color:var(--muted2);
+}
+.empty .e-emoji{font-size:44px;margin-bottom:12px;}
+.empty h3{color:var(--text);font-weight:700;margin:0 0 6px;}
+
+/* Bottom bar (totals) */
+.botbar{
+  position:absolute;left:0;right:0;bottom:0;z-index:30;
+  display:flex;align-items:center;gap:20px;
+  padding:12px 22px;padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.85);backdrop-filter:blur(24px);
+  border-top:1px solid var(--border-strong);
+}
+.bot-cell{display:flex;flex-direction:column;}
+.bot-cell .bl{font-size:9px;color:var(--muted2);text-transform:uppercase;letter-spacing:.7px;font-weight:600;}
+.bot-cell .bv{font-size:14px;font-weight:600;letter-spacing:-.2px;font-variant-numeric:tabular-nums;}
+.bot-cell .bv.red{color:var(--red);}
+.bot-cell .bv.green{color:var(--green);}
+.bot-sep{width:1px;height:30px;background:var(--border);}
+.bot-spacer{flex:1;}
+.next-pay{font-size:12px;color:var(--muted);text-align:right;}
+.next-pay b{color:var(--text);}
+
+/* Debt list */
+.debt-list{display:flex;flex-direction:column;gap:12px;}
+.debt-item{
+  background:#ffffff;
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;display:flex;align-items:center;gap:14px;transition:.18s;
+  box-shadow:inset 0 1px 0 rgba(30,41,68,.05), 0 4px 14px rgba(31,42,68,.08);
+}
+.debt-item:hover{background-color:var(--card-hover);transform:translateY(-2px);}
+.debt-logo{width:46px;height:46px;border-radius:13px;
+  background:linear-gradient(160deg,#ffffff,#eef1f7);display:flex;align-items:center;
+  justify-content:center;overflow:hidden;flex:0 0 46px;box-shadow:0 2px 8px rgba(31,42,68,.14);}
+.debt-logo img{width:100%;height:100%;object-fit:contain;padding:7px;}
+.debt-logo .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:17px;color:#fff;letter-spacing:-.5px;}
+.debt-info{flex:1;min-width:0;}
+.debt-name{font-size:13.5px;font-weight:600;}
+.debt-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.debt-amt{text-align:right;}
+.debt-amt .da-val{font-size:15px;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums;}
+.debt-amt .da-sub{font-size:11px;color:var(--muted2);margin-top:1px;}
+.debt-prog{height:5px;border-radius:3px;background:rgba(30,41,68,.05);margin-top:8px;overflow:hidden;max-width:180px;}
+.debt-prog > i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#2fb989);}
+
+/* ===== Modal ===== */
+.overlay{
+  position:fixed;inset:0;z-index:100;background:rgba(31,42,68,.35);
+  backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;
+}
+.overlay.show{display:flex;}
+.modal{
+  width:100%;max-width:520px;max-height:90vh;overflow-y:auto;
+  background:var(--panel-solid);border:1px solid var(--border-strong);border-radius:22px;
+  box-shadow:0 30px 70px rgba(31,42,68,.28);animation:pop .22s cubic-bezier(.2,.8,.3,1);
+}
+@keyframes pop{from{transform:scale(.94) translateY(10px);opacity:0;}to{transform:none;opacity:1;}}
+.modal::-webkit-scrollbar{width:7px;}
+.modal::-webkit-scrollbar-thumb{background:rgba(30,41,68,.07);border-radius:4px;}
+.modal-head{display:flex;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--panel-solid);z-index:2;}
+.modal-head h2{font-size:15.5px;font-weight:600;margin:0;}
+.modal-close{margin-left:auto;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;
+  justify-content:center;background:rgba(30,41,68,.045);color:var(--muted);font-size:18px;}
+.modal-close:hover{background:rgba(30,41,68,.09);color:var(--text);}
+.modal-body{padding:20px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:7px;letter-spacing:.2px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:12px 13px;border-radius:12px;background:rgba(30,41,68,.04);
+  border:1px solid var(--border);color:var(--text);font-size:15px;outline:none;transition:.15s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--accent);background:rgba(69,113,232,.06);}
+.field select option{background:#ffffff;color:#1f2a44;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* brand picker */
+.brand-search{margin-bottom:10px;}
+.logo-upload-row{display:flex;align-items:center;gap:10px;margin-top:12px;}
+.logo-preview{width:44px;height:44px;border-radius:12px;flex:0 0 44px;display:none;
+  background:linear-gradient(160deg,#fff,#eef1f7);overflow:hidden;box-shadow:0 2px 6px rgba(31,42,68,.12);}
+.logo-preview.show{display:block;}
+.logo-preview img{width:100%;height:100%;object-fit:contain;padding:5px;}
+.upload-btn{display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:12px;
+  background:rgba(143,176,255,.14);border:1px solid var(--border);color:var(--accent);
+  font-size:13.5px;font-weight:600;transition:.15s;flex:1;justify-content:center;}
+.upload-btn:hover{background:rgba(143,176,255,.22);}
+.upload-clear{padding:11px 12px;border-radius:12px;background:rgba(251,113,133,.14);
+  color:var(--red);font-size:13px;font-weight:600;border:1px solid var(--border);}
+.logo-hint{font-size:11.5px;color:var(--muted2);margin-top:8px;line-height:1.4;}
+.user-logo{image-rendering:auto;}
+/* Ödendi işaret dairesi */
+.pay-check{width:32px;height:32px;border-radius:50%;flex:0 0 32px;
+  border:2px solid var(--border-strong);background:#fff;color:transparent;
+  display:flex;align-items:center;justify-content:center;transition:.18s;}
+.pay-check:hover{border-color:var(--green);transform:scale(1.08);}
+.pay-check.on{background:var(--green);border-color:var(--green);color:#fff;
+  box-shadow:0 2px 8px rgba(14,168,98,.35);}
+/* Ödenen kart: üstü çizili, soluk */
+.card.paid{opacity:.62;background:#f6f8fb;}
+.card.paid .card-name,.card.paid .card-price{
+  text-decoration:line-through;text-decoration-thickness:2px;
+  text-decoration-color:rgba(31,42,68,.45);}
+.debt-item.paid{opacity:.62;background:#f6f8fb;}
+.debt-item.paid .debt-name{text-decoration:line-through;text-decoration-thickness:2px;
+  text-decoration-color:rgba(31,42,68,.45);}
+/* Gün rozeti */
+.day-chip{display:inline-block;font-size:9.5px;font-weight:600;margin-left:6px;
+  padding:2px 8px;border-radius:6px;background:rgba(31,42,68,.06);color:var(--muted);margin-top:4px;}
+/* Ay ilerleme çubuğu (hero) */
+.hero-month{font-size:11.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;position:relative;z-index:1;}
+.hero-progress{height:8px;border-radius:5px;background:rgba(31,42,68,.07);
+  margin-top:18px;overflow:hidden;position:relative;z-index:1;}
+.hero-progress > i{display:block;height:100%;border-radius:5px;
+  background:linear-gradient(90deg,var(--green),#2fb989);transition:width .4s cubic-bezier(.3,.7,.4,1);}
+.hero-progress-label{font-size:10.5px;color:var(--muted2);margin-top:7px;font-weight:500;position:relative;z-index:1;}
+/* Borç bölüm etiketleri */
+.debt-section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;
+  color:var(--muted2);margin:20px 4px 10px;}
+.debt-section-label:first-of-type{margin-top:4px;}
+/* Kart/Kredi etiket renkleri */
+.cycle-tag.kart{background:rgba(229,72,106,.1);color:var(--red);}
+.cycle-tag.kredi{background:rgba(31,42,68,.07);color:var(--muted);}
+.cycle-tag.gelir{background:rgba(14,168,98,.12);color:var(--green);}
+.card-price.inc{color:var(--green);}
+.card.income{border-left:3px solid var(--green);}
+.cat-sub-amt.inc{color:var(--green);}
+
+/* Arama kutusu */
+.search-row{margin-bottom:14px;}
+.search-row input{width:100%;padding:13px 15px;border-radius:14px;
+  background:#fff;border:1px solid var(--border);color:var(--text);
+  font-size:15px;outline:none;transition:.15s;box-shadow:0 2px 10px rgba(31,42,68,.05);}
+.search-row input:focus{border-color:var(--accent);box-shadow:0 2px 14px rgba(69,113,232,.12);}
+
+/* Takvim */
+.cal-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;margin-bottom:16px;box-shadow:0 4px 16px rgba(31,42,68,.07);}
+.cal-title{font-size:13.5px;font-weight:600;letter-spacing:-.2px;margin-bottom:14px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+.cal-dow{text-align:center;font-size:10.5px;font-weight:700;color:var(--muted2);
+  text-transform:uppercase;letter-spacing:.5px;padding:4px 0 8px;}
+.cal-day{aspect-ratio:1;border-radius:11px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;background:rgba(31,42,68,.025);
+  transition:.14s;position:relative;}
+.cal-day.empty{background:transparent;}
+.cal-day.has{cursor:pointer;background:rgba(31,42,68,.045);}
+.cal-day.has:hover{background:rgba(69,113,232,.1);}
+.cal-day.today{outline:2px solid var(--accent);outline-offset:-2px;}
+.cal-day.sel{background:var(--accent);}
+.cal-day.sel .cal-num{color:#fff;}
+.cal-num{font-size:12px;font-weight:550;font-variant-numeric:tabular-nums;}
+.cal-dots{display:flex;gap:2.5px;align-items:center;min-height:6px;}
+.cal-dot{width:5.5px;height:5.5px;border-radius:50%;display:inline-block;}
+.cal-dot.paid{background:var(--green);}
+.cal-dot.wait{background:var(--amber);}
+.cal-dot.late{background:var(--red);}
+.cal-dot.inc{background:var(--green);outline:1.5px solid rgba(14,168,98,.35);outline-offset:1px;}
+.cal-more{font-size:8px;color:var(--muted2);font-weight:700;}
+.cal-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--border);font-size:11.5px;color:var(--muted);}
+.cal-legend span{display:flex;align-items:center;gap:5px;}
+.cal-day-title{font-size:14px;font-weight:700;margin:6px 4px 12px;}
+.cal-hint{text-align:center;color:var(--muted2);font-size:13px;padding:14px;}
+.tap-logo{cursor:pointer;position:relative;transition:.15s;overflow:visible!important;}
+.tap-logo > *{border-radius:inherit;overflow:hidden;}
+.tap-logo:hover{transform:scale(1.06);box-shadow:0 4px 14px rgba(69,113,232,.25);}
+.tap-logo::after{
+  content:"+";position:absolute;right:-4px;bottom:-4px;width:17px;height:17px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+  box-shadow:0 1px 4px rgba(31,42,68,.25);border:1.5px solid #fff;
+}
+.tap-logo:has(.user-logo)::after{display:none;}
+.logo-stack{position:relative;width:100%;height:100%;display:block;}
+.logo-stack .fallback{position:absolute;inset:0;}
+.logo-real{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14%;
+  background:#fff;opacity:0;transition:opacity .25s;border-radius:inherit;}
+.logo-real.loaded{opacity:1;}
+.mini-logo .logo-stack .logo-real,
+.cat-sub .logo-stack .logo-real{padding:12%;}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;
+  max-height:230px;overflow-y:auto;padding:4px;background:rgba(31,42,68,.05);border-radius:12px;}
+.brand-grid::-webkit-scrollbar{width:6px;}
+.brand-grid::-webkit-scrollbar-thumb{background:rgba(30,41,68,.07);border-radius:3px;}
+.brand-opt{display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 3px;border-radius:11px;
+  cursor:pointer;transition:.12s;border:1.5px solid transparent;}
+.brand-opt:hover{background:rgba(30,41,68,.045);}
+.brand-opt.sel{border-color:var(--accent);background:rgba(124,156,255,.14);}
+.brand-opt .bo-logo{width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(160deg,#fff,#eef1f7);display:flex;
+  align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 5px rgba(31,42,68,.1);}
+.brand-opt .bo-logo img{width:100%;height:100%;object-fit:contain;padding:5px;}
+.brand-opt .bo-logo .fallback{width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-weight:800;font-size:15px;color:var(--text);}
+.brand-opt .bo-name{font-size:9.5px;color:var(--muted);text-align:center;line-height:1.1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60px;}
+.brand-cat-label{grid-column:1/-1;font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--muted2);font-weight:700;padding:6px 4px 2px;}
+
+.btn-primary{
+  width:100%;padding:14px;border-radius:13px;background:linear-gradient(135deg,#a3c0ff,#b6a9ff);
+  color:#2c3a54;font-weight:800;font-size:15px;box-shadow:0 6px 20px rgba(163,192,255,.4);transition:.15s;
+}
+.btn-primary:hover{transform:translateY(-1px);}
+.btn-ghost{width:100%;padding:12px;border-radius:13px;background:rgba(30,41,68,.04);
+  border:1px solid var(--border);color:var(--muted);font-weight:600;font-size:14px;margin-top:8px;}
+
+.seg{display:flex;background:rgba(31,42,68,.06);border-radius:11px;padding:3px;gap:3px;}
+.seg button{flex:1;padding:9px;border-radius:9px;font-size:13px;font-weight:600;color:var(--muted);transition:.15s;}
+.seg button.on{background:rgba(69,113,232,.14);color:var(--text);}
+
+.type-toggle{display:flex;gap:8px;margin-bottom:16px;}
+.type-toggle button{flex:1;padding:11px;border-radius:12px;background:rgba(30,41,68,.04);
+  border:1px solid var(--border);color:var(--muted);font-weight:600;font-size:14px;transition:.15s;}
+.type-toggle button.on{background:rgba(69,113,232,.12);border-color:var(--accent);color:var(--text);}
+
+/* mobile */
+@media(max-width:820px){
+  :root{--sidebar-w:88vw;}
+  .sidebar{position:fixed;top:0;bottom:0;left:0;box-shadow:20px 0 60px rgba(31,42,68,.2);max-width:360px;
+    margin-left:0!important;transform:translateX(0);
+    transition:transform .26s cubic-bezier(.3,.7,.3,1);will-change:transform;
+    background:rgba(255,255,255,.98);backdrop-filter:none;-webkit-backdrop-filter:none;}
+  .sidebar.collapsed{transform:translateX(calc(-100% - 24px));}
+
+  /* Üst çubuk: Dynamic Island için güvenli alan, temiz hizalama */
+  .topbar{padding:12px 14px;padding-top:calc(10px + env(safe-area-inset-top));gap:10px;}
+  .view-title{font-size:15.5px;}
+  .cur-select{height:36px;font-size:12px;padding:0 8px;}
+  .add-btn{height:36px;padding:0 13px;}
+  .add-btn span{display:inline;}
+
+  .content{padding:14px;padding-bottom:150px;}
+  .cards{grid-template-columns:1fr;gap:12px;}
+
+  /* Hero: hücreler alt alta, ferah */
+  .hero{padding:18px 18px;}
+  .hero-row{gap:16px;flex-direction:column;}
+  .hero-cell{display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:1px solid var(--border);padding-bottom:12px;}
+  .hero-cell:last-child{border-bottom:none;padding-bottom:0;}
+  .hero-cell .hc-label{margin-bottom:0;}
+  .hero-cell .hc-val{font-size:18px;}
+  .hero-cell .hc-sub{display:none;}
+
+  /* Alt toplam çubuğu: 4 hücre sığsın */
+  .botbar{gap:8px;padding:9px 12px;padding-bottom:calc(9px + env(safe-area-inset-bottom));justify-content:space-between;}
+  .bot-cell .bl{font-size:8px;letter-spacing:.4px;}
+  .bot-cell .bv{font-size:12.5px;}
+  .bot-sep{display:none;}
+  .bot-spacer{display:none;}
+  .next-pay{display:none;}
+
+  .scrim{position:fixed;inset:0;background:rgba(31,42,68,.3);z-index:35;display:none;}
+  .scrim.show{display:block;}
+
+  /* rahat dokunma alanları */
+  .cat-head,.nav-item{min-height:48px;font-size:14.5px;}
+  .cat-sub{min-height:42px;font-size:13px;}
+  .cat-total,.cat-sub-amt{font-size:12px;}
+
+  /* modal alttan açılan panel */
+  .modal{max-height:90vh;border-radius:22px 22px 0 0;margin-top:auto;}
+  .overlay{align-items:flex-end;padding:0;}
+  .brand-grid{grid-template-columns:repeat(4,1fr);max-height:34vh;}
+  .brand-opt .bo-name{font-size:9.5px;max-width:100%;}
+  .field input,.field select{font-size:16px;}/* iOS zoom önleme */
+  .card{padding:16px;}
+  .card-price{font-size:17px;}
+}
+@media(min-width:821px){.scrim{display:none!important;}}
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script>
-  var e = React.createElement;
-  var useState=React.useState, useEffect=React.useEffect, useMemo=React.useMemo, useCallback=React.useCallback;
- 
-  var MONTHS=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
-  var M3=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
-  var ADV={ avgIncome:150000, cashAdvance:250000, cashAdvanceRate:0.0425 };
- 
-  var storage={
-    get:function(k){ try{return JSON.parse(localStorage.getItem(k));}catch(x){return null;} },
-    set:function(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(x){} }
-  };
-  function fmt(n){ return (Number(n)||0).toLocaleString('tr-TR',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-  function monthNum(y,m){ return y*12+m; }
-  function vibrate(p){ if(navigator.vibrate) navigator.vibrate(p||10); }
- 
-  // ===== Premium amblemler — gerçek banka logoları (yüklenmezse renkli ambleme düşer) =====
-  function brandOf(name){
-    var l=(name||'').toLowerCase();
-    if(/akbank/.test(l)) return {bg:'#e30613', fg:'#fff', mark:'Akbank', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Akbank_logo.svg/250px-Akbank_logo.svg.png'};
-    if(/garanti|bbva|ozum|özüm|troy/.test(l)) return {bg:'#00754a', fg:'#fff', mark:'Garanti', logo:'https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Garanti_BBVA_Logo.svg/250px-Garanti_BBVA_Logo.svg.png'};
-    if(/bankası|bankasi|is bank|işbank|isbank|iş bank|türkiye is/.test(l)) return {bg:'#0a3d91', fg:'#fff', mark:'İş Bankası', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/T%C3%BCrkiye_%C4%B0%C5%9F_Bankas%C4%B1_logo.svg/250px-T%C3%BCrkiye_%C4%B0%C5%9F_Bankas%C4%B1_logo.svg.png'};
-    if(/enpara/.test(l)) return {bg:'#7d2ae8', fg:'#fff', mark:'enpara', logo:'https://www.enpara.com/Frontend/dist/images/enpara.svg'};
-    if(/albaraka|albarak/.test(l)) return {bg:'#00a19a', fg:'#fff', mark:'Albaraka', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Al_Baraka_Banking_Group_Logo.svg/250px-Al_Baraka_Banking_Group_Logo.svg.png'};
-    if(/ssk|bağkur|bagkur|sgk|sosyal/.test(l)) return {bg:'#1f4e9c', fg:'#fff', mark:'SGK', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/T.C._Sosyal_G%C3%BCvenlik_Kurumu_logo.svg/250px-T.C._Sosyal_G%C3%BCvenlik_Kurumu_logo.svg.png'};
-    if(/eminevim|emin evim/.test(l)) return {bg:'#00854a', fg:'#fff', mark:'eminevim'};
-    if(/ziraat/.test(l)) return {bg:'#d6121f', fg:'#fff', mark:'Ziraat'};
-    if(/yapı ?kredi|yapikredi/.test(l)) return {bg:'#004990', fg:'#fff', mark:'Yapı Kredi'};
-    if(/halkbank|halk bank/.test(l)) return {bg:'#005baa', fg:'#fff', mark:'Halkbank'};
-    if(/vakıf|vakif/.test(l)) return {bg:'#f7b500', fg:'#1a2230', mark:'Vakıf'};
-    if(/qnb|finansbank/.test(l)) return {bg:'#5b2d8e', fg:'#fff', mark:'QNB'};
-    if(/teb/.test(l)) return {bg:'#00a651', fg:'#fff', mark:'TEB'};
-    if(/deniz ?bank|denizbank/.test(l)) return {bg:'#e2001a', fg:'#fff', mark:'Deniz'};
-    if(/ing/.test(l)) return {bg:'#ff6200', fg:'#fff', mark:'ING'};
-    if(/sağlık|saglik|sigorta|tamamlayici/.test(l)) return {bg:'#0a8f5b', fg:'#fff', icon:'🩺', big:true};
-    if(/aidat/.test(l)) return {bg:'linear-gradient(145deg,#7c8da3,#4a5a70)', fg:'#fff', icon:'🏢', big:true};
-    if(/kira|konut|ev|rezidans|residence|site|apartman/.test(l)) return {bg:'linear-gradient(145deg,#3f6f5b,#27503f)', fg:'#fff', icon:'🏠', big:true};
-    if(/elektrik|su|doğalgaz|dogalgaz|fatura|internet|telefon/.test(l)) return {bg:'#0891b2', fg:'#fff', icon:'⚡', big:true};
-    if(/market|mutfak/.test(l)) return {bg:'#ca8a04', fg:'#fff', icon:'🛒', big:true};
-    if(/altın|altin|gram|çeyrek|ceyrek/.test(l)) return {bg:'#b8902f', fg:'#fff', icon:'🪙', big:true};
-    if(/nakit|kasa/.test(l)) return {bg:'#15a06a', fg:'#fff', icon:'💵', big:true};
-    var first=(name||'?').trim().charAt(0).toUpperCase();
-    var palette=['#6d28d9','#be123c','#0369a1','#047857','#a16207','#9333ea','#0e7490'];
-    return {bg:palette[(name||'').length % palette.length], fg:'#fff', icon:first, big:true};
-  }
-  function Emblem(props){
-    var b=brandOf(props.name); var sz=props.size||44;
-    var err=useState(false); var failed=err[0],setFailed=err[1];
-    var box={width:sz,height:sz,borderRadius:sz*0.27,background:'#fff',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,boxShadow:'0 1px 3px rgba(0,0,0,0.12)',overflow:'hidden',border:'1px solid rgba(0,0,0,0.06)'};
-    if(b.logo && !failed){
-      return e('div',{style:box}, e('img',{src:b.logo, alt:'', onError:function(){setFailed(true);}, style:{width:'78%',height:'78%',objectFit:'contain'}}));
-    }
-    var fbox={width:sz,height:sz,borderRadius:sz*0.27,background:b.bg,color:b.fg,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,boxShadow:'inset 0 -2px 6px rgba(0,0,0,0.14)',overflow:'hidden'};
-    if(b.icon) return e('div',{style:fbox}, e('span',{style:{fontSize:sz*0.46}}, b.icon));
-    return e('div',{style:fbox}, e('span',{style:{fontSize:b.mark.length>=8?(sz*0.185):(b.mark.length>6?sz*0.22:sz*0.28),fontWeight:800,lineHeight:1.05,textAlign:'center',padding:'0 1px',letterSpacing:-0.3,whiteSpace:'nowrap'}}, b.mark));
-  }
- 
-  function classify(name){
-    var l=(name||'').toLowerCase();
-    if(/kart/.test(l)) return 'card';
-    if(/nakit avans|avans|nakit hesap/.test(l)) return 'cash';
-    if(/(kredi|albaraka|eminevim|emin evim|taksit)/.test(l) && !/kart/.test(l)) return 'loan';
-    if(/(kira|aidat|elektrik|su|doğalgaz|fatura|internet|telefon|market|sigorta|sağlık|ssk|bağkur|sgk|sosyal|benzin|yakıt|rezidans|konut)/.test(l)) return 'fixed';
-    return 'person';
-  }
- 
-  function RingWhite(props){
-    var r=22,c=2*Math.PI*r;
-    return e('svg',{width:60,height:60,viewBox:'0 0 52 52'},
-      e('circle',{cx:26,cy:26,r:r,fill:'none',stroke:'rgba(255,255,255,0.22)',strokeWidth:5}),
-      e('circle',{cx:26,cy:26,r:r,fill:'none',stroke:'#fff',strokeWidth:5,strokeDasharray:c,strokeDashoffset:c*(1-(props.progress||0)/100),transform:'rotate(-90 26 26)',strokeLinecap:'round',style:{transition:'stroke-dashoffset 0.7s ease'}}),
-      e('text',{x:26,y:26,textAnchor:'middle',dy:'0.35em',fontSize:13,fontWeight:800,fill:'#fff'}, (props.progress||0)+'%')
-    );
-  }
-  function Bars(props){
-    var data=props.data, max=Math.max.apply(null,data.map(function(d){return d.value;}).concat([1]));
-    return e('div',{style:{display:'flex',alignItems:'flex-end',gap:6,height:70,padding:'0 2px'}},
-      data.map(function(d,i){
-        var h=Math.max(4,(d.value/max)*60), isNow=i===data.length-1;
-        return e('div',{key:i,style:{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:5}},
-          e('div',{style:{width:'100%',height:h,background:isNow?'var(--ink)':'var(--bg-tint)',borderRadius:'4px 4px 2px 2px',transition:'height 0.5s ease'}}),
-          e('span',{style:{fontSize:9,color:isNow?'var(--ink)':'var(--text-dim)',fontWeight:isNow?700:500}}, d.label)
-        );
-      })
-    );
-  }
- 
-  function App(){
-    var dm=useState(function(){var v=storage.get('dark-mode');return v==null?false:v;}); var dark=dm[0],setDark=dm[1];
-    var t=useState('expenses'); var tab=t[0],setTab=t[1];
-    var stb=useState('fixed'); var subTab=stb[0],setSubTab=stb[1];
-    var orw=useState(null); var openRow=orw[0],setOpenRow=orw[1];
-    var s4=useState({}); var oneTime=s4[0],setOneTime=s4[1];
-    var s5=useState([]); var recurring=s5[0],setRecurring=s5[1];
-    var s6=useState({}); var paid=s6[0],setPaid=s6[1];
-    var sv=useState([]); var savings=sv[0],setSavings=sv[1];
-    var s7=useState(true); var loading=s7[0],setLoading=s7[1];
-    var uh=useState(null); var undo=uh[0],setUndo=uh[1]; // geri al
- 
-    var now=new Date();
-    var mm=useState(now.getMonth()); var month=mm[0],setMonth=mm[1];
-    var yy=useState(now.getFullYear()); var year=yy[0],setYear=yy[1];
-    var monthKey=year+'-'+month;
- 
-    var nE=useState({name:'',amount:'',total:'',recurring:false,day:'',endMonth:''}); var newExp=nE[0],setNewExp=nE[1];
-    var sf=useState(false); var showAdd=sf[0],setShowAdd=sf[1];
-    var ed=useState(null); var editId=ed[0],setEditId=ed[1];
-    var edv=useState({}); var editVals=edv[0],setEditVals=edv[1];
-    var nS=useState({name:'',value:''}); var newSav=nS[0],setNewSav=nS[1];
-    var sa=useState(false); var showAddSav=sa[0],setShowAddSav=sa[1];
-    var sAdj=useState({}); var savAdj=sAdj[0],setSavAdj=sAdj[1];
- 
-    useEffect(function(){ document.documentElement.className=dark?'dark':''; storage.set('dark-mode',dark); },[dark]);
-    useEffect(function(){
-      var SEED_VERSION='v3-2026-06';  // bu değişince eski veri yeni seed'le sıfırlanır
-      var seed=seedRecurring();
-      var savedVer=storage.get('fp-seedver');
-      if(savedVer!==SEED_VERSION){
-        // yeni sürüm → her şeyi temiz yeni seed'le başlat (eski karışık veri silinir)
-        storage.set('fp-recurring',seed);
-        storage.set('fp-onetime',{});
-        storage.set('fp-paid',{});
-        storage.set('fp-seedver',SEED_VERSION);
-        setRecurring(seed); setOneTime({}); setPaid({});
-        var sav0=storage.get('fp-savings'); if(!sav0){ sav0=seedSavings(); storage.set('fp-savings',sav0); } setSavings(sav0);
-        setLoading(false);
-        return;
-      }
-      // normal açılış: kayıtlı veriyi kullan, eksik seed kalemlerini ekle
-      setOneTime(storage.get('fp-onetime')||{});
-      var rec=storage.get('fp-recurring');
-      if(!rec || !rec.length){ rec=seed; storage.set('fp-recurring',rec); }
-      else {
-        var existing={}; rec.forEach(function(r){ existing[(r.name||'').toLowerCase().trim()]=true; });
-        var added=false;
-        seed.forEach(function(s){ if(!existing[(s.name||'').toLowerCase().trim()]){ rec=rec.concat([s]); added=true; } });
-        if(added) storage.set('fp-recurring',rec);
-      }
-      setRecurring(rec);
-      setPaid(storage.get('fp-paid')||{});
-      var sav=storage.get('fp-savings'); if(!sav){ sav=seedSavings(); storage.set('fp-savings',sav); } setSavings(sav);
-      setLoading(false);
-    },[]);
- 
-    function seedRecurring(){
-      var sm=now.getMonth(), sy=now.getFullYear();
-      var id=0; function nid(){ id++; return Date.now()+id; }
-      function mk(name,total,amount,day,grp){ return {id:nid(),name:name,amount:amount,total:total,day:day,grp:grp,startMonth:sm,startYear:sy,endMonth:11,endYear:sy+8}; }
-      return [
-        // Aylık giderler
-        mk('Ev Kirası',null,37850,1,'fixed'),
-        mk('Ev Aidatı',null,3500,1,'fixed'),
-        mk('SGK / SSK Primi',null,4500,15,'fixed'),
-        mk('Sağlık Sigortası',null,3400,15,'fixed'),
-        mk('Ev Giderleri',null,15000,1,'fixed'),
-        mk('EminEvim Ev',null,29500,28,'fixed'),
-        mk('EminEvim Araba',null,9100,28,'fixed'),
-        // Krediler
-        mk('Akbank Kredi',null,31195,3,'loan'),
-        mk('Akbank Kredi 2',null,25190,3,'loan'),
-        mk('Garanti Kredi',null,37120,7,'loan'),
-        mk('Albaraka Türk',null,12500,9,'loan'),
-        mk('İş Bankası Kredi',null,15000,16,'loan'),
-        // Kredi kartları
-        mk('Garanti Kredi Kartı',null,20000,5,'card'),
-        mk('Özüm Kredi Kartı',null,7500,5,'card'),
-        mk('Enpara Kredi Kartı',null,9000,12,'card'),
-        mk('Garanti Troy Kart',null,5000,13,'card'),
-        mk('Akbank Kredi Kartı',null,15000,23,'card')
-      ];
-    }
-    function seedSavings(){
-      return [ {id:Date.now()+1, name:'Altın', value:0, note:'gram / çeyrek — güncel değerini gir'}, {id:Date.now()+2, name:'Nakit Birikim', value:0, note:''} ];
-    }
-    function buildBackup(){
-      return { v:1, date:new Date().toISOString(),
-        recurring:storage.get('fp-recurring')||[], oneTime:storage.get('fp-onetime')||{},
-        paid:storage.get('fp-paid')||{}, savings:storage.get('fp-savings')||[] };
-    }
-    function save(k,d,setter){ setter(d); storage.set(k,d); }
- 
-    var getMonthExp=useCallback(function(y,m){
-      var ot=oneTime[y+'-'+m]||[]; var mn=monthNum(y,m);
-      var rec=recurring.filter(function(x){return mn>=monthNum(x.startYear,x.startMonth)&&mn<=monthNum(x.endYear,x.endMonth);});
-      return ot.map(function(x){return Object.assign({},x,{isRec:false});}).concat(rec.map(function(x){return Object.assign({},x,{isRec:true});}));
-    },[oneTime,recurring]);
- 
-    var allExp=getMonthExp(year,month);
-    var paidKeys=paid[monthKey]||[];
-    function isPaid(id,isRec){ return paidKeys.indexOf((isRec?'r-':'o-')+id)>-1; }
- 
-    function paidMonthsCount(recId){ var cnt=0; Object.keys(paid).forEach(function(mk){ if((paid[mk]||[]).indexOf('r-'+recId)>-1) cnt++; }); return cnt; }
-    function paidMonthsThrough(recId,y,m){
-      var cnt=0, limit=monthNum(y,m);
-      Object.keys(paid).forEach(function(mk){
-        var parts=mk.split('-'); var num=monthNum(parseInt(parts[0],10),parseInt(parts[1],10));
-        if(num<=limit && (paid[mk]||[]).indexOf('r-'+recId)>-1) cnt++;
-      });
-      return cnt;
-    }
-    function currentRemaining(x){
-      if(x.total==null) return null;
-      var recFlag=x.isRec!==false;
-      var cnt=recFlag?paidMonthsThrough(x.id,year,month):(isPaid(x.id,false)?1:0);
-      return Math.max(0, x.total - cnt*x.amount);
-    }
-    // Geçen aya kadar ödenmiş (bu ay hariç) — "diğer ay düşülmüş" görünümü için
-    function remainingBeforeThisMonth(x){
-      if(x.total==null || x.isRec===false) return x.total==null?null:Math.max(0,x.total);
-      var cnt=0; var curNum=monthNum(year,month);
-      Object.keys(paid).forEach(function(mk){
-        var parts=mk.split('-'); var num=monthNum(parseInt(parts[0],10),parseInt(parts[1],10));
-        if(num<curNum && (paid[mk]||[]).indexOf('r-'+x.id)>-1) cnt++;
-      });
-      return Math.max(0, x.total - cnt*x.amount);
-    }
- 
-    function groupOf(x){ if(x&&x.grp) return x.grp; var name=(typeof x==='string')?x:(x&&x.name); var c=classify(name); if(c==='loan')return 'loan'; if(c==='cash')return 'cash'; if(c==='card')return 'card'; if(c==='fixed')return 'fixed'; return 'person'; }
-    var groups={
-      loan: allExp.filter(function(x){return groupOf(x)==='loan';}),
-      cash: allExp.filter(function(x){return groupOf(x)==='cash';}),
-      card: allExp.filter(function(x){return groupOf(x)==='card';}),
-      fixed: allExp.filter(function(x){return groupOf(x)==='fixed';}),
-      person: allExp.filter(function(x){return groupOf(x)==='person';})
-    };
-    // Ödemeler sekmesi kalemleri: krediler + kartlar + sabit giderler (avans ve kişisel borç AYRI sekmede)
-    var expItems=groups.loan.concat(groups.card,groups.fixed);
-    var totalExp=expItems.reduce(function(a,x){return a+x.amount;},0);
-    var paidExp=expItems.filter(function(x){return isPaid(x.id,x.isRec);}).reduce(function(a,x){return a+x.amount;},0);
-    var unpaidExp=totalExp-paidExp;
-    function gUnpaid(arr){ return arr.filter(function(x){return !isPaid(x.id,x.isRec);}).reduce(function(a,x){return a+x.amount;},0); }
-    function gTotal(arr){ return arr.reduce(function(a,x){return a+x.amount;},0); }
- 
-    function recurringDebtTotal(grp){
-      return recurring.reduce(function(a,x){
-        if(groupOf(x)!==grp || x.total==null) return a;
-        var r=currentRemaining(x);
-        return a+(r||0);
-      },0);
-    }
-    var loanDebtTotal = recurringDebtTotal('loan');
-    var cardDebtTotal = recurringDebtTotal('card');
-    var totalRemainingDebt = loanDebtTotal + cardDebtTotal;
-    var savingsTotal = savings.reduce(function(a,s){ return a+(Number(s.value)||0); },0);
- 
-    var chartData=useMemo(function(){
-      var arr=[];
-      for(var i=5;i>=0;i--){ var m=now.getMonth()-i,y=now.getFullYear(); while(m<0){m+=12;y--;} arr.push({label:M3[m],value:getMonthExp(y,m).reduce(function(a,x){return a+x.amount;},0)}); }
-      return arr;
-    },[getMonthExp]);
- 
-    function monthValue(y,m){ var mm=m+1; return y+'-'+(mm<10?'0':'')+mm; }
-    function parseMonthValue(v,fy,fm){
-      var p=String(v||'').split('-');
-      var y=parseInt(p[0],10), m=parseInt(p[1],10)-1;
-      if(!y || m<0 || m>11) return {year:fy,month:fm};
-      return {year:y,month:m};
-    }
-    function renewRow(checked,onChange){
-      return e('label',{style:S.recRow},
-        e('input',{type:'checkbox',checked:!!checked,onChange:onChange,style:{width:18,height:18,accentColor:'var(--green)',flexShrink:0}}),
-        e('span',{style:{fontSize:13,fontWeight:700,color:'var(--text)'}},'Her ay yenilensin')
-      );
-    }
-    function endMonthField(vals,setter,grp){
-      if(grp!=='loan' || !vals.recurring) return null;
-      return e('div',{style:{marginTop:8}},
-        e('label',{style:S.miniLabel},'Kredi bitiş ayı'),
-        e('input',{type:'month',value:vals.endMonth||'',onChange:function(ev){setter(Object.assign({},vals,{endMonth:ev.target.value}));},style:S.input})
-      );
-    }
+<div class="app">
+  <div class="scrim" id="scrim" onclick="closeSidebar()"></div>
+  <input type="file" id="cardLogoFile" accept="image/*" style="display:none" onchange="handleQuickLogo(event)">
 
-    function addExp(grp){
-      if(!newExp.name||!newExp.amount) return; vibrate();
-      if(newExp.recurring){
-        var end=parseMonthValue(newExp.endMonth,year+8,11);
-        if(monthNum(end.year,end.month)<monthNum(year,month)) end={year:year,month:month};
-        save('fp-recurring', recurring.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),total:newExp.total?parseFloat(newExp.total):null,day:parseInt(newExp.day)||1,grp:grp||null,startMonth:month,startYear:year,endMonth:end.month,endYear:end.year}]), setRecurring);
-      } else {
-        var cur=oneTime[monthKey]||[]; var o={}; o[monthKey]=cur.concat([{id:Date.now(),name:newExp.name,amount:parseFloat(newExp.amount),total:newExp.total?parseFloat(newExp.total):null,day:parseInt(newExp.day)||1,grp:grp||null}]);
-        save('fp-onetime', Object.assign({},oneTime,o), setOneTime);
-      }
-      setNewExp({name:'',amount:'',total:'',recurring:false,day:'',endMonth:''}); setShowAdd(false);
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-head">
+      <div class="sb-logo">₺</div>
+      <div style="flex:1;min-width:0">
+        <div class="sb-title">Giderim</div>
+        <div class="sb-sub">Kişisel gider takibi</div>
+      </div>
+      <button class="sb-close" onclick="closeSidebar()" aria-label="Menüyü kapat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+    <div class="sb-scroll" id="navScroll">
+      <div class="nav-item active" data-view="all" onclick="setView('all',this)">
+        <span class="ico">📅</span> Bu Ay
+      </div>
+      <div class="nav-item" data-view="calendar" onclick="setView('calendar',this)">
+        <span class="ico">🗓️</span> Takvim
+      </div>
+      <div class="nav-item" data-view="debts" onclick="setView('debts',this)">
+        <span class="ico">💳</span> Kişisel Borçlar
+        <span class="nav-count" id="navDebtCount">0</span>
+      </div>
+      <div class="sb-section-label">Kategoriler</div>
+      <div id="catNav"></div>
+    </div>
+    <div class="sb-foot">
+      <div class="nav-item" onclick="exportData()"><span class="ico">⬇️</span> Yedek Al</div>
+      <div class="nav-item" onclick="document.getElementById('importFile').click()"><span class="ico">⬆️</span> Yedek Yükle</div>
+      <input type="file" id="importFile" accept="application/json" style="display:none" onchange="importData(event)">
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn" onclick="toggleSidebar()" aria-label="Menü">
+        <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="view-title" id="viewTitle">Genel Bakış</div>
+      <div class="topbar-spacer"></div>
+      <select class="cur-select" id="curSelect" onchange="setCurrency(this.value)">
+        <option value="TRY">₺ TRY</option>
+        <option value="USD">$ USD</option>
+        <option value="EUR">€ EUR</option>
+      </select>
+      <button class="add-btn" onclick="openAdd()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Ekle</span>
+      </button>
+    </div>
+
+    <div class="content" id="content"></div>
+
+    <!-- BOTTOM TOTALS -->
+    <div class="botbar">
+      <div class="bot-cell">
+        <span class="bl">Aylık Gider</span>
+        <span class="bv red" id="botMonthly">₺0</span>
+      </div>
+      <div class="bot-sep"></div>
+      <div class="bot-cell">
+        <span class="bl">Kart Borcu / Ay</span>
+        <span class="bv" id="botCard">₺0</span>
+      </div>
+      <div class="bot-sep"></div>
+      <div class="bot-cell">
+        <span class="bl">Borç Ödemesi / Ay</span>
+        <span class="bv" id="botDebtPay">₺0</span>
+      </div>
+      <div class="bot-sep"></div>
+      <div class="bot-cell">
+        <span class="bl">Kalan Borç</span>
+        <span class="bv" id="botRemain">₺0</span>
+      </div>
+      <div class="bot-spacer"></div>
+      <div class="next-pay" id="nextPay"></div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<!-- KATEGORİ (SEKME) DÜZENLEME MODALI -->
+<div class="overlay" id="catOverlay">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <h2 id="catModalTitle">Yeni Sekme</h2>
+      <button class="modal-close" onclick="closeCatModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Sekme adı</label>
+        <input id="catName" placeholder="Örn. Ev Giderleri, Eğlence, Çocuk...">
+      </div>
+      <div class="field">
+        <label>Simge (emoji)</label>
+        <input id="catEmoji" placeholder="🏠" maxlength="4" style="font-size:22px;text-align:center;letter-spacing:8px">
+        <div class="emoji-row" id="emojiRow"></div>
+      </div>
+      <button class="btn-primary" onclick="saveCat()">Kaydet</button>
+      <button class="btn-ghost" id="catDelBtn" style="display:none" onclick="deleteCat()">Sekmeyi Sil</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle">Yeni Ekle</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="type-toggle">
+        <button id="tInc" onclick="setEntryType('income')">💰 Gelir</button>
+        <button id="tExp" class="on" onclick="setEntryType('expense')">💡 Gider</button>
+        <button id="tDebt" onclick="setEntryType('debt')">💳 Borç</button>
+      </div>
+
+      <div class="field">
+        <label>Firma / Logo seç</label>
+        <input class="brand-search" id="brandSearch" placeholder="🔍 Ara: Turkcell, Garanti, Netflix..." oninput="renderBrandGrid(this.value)">
+        <div class="brand-grid" id="brandGrid"></div>
+        <div class="logo-upload-row">
+          <div class="logo-preview" id="logoPreview"></div>
+          <button type="button" class="upload-btn" onclick="document.getElementById('logoFile').click()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Kendi logonu yükle
+          </button>
+          <button type="button" class="upload-clear" id="logoClearBtn" style="display:none" onclick="clearUploadedLogo()">Kaldır</button>
+        </div>
+        <input type="file" id="logoFile" accept="image/*" style="display:none" onchange="handleLogoUpload(event)">
+        <div class="logo-hint">İstersen firmanın gerçek yüksek çözünürlüklü logosunu telefonundan seçebilirsin. Cihazında saklanır.</div>
+      </div>
+
+      <div class="field">
+        <label>İsim</label>
+        <input id="fName" placeholder="Örn. Elektrik faturası">
+      </div>
+
+      <div class="field">
+        <label>Kategori</label>
+        <select id="fCat"></select>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label id="lblAmount">Tutar</label>
+          <input id="fAmount" type="number" inputmode="decimal" step="0.01" placeholder="0.00">
+        </div>
+        <div class="field">
+          <label>Para birimi</label>
+          <select id="fCur">
+            <option value="TRY">₺ TRY</option>
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="expenseFields">
+        <div class="field">
+          <label>Ödeme döngüsü</label>
+          <div class="seg" id="cycleSeg">
+            <button data-cycle="daily" onclick="pickCycle('daily',this)">Günlük</button>
+            <button class="on" data-cycle="monthly" onclick="pickCycle('monthly',this)">Aylık</button>
+            <button data-cycle="yearly" onclick="pickCycle('yearly',this)">Yıllık</button>
+            <button data-cycle="once" onclick="pickCycle('once',this)">Tek sefer</button>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>Sonraki ödeme / son tarih</label>
+            <input id="fDue" type="date">
+          </div>
+          <div class="field">
+            <label>Ödeme yöntemi</label>
+            <input id="fPay" placeholder="Örn. Kredi kartı, otomatik">
+          </div>
+        </div>
+      </div>
+
+      <div id="debtFields" style="display:none">
+        <div class="field">
+          <label>Borç türü</label>
+          <div class="seg" id="debtKindSeg">
+            <button class="on" data-kind="card" onclick="pickDebtKind('card',this)">💳 Kredi Kartı</button>
+            <button data-kind="loan" onclick="pickDebtKind('loan',this)">🏦 Kredi</button>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>Kalan borç</label>
+            <input id="fRemain" type="number" inputmode="decimal" placeholder="Kalan tutar">
+          </div>
+          <div class="field">
+            <label>Aylık taksit</label>
+            <input id="fInstall" type="number" inputmode="decimal" placeholder="Taksit tutarı">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>Toplam taksit</label>
+            <input id="fTotalInst" type="number" inputmode="numeric" placeholder="Örn. 36">
+          </div>
+          <div class="field">
+            <label>Ödenen taksit</label>
+            <input id="fPaidInst" type="number" inputmode="numeric" placeholder="Örn. 12">
+          </div>
+        </div>
+        <div class="field">
+          <label>Bitiş tarihi</label>
+          <input id="fEnd" type="date">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Not (opsiyonel)</label>
+        <input id="fNote" placeholder="Açıklama...">
+      </div>
+
+      <button class="btn-primary" onclick="saveEntry()">Kaydet</button>
+      <button class="btn-ghost" id="delBtn" style="display:none" onclick="deleteCurrent()">Sil</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Giderim — kişisel gider & abonelik takip uygulaması
+   Veriler tarayıcıda cihazda saklanır (localStorage). Sadece siz görürsünüz.
+   Logolar: her markanın kendi domaininden Google favicon servisi ile çekilir,
+   yüklenmezse otomatik olarak baş harf rozetine düşer.
+============================================================ */
+
+/* ---------- Kategoriler ---------- */
+/* Varsayılan kategoriler (sekmeler). Kullanıcı bunları düzenleyebilir, ekleyebilir, silebilir.
+   İlk açılışta state.categories'e kopyalanır. */
+const DEFAULT_CATEGORIES = [
+  {id:"gelir",     name:"Gelirler", emoji:"💰"},
+  {id:"ev",        name:"Ev Giderleri", emoji:"🏠"},
+  {id:"faturalar", name:"Faturalar", emoji:"🧾"},
+  {id:"kredi",     name:"Krediler & Kartlar", emoji:"🏦"},
+  {id:"internet",  name:"İnternet & Telefon", emoji:"📶"},
+  {id:"abonelik",  name:"Abonelikler", emoji:"📺"},
+  {id:"sosyal",    name:"Sosyal Medya & Yazılım", emoji:"💻"},
+  {id:"ulasim",    name:"Ulaşım & Yakıt", emoji:"🚗"},
+  {id:"saglik",    name:"Sağlık & Sigorta", emoji:"🩺"},
+  {id:"market",    name:"Market & Alışveriş", emoji:"🛒"},
+  {id:"diger",     name:"Diğer", emoji:"📦"},
+];
+// state.categories yoksa varsayılanı kullan (aşağıda load içinde kurulur)
+function CATS(){ return (state && state.categories && state.categories.length) ? state.categories : DEFAULT_CATEGORIES; }
+
+/* ---------- Marka kütüphanesi ----------
+   logo alanı: favicon çekilecek domain. yoksa baş harf gösterilir.  */
+const BRANDS = [
+  /* ===== Gelirler ===== */
+  {g:"Gelirler", items:[
+    {n:"Maaş", d:"", cat:"gelir"},
+    {n:"Eşimin Maaşı", d:"", cat:"gelir"},
+    {n:"Kira Geliri", d:"", cat:"gelir"},
+    {n:"Ek Gelir", d:"", cat:"gelir"},
+    {n:"Serbest İş / Freelance", d:"", cat:"gelir"},
+    {n:"Prim / İkramiye", d:"", cat:"gelir"},
+    {n:"Yatırım Geliri", d:"", cat:"gelir"},
+  ]},
+
+  /* ===== Bursa & Türkiye kamu / faturalar ===== */
+  {g:"Bursa Faturalar", items:[
+    {n:"BUSKİ (Su)", d:"buski.gov.tr", cat:"faturalar"},
+    {n:"UEDAŞ (Elektrik)", d:"uedas.com.tr", cat:"faturalar"},
+    {n:"Uludağ Elektrik", d:"uedas.com.tr", cat:"faturalar"},
+    {n:"Bursagaz (Doğalgaz)", d:"bursagaz.com.tr", cat:"faturalar"},
+    {n:"Bursa Büyükşehir Bel.", d:"bursa.bel.tr", cat:"faturalar"},
+    {n:"Nilüfer Belediyesi", d:"nilufer.bel.tr", cat:"faturalar"},
+    {n:"Osmangazi Belediyesi", d:"osmangazi.bel.tr", cat:"faturalar"},
+    {n:"Yıldırım Belediyesi", d:"yildirim.bel.tr", cat:"faturalar"},
+  ]},
+  {g:"Genel Faturalar", items:[
+    {n:"İSKİ", d:"iski.istanbul", cat:"faturalar"},
+    {n:"ASKİ", d:"aski.gov.tr", cat:"faturalar"},
+    {n:"İGDAŞ", d:"igdas.istanbul", cat:"faturalar"},
+    {n:"BOTAŞ", d:"botas.gov.tr", cat:"faturalar"},
+    {n:"EnerjiSA", d:"enerjisa.com.tr", cat:"faturalar"},
+    {n:"CK Enerji", d:"ckenerji.com.tr", cat:"faturalar"},
+    {n:"Aydem Enerji", d:"aydem.com.tr", cat:"faturalar"},
+    {n:"Başkent EDAŞ", d:"baskentedas.com.tr", cat:"faturalar"},
+    {n:"Vergi / GİB", d:"gib.gov.tr", cat:"faturalar"},
+    {n:"MTV / Trafik", d:"turkiye.gov.tr", cat:"faturalar"},
+  ]},
+
+  /* ===== İnternet & Telefon ===== */
+  {g:"İnternet & Telefon", items:[
+    {n:"Turkcell", d:"turkcell.com.tr", cat:"internet"},
+    {n:"Vodafone", d:"vodafone.com.tr", cat:"internet"},
+    {n:"Türk Telekom", d:"turktelekom.com.tr", cat:"internet"},
+    {n:"TT Mobil (Türk Telekom)", d:"turktelekom.com.tr", cat:"internet"},
+    {n:"Turknet", d:"turknet.com.tr", cat:"internet"},
+    {n:"Superonline", d:"superonline.net", cat:"internet"},
+    {n:"Millenicom", d:"millenicom.com.tr", cat:"internet"},
+    {n:"Netspeed", d:"netspeed.com.tr", cat:"internet"},
+    {n:"D-Smart / Doping", d:"dsmart.com.tr", cat:"internet"},
+    {n:"KabloNet", d:"kablonet.com.tr", cat:"internet"},
+  ]},
+
+  /* ===== Türkiye Bankaları (krediler & kartlar) ===== */
+  {g:"Türkiye Bankaları", items:[
+    {n:"Ziraat Bankası", d:"ziraatbank.com.tr", cat:"kredi"},
+    {n:"Türkiye İş Bankası", d:"isbank.com.tr", cat:"kredi"},
+    {n:"Garanti BBVA", d:"garantibbva.com.tr", cat:"kredi"},
+    {n:"Yapı Kredi", d:"yapikredi.com.tr", cat:"kredi"},
+    {n:"Akbank", d:"akbank.com", cat:"kredi"},
+    {n:"Halkbank", d:"halkbank.com.tr", cat:"kredi"},
+    {n:"VakıfBank", d:"vakifbank.com.tr", cat:"kredi"},
+    {n:"QNB (Finansbank)", d:"qnb.com.tr", cat:"kredi"},
+    {n:"Denizbank", d:"denizbank.com", cat:"kredi"},
+    {n:"TEB", d:"teb.com.tr", cat:"kredi"},
+    {n:"Şekerbank", d:"sekerbank.com.tr", cat:"kredi"},
+    {n:"ING", d:"ing.com.tr", cat:"kredi"},
+    {n:"HSBC", d:"hsbc.com.tr", cat:"kredi"},
+    {n:"Odeabank", d:"odeabank.com.tr", cat:"kredi"},
+    {n:"Alternatif Bank", d:"alternatifbank.com.tr", cat:"kredi"},
+    {n:"Fibabanka", d:"fibabanka.com.tr", cat:"kredi"},
+    {n:"Anadolubank", d:"anadolubank.com.tr", cat:"kredi"},
+    {n:"Burgan Bank", d:"burgan.com.tr", cat:"kredi"},
+    {n:"ICBC Turkey", d:"icbc.com.tr", cat:"kredi"},
+    {n:"Türkiye Finans", d:"turkiyefinans.com.tr", cat:"kredi"},
+    {n:"Kuveyt Türk", d:"kuveytturk.com.tr", cat:"kredi"},
+    {n:"Albaraka Türk", d:"albaraka.com.tr", cat:"kredi"},
+    {n:"Ziraat Katılım", d:"ziraatkatilim.com.tr", cat:"kredi"},
+    {n:"Vakıf Katılım", d:"vakifkatilim.com.tr", cat:"kredi"},
+    {n:"Emlak Katılım", d:"emlakkatilim.com.tr", cat:"kredi"},
+    {n:"Enpara", d:"enpara.com", cat:"kredi"},
+    {n:"Papara", d:"papara.com", cat:"kredi"},
+    {n:"CEPTETEB", d:"cepteteb.com.tr", cat:"kredi"},
+    {n:"N Kolay", d:"nkolay.com", cat:"kredi"},
+    {n:"Getir Finans", d:"getirfinans.com", cat:"kredi"},
+  ]},
+
+  /* ===== Abonelikler / Streaming ===== */
+  {g:"Abonelikler", items:[
+    {n:"Netflix", d:"netflix.com", cat:"abonelik"},
+    {n:"Spotify", d:"spotify.com", cat:"abonelik"},
+    {n:"YouTube Premium", d:"youtube.com", cat:"abonelik"},
+    {n:"Disney+", d:"disneyplus.com", cat:"abonelik"},
+    {n:"Amazon Prime", d:"primevideo.com", cat:"abonelik"},
+    {n:"BluTV", d:"blutv.com", cat:"abonelik"},
+    {n:"Exxen", d:"exxen.com", cat:"abonelik"},
+    {n:"Gain", d:"gain.tv", cat:"abonelik"},
+    {n:"TOD (beIN)", d:"todtv.com.tr", cat:"abonelik"},
+    {n:"Tabii", d:"tabii.com", cat:"abonelik"},
+    {n:"Apple TV+", d:"apple.com", cat:"abonelik"},
+    {n:"Apple Music", d:"apple.com", cat:"abonelik"},
+    {n:"iCloud+", d:"icloud.com", cat:"abonelik"},
+    {n:"Fizy", d:"fizy.com", cat:"abonelik"},
+    {n:"Storytel", d:"storytel.com", cat:"abonelik"},
+    {n:"Audible", d:"audible.com", cat:"abonelik"},
+    {n:"Getir", d:"getir.com", cat:"abonelik"},
+    {n:"Yemeksepeti", d:"yemeksepeti.com", cat:"abonelik"},
+  ]},
+
+  /* ===== Sosyal Medya & Yazılım ===== */
+  {g:"Sosyal Medya & Yazılım", items:[
+    {n:"X Premium", d:"x.com", cat:"sosyal"},
+    {n:"Instagram", d:"instagram.com", cat:"sosyal"},
+    {n:"Facebook", d:"facebook.com", cat:"sosyal"},
+    {n:"TikTok", d:"tiktok.com", cat:"sosyal"},
+    {n:"LinkedIn Premium", d:"linkedin.com", cat:"sosyal"},
+    {n:"Telegram Premium", d:"telegram.org", cat:"sosyal"},
+    {n:"Snapchat+", d:"snapchat.com", cat:"sosyal"},
+    {n:"Discord Nitro", d:"discord.com", cat:"sosyal"},
+    {n:"ChatGPT Plus", d:"openai.com", cat:"sosyal"},
+    {n:"Claude Pro", d:"claude.ai", cat:"sosyal"},
+    {n:"Google One / AI", d:"google.com", cat:"sosyal"},
+    {n:"Microsoft 365", d:"microsoft.com", cat:"sosyal"},
+    {n:"Adobe", d:"adobe.com", cat:"sosyal"},
+    {n:"Canva", d:"canva.com", cat:"sosyal"},
+    {n:"GitHub", d:"github.com", cat:"sosyal"},
+    {n:"Notion", d:"notion.so", cat:"sosyal"},
+    {n:"Dropbox", d:"dropbox.com", cat:"sosyal"},
+    {n:"Perplexity", d:"perplexity.ai", cat:"sosyal"},
+  ]},
+
+  /* ===== Ulaşım & Yakıt ===== */
+  {g:"Ulaşım & Yakıt", items:[
+    {n:"BursaKart", d:"bursakart.com.tr", cat:"ulasim"},
+    {n:"HGS / OGS", d:"turkiye.gov.tr", cat:"ulasim"},
+    {n:"Shell", d:"shell.com.tr", cat:"ulasim"},
+    {n:"BP", d:"bp.com", cat:"ulasim"},
+    {n:"Opet", d:"opet.com.tr", cat:"ulasim"},
+    {n:"Petrol Ofisi", d:"petrolofisi.com.tr", cat:"ulasim"},
+    {n:"Total", d:"totalenergies.com.tr", cat:"ulasim"},
+    {n:"BiTaksi", d:"bitaksi.com", cat:"ulasim"},
+    {n:"Martı", d:"marti.tech", cat:"ulasim"},
+    {n:"Uber", d:"uber.com", cat:"ulasim"},
+  ]},
+
+  /* ===== Sağlık & Sigorta ===== */
+  {g:"Sağlık, Sigorta & Emeklilik", items:[
+    {n:"Allianz", d:"allianz.com.tr", cat:"saglik"},
+    {n:"Anadolu Sigorta", d:"anadolusigorta.com.tr", cat:"saglik"},
+    {n:"Axa Sigorta", d:"axasigorta.com.tr", cat:"saglik"},
+    {n:"Acıbadem Sigorta", d:"acibademsigorta.com.tr", cat:"saglik"},
+    {n:"Mapfre", d:"mapfre.com.tr", cat:"saglik"},
+    {n:"Türkiye Sigorta", d:"turkiyesigorta.com.tr", cat:"saglik"},
+    {n:"Garanti Emeklilik", d:"garantiemeklilik.com.tr", cat:"saglik"},
+    {n:"Bireysel Emeklilik (BES)", d:"", cat:"saglik"},
+    {n:"Özel Sağlık Sigortası", d:"", cat:"saglik"},
+    {n:"SGK Ödemesi", d:"sgk.gov.tr", cat:"saglik"},
+    {n:"Bağkur", d:"sgk.gov.tr", cat:"saglik"},
+    {n:"Sağlık spor / Gym", d:"macfit.com", cat:"saglik"},
+  ]},
+
+  /* ===== Market & Alışveriş ===== */
+  {g:"Market & Alışveriş", items:[
+    {n:"Migros", d:"migros.com.tr", cat:"diger"},
+    {n:"A101", d:"a101.com.tr", cat:"diger"},
+    {n:"ŞOK Market", d:"sokmarket.com.tr", cat:"diger"},
+    {n:"BİM", d:"bim.com.tr", cat:"diger"},
+    {n:"CarrefourSA", d:"carrefoursa.com", cat:"diger"},
+    {n:"Market Alışverişi", d:"", cat:"diger"},
+    {n:"Hepsiburada", d:"hepsiburada.com", cat:"diger"},
+    {n:"Trendyol", d:"trendyol.com", cat:"diger"},
+    {n:"Getir", d:"getir.com", cat:"diger"},
+    {n:"Yemeksepeti", d:"yemeksepeti.com", cat:"diger"},
+  ]},
+
+  /* ===== Kira, Ev & Birikim ===== */
+  {g:"Kira, Ev & Birikim", items:[
+    {n:"Ev Kirası", d:"", cat:"kira"},
+    {n:"Ofis Kirası", d:"", cat:"kira"},
+    {n:"Site / Apartman Aidatı", d:"", cat:"kira"},
+    {n:"Aidat Ödemesi", d:"", cat:"kira"},
+    {n:"Eminevim", d:"eminevim.com.tr", cat:"kredi"},
+    {n:"Fuzul Ev", d:"fuzulev.com.tr", cat:"kredi"},
+    {n:"Altın / Birikim", d:"", cat:"diger"},
+    {n:"WhatsApp", d:"whatsapp.com", cat:"sosyal"},
+    {n:"Kredi Kartı (Genel)", d:"", cat:"kredi"},
+    {n:"Diğer Gider", d:"", cat:"diger"},
+  ]},
+];
+
+/* düz liste (arama için) */
+const ALL_BRANDS = BRANDS.flatMap(g => g.items.map(b => ({...b, group:g.g})));
+
+const CUR_SYMBOL = {TRY:"₺", USD:"$", EUR:"€"};
+
+/* ---------- State ---------- */
+let state = load();
+let currentView = "all";
+let editingId = null;
+let entryType = "expense";
+let selectedBrand = null;
+let uploadedLogo = null;
+let selectedCycle = "monthly";
+let selectedDebtKind = "card";
+function pickDebtKind(k, el){
+  selectedDebtKind = k;
+  document.querySelectorAll("#debtKindSeg button").forEach(b=>b.classList.remove("on"));
+  if(el) el.classList.add("on");
+}
+window.pickDebtKind = pickDebtKind;
+function pickDebtKindSilent(k){
+  selectedDebtKind = k;
+  document.querySelectorAll("#debtKindSeg button").forEach(b=>{
+    b.classList.toggle("on", b.dataset.kind===k);
+  });
+}
+
+function load(){
+  let d = {items:[], currency:"TRY"};
+  try{
+    const raw = localStorage.getItem("giderim_v1");
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(parsed && Array.isArray(parsed.items)) d = parsed;
     }
-    function togglePaid(id,isRec,name){
-      vibrate(); var key=(isRec?'r-':'o-')+id; var cur=paid[monthKey]||[];
-      var wasPaid=cur.indexOf(key)>-1;
-      var nv=wasPaid?cur.filter(function(k){return k!==key;}):cur.concat([key]);
-      var o=Object.assign({},paid); o[monthKey]=nv; save('fp-paid',o,setPaid);
-      // geri al kaydı
-      setUndo({type:'pay', prev:cur.slice(), monthKey:monthKey, label:(wasPaid?'İşaret kaldırıldı':'Ödendi')+': '+name});
-      setTimeout(function(){ setUndo(function(u){ return (u&&u.label && u.label.indexOf(name)>-1)?null:u; }); }, 5000);
-    }
-    function doUndo(){
-      if(!undo) return; vibrate(15);
-      if(undo.type==='pay'){ var o=Object.assign({},paid); o[undo.monthKey]=undo.prev; save('fp-paid',o,setPaid); }
-      if(undo.type==='delete'){ if(undo.isRec) save('fp-recurring', undo.list, setRecurring); else save('fp-onetime', undo.list, setOneTime); }
-      setUndo(null);
-    }
-    function delExp(id,isRec,name){
-      vibrate(20);
-      if(isRec){ var prev=recurring.slice(); save('fp-recurring',recurring.filter(function(x){return x.id!==id;}),setRecurring); setUndo({type:'delete',isRec:true,list:prev,label:'Silindi: '+name}); }
-      else { var cur=oneTime[monthKey]||[]; var prevO=Object.assign({},oneTime); var o=Object.assign({},oneTime); o[monthKey]=cur.filter(function(x){return x.id!==id;}); save('fp-onetime',o,setOneTime); setUndo({type:'delete',isRec:false,list:prevO,label:'Silindi: '+name}); }
-      setTimeout(function(){ setUndo(function(u){ return (u&&u.label.indexOf(name)>-1)?null:u; }); }, 6000);
-    }
-    function openEdit(x){
-      vibrate(5);
-      setEditId((x.isRec?'r-':'o-')+x.id);
-      setEditVals({
-        name:x.name,
-        amount:String(x.amount),
-        total:x.total!=null?String(x.total):'',
-        day:x.day?String(x.day):'',
-        recurring:!!x.isRec,
-        endMonth:x.isRec?monthValue(x.endYear,x.endMonth):''
-      });
-    }
-    function saveEdit(x){
-      vibrate();
-      var wantsRecurring=!!editVals.recurring;
-      var grp=x.grp||groupOf(x);
-      var totalVal=editVals.total!==''?parseFloat(editVals.total):null;
-      var base={id:x.id,name:editVals.name,amount:parseFloat(editVals.amount)||0,total:totalVal,day:parseInt(editVals.day)||x.day||1,grp:grp||null};
-      function movePaidKey(from,to){
-        var o=Object.assign({},paid), cur=(o[monthKey]||[]).slice();
-        if(cur.indexOf(from)>-1){
-          cur=cur.filter(function(k){return k!==from;});
-          if(cur.indexOf(to)<0) cur.push(to);
-          o[monthKey]=cur; save('fp-paid',o,setPaid);
-        }
-      }
-      if(wantsRecurring){
-        var sy=x.isRec?x.startYear:year, sm=x.isRec?x.startMonth:month;
-        var end=parseMonthValue(editVals.endMonth,x.isRec?x.endYear:year+8,x.isRec?x.endMonth:11);
-        if(monthNum(end.year,end.month)<monthNum(sy,sm)) end={year:sy,month:sm};
-        var recObj=Object.assign({},x.isRec?x:{},base,{startMonth:sm,startYear:sy,endMonth:end.month,endYear:end.year});
-        if(x.isRec){
-          save('fp-recurring', recurring.map(function(r){ return r.id===x.id?recObj:r; }), setRecurring);
-        } else {
-          var cur=oneTime[monthKey]||[]; var o=Object.assign({},oneTime);
-          o[monthKey]=cur.filter(function(r){return r.id!==x.id;});
-          save('fp-onetime',o,setOneTime);
-          save('fp-recurring', recurring.concat([recObj]), setRecurring);
-          movePaidKey('o-'+x.id,'r-'+x.id);
-        }
-      } else {
-        var oneObj=base;
-        if(x.isRec){
-          save('fp-recurring', recurring.filter(function(r){return r.id!==x.id;}), setRecurring);
-          var cur2=oneTime[monthKey]||[]; var o2=Object.assign({},oneTime);
-          o2[monthKey]=cur2.filter(function(r){return r.id!==x.id;}).concat([oneObj]);
-          save('fp-onetime',o2,setOneTime);
-          movePaidKey('r-'+x.id,'o-'+x.id);
-        } else {
-          var cur3=oneTime[monthKey]||[]; var o3=Object.assign({},oneTime);
-          o3[monthKey]=cur3.map(function(r){ return r.id===x.id?oneObj:r; });
-          save('fp-onetime',o3,setOneTime);
-        }
-      }
-      setEditId(null);
-    }
-    function prevMonth(){ vibrate(5); if(month===0){setMonth(11);setYear(year-1);}else setMonth(month-1); }
-    function nextMonth(){ vibrate(5); if(month===11){setMonth(0);setYear(year+1);}else setMonth(month+1); }
- 
-    function addSav(){ if(!newSav.name) return; vibrate(); save('fp-savings', savings.concat([{id:Date.now(),name:newSav.name,value:parseFloat(newSav.value)||0,note:''}]), setSavings); setNewSav({name:'',value:''}); setShowAddSav(false); }
-    function delSav(id){ if(confirm('Bu birikimi sil?')){ vibrate(20); save('fp-savings', savings.filter(function(s){return s.id!==id;}), setSavings); } }
-    function adjSav(id,delta){ var a=savAdj[id]; var amt=parseFloat(a&&a.amount)||0; if(amt<=0) return; vibrate(); save('fp-savings', savings.map(function(s){return s.id===id?Object.assign({},s,{value:(Number(s.value)||0)+delta*amt}):s;}), setSavings); var o=Object.assign({},savAdj); o[id]={amount:''}; setSavAdj(o); }
-    function setSavValue(id,v){ save('fp-savings', savings.map(function(s){return s.id===id?Object.assign({},s,{value:parseFloat(v)||0}):s;}), setSavings); }
- 
-    // ===== YEDEKLE / GERİ YÜKLE / SIFIRLA =====
-    function exportData(){
-      vibrate();
-      var data={ v:1, date:new Date().toISOString(), recurring:recurring, oneTime:oneTime, paid:paid, savings:savings };
-      var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-      var url=URL.createObjectURL(blob);
-      var a=document.createElement('a');
-      var d=new Date();
-      a.href=url; a.download='finans-yedek-'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'.json';
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      setTimeout(function(){URL.revokeObjectURL(url);},1000);
-    }
-    function importData(ev){
-      var file=ev.target.files&&ev.target.files[0]; if(!file) return;
-      var reader=new FileReader();
-      reader.onload=function(e){
-        try{
-          var data=JSON.parse(e.target.result);
-          if(data.recurring) save('fp-recurring',data.recurring,setRecurring);
-          if(data.oneTime) save('fp-onetime',data.oneTime,setOneTime);
-          if(data.paid) save('fp-paid',data.paid,setPaid);
-          if(data.savings) save('fp-savings',data.savings,setSavings);
-          vibrate(20); alert('✓ Yedek geri yüklendi. Tüm verilerin geri geldi.');
-        }catch(x){ alert('Dosya okunamadı. Doğru yedek dosyasını seçtiğinden emin ol.'); }
-        ev.target.value='';
-      };
-      reader.readAsText(file);
-    }
-    function resetAll(){
-      if(!confirm('TÜM verilerin silinip baştaki hazır listeye dönülecek. Emin misin? (Önce yedek almanı öneririm)')) return;
-      vibrate(30);
-      var fresh=seedRecurring(); save('fp-recurring',fresh,setRecurring);
-      save('fp-onetime',{},setOneTime); save('fp-paid',{},setPaid);
-      save('fp-savings',seedSavings(),setSavings);
-      alert('✓ Sıfırlandı.');
-    }
- 
-    var advisor=useMemo(function(){
-      var pct=totalExp>0?Math.round((paidExp/totalExp)*100):0;
-      var income=ADV.avgIncome, surplus=income-totalExp, cashAdvCost=Math.round(ADV.cashAdvance*ADV.cashAdvanceRate);
-      var loanLeft=gUnpaid(groups.loan)+gUnpaid(groups.cash);
-      var head, body, steps=[], mood;
-      if(totalExp===0){ head='Hadi başlayalım'; body='Bu ay için ödeme yok.'; mood='var(--ink)'; }
-      else if(pct===100){
-        head='Bu ayı kapattın 👏';
-        body='Bütün ödemelerin tamam — turizmde gelir düzensizken hepsini yetiştirmek ciddi iş. Fazla nakdini nakit avansa at; her ay yaklaşık '+fmt(cashAdvCost)+'₺ büyüyor.';
-        steps=[{t:'Fazlayı nakit avansa yönlendir',d:'En yüksek faizli borcun o.'},{t:'İyi turizm ayında tampon biriktir',d:'Yoğun ayda fazladan öde.'}];
-        mood='var(--green)';
-      } else {
-        mood=loanLeft>0?'var(--amber)':'var(--ink)';
-        head=loanLeft>0?'Önce kredileri yetiştir':'Krediler temiz — sıra kartlarda';
-        if(loanLeft>0){
-          body='Bu ay '+fmt(loanLeft)+'₺ kredi/avans ödemen kaldı. Bankayı geciktirme — gecikirse takibe düşersin.';
-          steps=[{t:'Banka kredilerini kapat',d:'Ay sırasına göre üstten başla.'},{t:'Nakit avansı erit',d:'Her ay ~'+fmt(cashAdvCost)+'₺ büyüyor.'},{t:'Kartlarda asgariyi geç',d:'Gerisini krediye sakla.'}];
-        } else {
-          body='Banka kredilerini ödemişsin, en riskli kısmı geçtin. Sıra yüksek faizli kartlarda. Bu ay '+fmt(unpaidExp)+'₺ kaldı.';
-          steps=[{t:'Kartları bugün öde',d:'Faizleri en yüksek olanlar.'},{t:'Murat ve Teyzem esnek',d:'Faizsiz; en sona bırakabilirsin.'}];
-        }
-        if(surplus<0){ body+=' Dikkat: bu ayki yük gelirini ~'+fmt(Math.abs(surplus))+'₺ aşıyor. İyi ayda biriktirdiğini buradan kapat.'; }
-      }
-      return {head:head,body:body,steps:steps,mood:mood,pct:pct};
-    },[totalExp,paidExp,paidKeys,month,year]);
- 
-    if(loading) return e('div',{style:S.loading}, e('div',{style:S.spinner}));
- 
-    // ===== PREMIUM KART (2'li grid; her şey tam, kesik yok) =====
-    function payCard(x){
-      var key=(x.isRec?'r':'o')+'-'+x.id;
-      var pd=isPaid(x.id,x.isRec);
-      var rem=currentRemaining(x);
-      var remBefore=remainingBeforeThisMonth(x);
-      var done=rem!=null && rem<=0;
-      var b=brandOf(x.name);
-      var isEditing=editId===key;
-      var stripe = pd?'var(--green)':'var(--red)';
- 
-      if(isEditing){
-        return e('div',{key:key,style:Object.assign({},S.card,{gridColumn:'1 / -1'})},
-          e('input',{type:'text',value:editVals.name,onChange:function(ev){setEditVals(Object.assign({},editVals,{name:ev.target.value}));},style:S.input,placeholder:'Ad'}),
-          e('div',{style:{display:'flex',gap:8,marginTop:8}},
-            e('div',{style:{flex:2}}, e('label',{style:S.miniLabel},'Aylık ödeme ₺'), e('input',{type:'number',inputMode:'decimal',value:editVals.amount,onChange:function(ev){setEditVals(Object.assign({},editVals,{amount:ev.target.value}));},style:S.input})),
-            e('div',{style:{flex:1}}, e('label',{style:S.miniLabel},'Gün'), e('input',{type:'number',inputMode:'numeric',value:editVals.day,onChange:function(ev){setEditVals(Object.assign({},editVals,{day:ev.target.value}));},style:S.input}))
-          ),
-          e('div',{style:{marginTop:8}}, e('label',{style:S.miniLabel},'Toplam kalan borç ₺ (sabit giderde boş bırak)'), e('input',{type:'number',inputMode:'decimal',value:editVals.total,onChange:function(ev){setEditVals(Object.assign({},editVals,{total:ev.target.value}));},style:S.input})),
-          renewRow(editVals.recurring,function(ev){setEditVals(Object.assign({},editVals,{recurring:ev.target.checked}));}),
-          endMonthField(editVals,setEditVals,groupOf(x)),
-          e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){saveEdit(x);},style:Object.assign({},S.primaryBtn,{flex:1,padding:'11px'})},'Kaydet'),
-            e('button',{onClick:function(){setEditId(null);},style:Object.assign({},S.ghostBtn,{padding:'11px'})},'İptal')
-          )
-        );
-      }
- 
-      return e('div',{key:key,style:Object.assign({},S.card, done?{opacity:0.66}:{}, {paddingLeft:14})},
-        e('div',{style:Object.assign({},S.stripe,{background:stripe})}),
-        // başlık satırı
-        e('div',{style:{display:'flex',alignItems:'center',gap:9,marginBottom:9}},
-          e(Emblem,{name:x.name,size:40}),
-          e('div',{style:{flex:1,minWidth:0}},
-            e('p',{style:S.cardName}, x.name),
-            x.day?e('p',{style:S.cardDay}, x.day+'. gün'):null
-          )
-        ),
-        // kalan borç (varsa)
-        rem!=null ? e('div',{style:S.remRow},
-          e('span',{style:S.remLabel}, done?'Kapandı ✓':'Kalan borç'),
-          e('span',{style:Object.assign({},S.remVal,{color:done?'var(--green)':'var(--red)'})}, '₺'+fmt(rem))
-        ) : null,
-        // aylık taksit
-        e('div',{style:S.amtRow},
-          e('span',{style:{fontSize:11,color:'var(--text-soft)',fontWeight:600}}, rem!=null?'Bu ay taksit':'Aylık'),
-          e('span',{style:Object.assign({},S.amtVal,{color:pd?'var(--green)':'var(--text)',textDecoration:pd?'line-through':'none'})}, '₺'+fmt(x.amount))
-        ),
-        // butonlar
-        e('div',{style:{display:'flex',gap:6,marginTop:10}},
-          e('button',{onClick:function(){togglePaid(x.id,x.isRec,x.name);},style:Object.assign({},S.payBtn, pd?{background:'var(--green)',color:'#fff',borderColor:'var(--green)'}:{})}, pd?'✓ Ödendi':'Öde'),
-          e('button',{onClick:function(){openEdit(x);},style:S.iconBtn},'✎'),
-          e('button',{onClick:function(){delExp(x.id,x.isRec,x.name);},style:S.iconBtn},'×')
-        )
-      );
-    }
- 
-    function gridSection(title,arr,sub){
-      if(arr.length===0) return null;
-      function byDay(a,b){ return (a.day||31)-(b.day||31); }
-      var u=arr.filter(function(x){return !isPaid(x.id,x.isRec);}); u.sort(byDay);
-      var p=arr.filter(function(x){return isPaid(x.id,x.isRec);}); p.sort(byDay);
-      var ordered=u.concat(p);
-      return e('div',{style:{marginBottom:16}},
-        e('div',{style:S.secLabel}, e('span',null,title), e('span',{style:{color:'var(--red)'}}, sub||('Kalan ₺'+fmt(gUnpaid(arr))))),
-        e('div',{style:S.grid}, ordered.map(function(x){return payCard(x);}))
-      );
-    }
-    function summaryStat(label,val,color){ return e('div',{style:S.sumStat}, e('p',{style:S.sumStatLabel},label), e('p',{style:Object.assign({},S.sumStatVal,{color:color})},val)); }
- 
-    // KOMPAKT SATIR — logo + ad + tutar; dokununca detay (kalan borç, öde, düzenle) açılır
-    function payRow(x){
-      var key=(x.isRec?'r':'o')+'-'+x.id;
-      var pd=isPaid(x.id,x.isRec);
-      var rem=currentRemaining(x);
-      var done=rem!=null && rem<=0;
-      var open=openRow===key;
-      var isEditing=editId===key;
-      if(isEditing){
-        return e('div',{key:key,style:S.openBox},
-          e('input',{type:'text',value:editVals.name,onChange:function(ev){setEditVals(Object.assign({},editVals,{name:ev.target.value}));},style:S.input,placeholder:'Ad'}),
-          e('div',{style:{display:'flex',gap:8,marginTop:8}},
-            e('div',{style:{flex:2}}, e('label',{style:S.miniLabel},'Aylık/taksit ₺'), e('input',{type:'number',inputMode:'decimal',value:editVals.amount,onChange:function(ev){setEditVals(Object.assign({},editVals,{amount:ev.target.value}));},style:S.input})),
-            e('div',{style:{flex:1}}, e('label',{style:S.miniLabel},'Gün'), e('input',{type:'number',inputMode:'numeric',value:editVals.day,onChange:function(ev){setEditVals(Object.assign({},editVals,{day:ev.target.value}));},style:S.input}))
-          ),
-          e('div',{style:{marginTop:8}}, e('label',{style:S.miniLabel},'Toplam kalan borç ₺ (sabit giderde boş)'), e('input',{type:'number',inputMode:'decimal',value:editVals.total,onChange:function(ev){setEditVals(Object.assign({},editVals,{total:ev.target.value}));},style:S.input})),
-          renewRow(editVals.recurring,function(ev){setEditVals(Object.assign({},editVals,{recurring:ev.target.checked}));}),
-          endMonthField(editVals,setEditVals,groupOf(x)),
-          e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){saveEdit(x);},style:Object.assign({},S.primaryBtn,{flex:1,padding:'11px'})},'Kaydet'),
-            e('button',{onClick:function(){setEditId(null);},style:Object.assign({},S.ghostBtn,{padding:'11px'})},'İptal')
-          )
-        );
-      }
-      var stripe=pd?'var(--green)':'var(--red)';
-      return e('div',{key:key,style:Object.assign({},S.rowWrap, done?{opacity:0.6}:{})},
-        // tıklanabilir kompakt satır
-        e('div',{onClick:function(){vibrate(5);setOpenRow(open?null:key);},style:Object.assign({},S.row,{borderLeft:'4px solid '+stripe})},
-          e(Emblem,{name:x.name,size:34}),
-          e('div',{style:{flex:1,minWidth:0}},
-            e('p',{style:Object.assign({},S.rowName, pd?{textDecoration:'line-through',color:'var(--text-dim)'}:{})}, x.name),
-            e('p',{style:S.rowDay}, (x.day||'?')+'. gün'+(rem!=null&&!pd?(' · kalan ₺'+fmt(rem)):''))
-          ),
-          e('span',{style:Object.assign({},S.rowAmt,{color:pd?'var(--green)':'var(--text)'})}, (pd?'✓ ':'')+'₺'+fmt(x.amount)),
-          e('span',{style:{fontSize:13,color:'var(--text-dim)',marginLeft:6,transform:open?'rotate(90deg)':'none',transition:'transform .2s'}},'›')
-        ),
-        // açılır detay
-        open ? e('div',{style:S.rowDetail},
-          rem!=null ? e('div',{style:S.detRem},
-            e('span',{style:{fontSize:12,color:'var(--text-soft)',fontWeight:600}}, done?'Kapandı ✓':'Toplam kalan borç'),
-            e('span',{style:{fontSize:16,fontWeight:800,color:done?'var(--green)':'var(--red)'}},'₺'+fmt(rem))
-          ) : null,
-          e('div',{style:{display:'flex',gap:6}},
-            e('button',{onClick:function(){togglePaid(x.id,x.isRec,x.name);},style:Object.assign({},S.payBtn, pd?{background:'var(--green)',color:'#fff',borderColor:'var(--green)'}:{})}, pd?'✓ Ödendi':'Öde'),
-            e('button',{onClick:function(){openEdit(x);},style:S.iconBtn},'✎'),
-            e('button',{onClick:function(){delExp(x.id,x.isRec,x.name);},style:S.iconBtn},'×')
-          )
-        ) : null
-      );
-    }
- 
-    var content;
- 
-    if(tab==='home'){
-      content=e('div',{className:'fade-up'},
-        e('div',{style:Object.assign({},S.advisorCard,{background:'linear-gradient(145deg, var(--ink), var(--ink-soft))'})},
-          e('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:14}},
-            e('div',{style:{flex:1,minWidth:0}},
-              e('p',{style:{fontSize:11,color:'rgba(255,255,255,0.62)',fontWeight:700,letterSpacing:0.6,marginBottom:7}},'FİNANS DANIŞMANIN'),
-              e('h2',{style:{fontSize:20,fontWeight:800,color:'#fff',lineHeight:1.22,marginBottom:9}},advisor.head),
-              e('p',{style:{fontSize:13,color:'rgba(255,255,255,0.88)',lineHeight:1.55}},advisor.body)
-            ),
-            e('div',{style:{flexShrink:0}}, e(RingWhite,{progress:advisor.pct}))
-          ),
-          advisor.steps.length>0 ? e('div',{style:S.stepWrap},
-            advisor.steps.map(function(st,i){ return e('div',{key:i,style:S.stepRow},
-              e('div',{style:S.stepNum}, i+1),
-              e('div',{style:{flex:1,minWidth:0}}, e('p',{style:{fontSize:13,fontWeight:700,color:'#fff',lineHeight:1.3}},st.t), e('p',{style:{fontSize:11,color:'rgba(255,255,255,0.68)',marginTop:2,lineHeight:1.4}},st.d))
-            ); })
-          ) : null
-        ),
-        e('div',{style:S.summaryRow},
-          summaryStat('BU AY TOPLAM','₺'+fmt(totalExp),'var(--text)'),
-          summaryStat('ÖDENEN','₺'+fmt(paidExp),'var(--green)'),
-          summaryStat('KALAN','₺'+fmt(unpaidExp),'var(--red)')
-        ),
-        e('div',{style:S.dualRow},
-          e('div',{style:Object.assign({},S.dualCard,S.debtDualCard),onClick:function(){setTab('expenses');}},
-            e('p',{style:S.dualLabel},'TOPLAM KALAN BORÇ'),
-            e('p',{style:Object.assign({},S.dualVal,{color:'var(--red)'})},'₺'+fmt(totalRemainingDebt)),
-            e('span',{style:S.dualSub},'ödedikçe azalır'),
-            e('div',{style:S.debtBreakdown},
-              e('div',{style:S.debtBreakRow}, e('span',null,'Krediler'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(loanDebtTotal))),
-              e('div',{style:S.debtBreakRow}, e('span',null,'Kredi kartları'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(cardDebtTotal))),
-              e('div',{style:Object.assign({},S.debtBreakRow,S.debtBreakTotal)}, e('span',null,'TOPLAM BORÇ'), e('strong',{style:S.debtBreakAmount},'₺'+fmt(totalRemainingDebt)))
-            )
-          ),
-          e('div',{style:Object.assign({},S.dualCard,{borderTop:'3px solid var(--gold)'}),onClick:function(){setTab('savings');}},
-            e('p',{style:S.dualLabel},'TOPLAM BİRİKİM'),
-            e('p',{style:Object.assign({},S.dualVal,{color:'var(--gold)'})},'₺'+fmt(savingsTotal)),
-            e('span',{style:S.dualSub},'altın, nakit')
-          )
-        ),
-        e('div',{style:S.card2},
-          e('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-            e('h3',{style:S.cardTitle},'Son 6 Ay'), e('span',{style:{fontSize:11,color:'var(--text-dim)'}},'aylık gider')),
-          e(Bars,{data:chartData})
-        )
-      );
-    }
- 
-    else if(tab==='expenses'){
-      // grup tanımları
-      var GR=[
-        {id:'fixed', label:'Aylık Gider', arr:groups.fixed, color:'var(--navy)'},
-        {id:'loan',  label:'Krediler',    arr:groups.loan,  color:'var(--purple)'},
-        {id:'card',  label:'Kartlar',     arr:groups.card,  color:'var(--pink)'},
-        {id:'cash',  label:'Nakit Avans', arr:groups.cash,  color:'var(--orange)'}
-      ];
-      // grup AYLIK ödemesi (bu ayki taksit/tutar toplamı) ve KALAN (ödenmemiş) ayrı
-      function grpAylik(g){ return g.arr.reduce(function(a,x){return a+x.amount;},0); }
-      function grpKalan(g){ return g.arr.filter(function(x){return !isPaid(x.id,x.isRec);}).reduce(function(a,x){return a+x.amount;},0); }
-      // kredilerin toplam KALAN BORCU (sadece loan grubu, currentRemaining ile)
-      function grpToplamBorc(g){ return g.arr.reduce(function(a,x){var r=currentRemaining(x);return a+(r!=null?r:0);},0); }
-      var aylikToplam=GR.reduce(function(a,g){return a+grpAylik(g);},0);      // tüm aylık ödemeler
-      var aylikKalan=GR.reduce(function(a,g){return a+grpKalan(g);},0);        // ödenmemiş aylık ödemeler
-      var aylikOdenen=aylikToplam-aylikKalan;
-      var sel=GR.filter(function(g){return g.id===subTab;})[0]||GR[0];
- 
-      content=e('div',{className:'fade-up'},
-        e('div',{style:S.monthNav},
-          e('button',{onClick:prevMonth,style:S.navBtn},'‹'),
-          e('div',{style:{textAlign:'center'}}, e('div',{style:{fontSize:16,fontWeight:800}},MONTHS[month]), e('div',{style:{fontSize:11.5,color:'var(--text-soft)',marginTop:1}},year)),
-          e('button',{onClick:nextMonth,style:S.navBtn},'›')
-        ),
-        // ÖZET — aylık toplam ödeme (ödedikçe azalan kalan) + 4 grup aylık kalan
-        e('div',{style:S.summaryCard},
-          e('div',{style:S.sumTop},
-            e('span',{style:{fontSize:11.5,color:'rgba(255,255,255,0.72)',fontWeight:700,letterSpacing:0.6}},'BU AY KALAN ÖDEME'),
-            e('span',{style:{fontSize:27,fontWeight:800,color:'#fff',marginTop:3,display:'block',letterSpacing:-0.5}}, aylikKalan>0?('₺'+fmt(aylikKalan)):'Tümü ödendi ✓'),
-            e('span',{style:{fontSize:11.5,color:'rgba(255,255,255,0.6)',marginTop:3,display:'block'}}, 'Aylık toplam ₺'+fmt(aylikToplam)+(aylikOdenen>0?('  ·  ₺'+fmt(aylikOdenen)+' ödendi'):''))
-          ),
-          e('div',{style:S.sumGrid},
-            GR.map(function(g){
-              return e('div',{key:g.id,onClick:function(){vibrate(5);setSubTab(g.id);setOpenRow(null);},style:Object.assign({},S.sumCell, subTab===g.id?{background:'rgba(255,255,255,0.20)',boxShadow:'inset 0 0 0 1px rgba(255,255,255,0.25)'}:{})},
-                e('span',{style:{fontSize:10.5,color:'rgba(255,255,255,0.78)',fontWeight:600}},g.label),
-                e('span',{style:{fontSize:14.5,fontWeight:800,color:'#fff',marginTop:2}},'₺'+fmt(grpKalan(g)))
-              );
-            })
-          ),
-          e('div',{style:S.summaryDebtBox},
-            e('div',{style:S.summaryDebtRow}, e('span',null,'Krediler toplamı'), e('strong',null,'₺'+fmt(loanDebtTotal))),
-            e('div',{style:S.summaryDebtRow}, e('span',null,'Kredi kartları toplamı'), e('strong',null,'₺'+fmt(cardDebtTotal))),
-            e('div',{style:Object.assign({},S.summaryDebtRow,S.summaryDebtTotal)}, e('span',null,'TOPLAM BORÇ'), e('strong',null,'₺'+fmt(totalRemainingDebt)))
-          )
-        ),
-        // YATAY ALT-SEKMELER
-        e('div',{style:S.subTabRow},
-          GR.map(function(g){
-            var on=subTab===g.id;
-            return e('button',{key:g.id,onClick:function(){vibrate(5);setSubTab(g.id);setOpenRow(null);},style:Object.assign({},S.subTab, on?{background:g.color,color:'#fff',borderColor:g.color}:{})},
-              g.label+(g.arr.length?(' ('+g.arr.length+')'):'')
-            );
-          })
-        ),
-        // EKLE
-        showAdd ? e('div',{style:S.addForm},
-          e('input',{type:'text',placeholder:'Ad (banka/aidat/SGK yazarsan logosu gelir)',value:newExp.name,onChange:function(ev){setNewExp(Object.assign({},newExp,{name:ev.target.value}));},style:S.input}),
-          e('div',{style:{display:'flex',gap:8,marginTop:8}},
-            e('input',{type:'number',inputMode:'decimal',placeholder:'Aylık/taksit ₺',value:newExp.amount,onChange:function(ev){setNewExp(Object.assign({},newExp,{amount:ev.target.value}));},style:Object.assign({},S.input,{flex:2})}),
-            e('input',{type:'number',inputMode:'numeric',placeholder:'Gün',value:newExp.day,onChange:function(ev){setNewExp(Object.assign({},newExp,{day:ev.target.value}));},style:Object.assign({},S.input,{flex:1})})
-          ),
-          (subTab!=='fixed') ? e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}) : null,
-          renewRow(newExp.recurring,function(ev){setNewExp(Object.assign({},newExp,{recurring:ev.target.checked}));}),
-          endMonthField(newExp,setNewExp,subTab),
-          e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){addExp(subTab);},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
-            e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
-          )
-        ) : e('button',{onClick:function(){setShowAdd(true);},style:S.addTop},'+ '+sel.label+' Ekle'),
-        // SEÇİLİ GRUBUN KOMPAKT SATIRLARI
-        (function(){
-          function byDay(a,b){ return (a.day||31)-(b.day||31); }
-          var u=sel.arr.filter(function(x){return !isPaid(x.id,x.isRec);}); u.sort(byDay);
-          var p=sel.arr.filter(function(x){return isPaid(x.id,x.isRec);}); p.sort(byDay);
-          if(sel.arr.length===0) return e('p',{style:S.empty}, sel.label+' yok. Yukarıdan ekle.');
-          var toplamBorc=grpToplamBorc(sel); // kalan borç toplamı (fixed'de 0 olur)
-          return e('div',null,
-            e('div',{style:S.listPanel},
-              u.map(function(x){return payRow(x);}),
-              p.length>0 ? e('div',{style:S.paidSep}, 'ÖDENDİ') : null,
-              p.map(function(x){return payRow(x);})
-            ),
-            // grup toplam kalan borcu (krediler/kartlar/avans için)
-            toplamBorc>0 ? e('div',{style:S.grpTotalBox},
-              e('span',{style:{fontSize:12.5,color:'var(--text-soft)',fontWeight:700}}, sel.label+' toplam kalan borç'),
-              e('span',{style:{fontSize:17,fontWeight:800,color:'var(--red)'}}, '₺'+fmt(toplamBorc))
-            ) : null
-          );
-        })()
-      );
-    }
- 
-    // ----- BORÇLAR (Murat, Teyzem — kişisel) -----
-    else if(tab==='debts'){
-      var debtRemain=groups.person.reduce(function(a,x){var r=currentRemaining(x);return a+(r||0);},0);
-      content=e('div',{className:'fade-up'},
-        e('div',{style:Object.assign({},S.savHero,{background:'linear-gradient(145deg,#5a3a8a,#7b4ec0)'})},
-          e('p',{style:{fontSize:11.5,color:'rgba(255,255,255,0.8)',fontWeight:700,letterSpacing:0.5}},'KİŞİSEL BORÇLAR'),
-          e('p',{style:{fontSize:28,fontWeight:800,color:'#fff',marginTop:6}},'₺'+fmt(debtRemain)),
-          e('p',{style:{fontSize:12,color:'rgba(255,255,255,0.85)',marginTop:6,lineHeight:1.4}},'Faizsiz, esnek borçlar. Sıkışınca en sona bırakabilirsin.')
-        ),
-        e('div',{style:S.monthNav},
-          e('button',{onClick:prevMonth,style:S.navBtn},'‹'),
-          e('div',{style:{textAlign:'center'}}, e('div',{style:{fontSize:16,fontWeight:800}},MONTHS[month]), e('div',{style:{fontSize:11.5,color:'var(--text-soft)',marginTop:1}},year)),
-          e('button',{onClick:nextMonth,style:S.navBtn},'›')
-        ),
-        showAdd ? e('div',{style:S.addForm},
-          e('input',{type:'text',placeholder:'Kime borçlu? (örn. Murat)',value:newExp.name,onChange:function(ev){setNewExp(Object.assign({},newExp,{name:ev.target.value}));},style:S.input}),
-          e('div',{style:{display:'flex',gap:8,marginTop:8}},
-            e('input',{type:'number',inputMode:'decimal',placeholder:'Aylık ödeme ₺',value:newExp.amount,onChange:function(ev){setNewExp(Object.assign({},newExp,{amount:ev.target.value}));},style:Object.assign({},S.input,{flex:2})}),
-            e('input',{type:'number',inputMode:'numeric',placeholder:'Gün',value:newExp.day,onChange:function(ev){setNewExp(Object.assign({},newExp,{day:ev.target.value}));},style:Object.assign({},S.input,{flex:1})})
-          ),
-          e('input',{type:'number',inputMode:'decimal',placeholder:'Toplam kalan borç ₺',value:newExp.total,onChange:function(ev){setNewExp(Object.assign({},newExp,{total:ev.target.value}));},style:Object.assign({},S.input,{marginTop:8})}),
-          renewRow(newExp.recurring,function(ev){setNewExp(Object.assign({},newExp,{recurring:ev.target.checked}));}),
-          e('div',{style:{display:'flex',gap:8,marginTop:12}},
-            e('button',{onClick:function(){addExp('person');},style:Object.assign({},S.primaryBtn,S.addDebtBtn,{flex:1})},'Ekle'),
-            e('button',{onClick:function(){setShowAdd(false);},style:S.ghostBtn},'Vazgeç')
-          )
-        ) : e('button',{onClick:function(){setShowAdd(true);},style:S.addTop},'+ Yeni Borç Ekle'),
-        groups.person.length>0 ? (function(){
-          var u=groups.person.filter(function(x){return !isPaid(x.id,x.isRec);}); var p=groups.person.filter(function(x){return isPaid(x.id,x.isRec);});
-          u.sort(function(a,b){return (a.day||31)-(b.day||31);}); p.sort(function(a,b){return (a.day||31)-(b.day||31);});
-          return e('div',{style:S.listPanel},
-            u.map(function(x){return payRow(x);}),
-            p.length>0 ? e('div',{style:S.paidSep}, 'ÖDENDİ') : null,
-            p.map(function(x){return payRow(x);})
-          );
-        })() : e('p',{style:S.empty},'Kişisel borç yok.'),
-        // ===== VERİ YÖNETİMİ =====
-        e('div',{style:S.dataBox},
-          e('p',{style:S.dataTitle},'VERİ GÜVENLİĞİ'),
-          e('p',{style:S.dataHint},'Önemli değişiklik yapınca yedek al; verilerin asla kaybolmaz. Uygulamayı Ana Ekrana eklersen Safari temizliğinde bile silinmez.'),
-          e('div',{style:{display:'flex',gap:8,marginTop:10}},
-            e('button',{onClick:exportData,style:Object.assign({},S.primaryBtn,{flex:1,background:'var(--green)'})},'⬇ Yedek Al'),
-            e('label',{style:Object.assign({},S.ghostBtn,{flex:1,textAlign:'center',cursor:'pointer'})},'⬆ Geri Yükle',
-              e('input',{type:'file',accept:'.json,application/json',onChange:importData,style:{display:'none'}})
-            )
-          ),
-          e('button',{onClick:resetAll,style:S.resetBtn},'Tümünü sıfırla (hazır listeye dön)')
-        )
-      );
-    }
- 
-    else if(tab==='savings'){
-      content=e('div',{className:'fade-up'},
-        e('div',{style:Object.assign({},S.savHero,{background:'linear-gradient(145deg, #9a7b2a, var(--gold))'})},
-          e('p',{style:{fontSize:11.5,color:'rgba(255,255,255,0.78)',fontWeight:700,letterSpacing:0.5}},'TOPLAM BİRİKİM'),
-          e('p',{style:{fontSize:30,fontWeight:800,color:'#fff',marginTop:6}},'₺'+fmt(savingsTotal)),
-          e('p',{style:{fontSize:12,color:'rgba(255,255,255,0.8)',marginTop:6,lineHeight:1.4}},'Altın/bozuk altın aldığında güncel değerini gir. + ve − ile ekleme-çıkarma yap.')
-        ),
-        savings.map(function(s){
-          var a=savAdj[s.id]||{};
-          return e('div',{key:s.id,style:S.savCard},
-            e('div',{style:{display:'flex',alignItems:'center',gap:10}},
-              e(Emblem,{name:s.name,size:36}),
-              e('div',{style:{flex:1,minWidth:0}}, e('p',{style:{fontSize:15,fontWeight:700}},s.name), s.note?e('p',{style:{fontSize:11,color:'var(--text-dim)',marginTop:1}},s.note):null),
-              e('button',{onClick:function(){delSav(s.id);},style:S.iconBtn},'×')
-            ),
-            e('div',{style:{display:'flex',alignItems:'center',gap:8,marginTop:10}},
-              e('span',{style:{fontSize:13,color:'var(--text-soft)'}},'Değer:'),
-              e('input',{type:'number',inputMode:'decimal',value:s.value||'',placeholder:'0',onChange:function(ev){setSavValue(s.id,ev.target.value);},style:Object.assign({},S.input,{flex:1,fontWeight:800,color:'var(--green)'})}),
-              e('span',{style:{fontSize:15,fontWeight:800,color:'var(--green)'}},'₺')
-            ),
-            e('div',{style:{display:'flex',gap:8,marginTop:8}},
-              e('input',{type:'number',inputMode:'decimal',placeholder:'Ekle / çıkar tutarı',value:a.amount||'',onChange:function(ev){var o=Object.assign({},savAdj);o[s.id]={amount:ev.target.value};setSavAdj(o);},style:Object.assign({},S.input,{flex:1})}),
-              e('button',{onClick:function(){adjSav(s.id,1);},style:Object.assign({},S.adjBtn,{background:'var(--green)'})},'+'),
-              e('button',{onClick:function(){adjSav(s.id,-1);},style:Object.assign({},S.adjBtn,{background:'var(--red)'})},'−')
-            )
-          );
-        }),
-        showAddSav ? e('div',{style:S.addForm},
-          e('input',{type:'text',placeholder:'Birikim adı (örn. Çeyrek Altın)',value:newSav.name,onChange:function(ev){setNewSav(Object.assign({},newSav,{name:ev.target.value}));},style:S.input}),
-          e('div',{style:{display:'flex',gap:8,marginTop:8}},
-            e('input',{type:'number',inputMode:'decimal',placeholder:'Başlangıç değeri ₺',value:newSav.value,onChange:function(ev){setNewSav(Object.assign({},newSav,{value:ev.target.value}));},style:Object.assign({},S.input,{flex:1})}),
-            e('button',{onClick:addSav,style:Object.assign({},S.primaryBtn,S.addDebtBtn)},'Ekle')
-          ),
-          e('button',{onClick:function(){setShowAddSav(false);},style:Object.assign({},S.ghostBtn,{width:'100%',marginTop:8})},'Vazgeç')
-        ) : e('button',{onClick:function(){setShowAddSav(true);},style:S.addFab},'+ Birikim Ekle')
-      );
-    }
- 
-    return e('div',{style:S.app},
-      e('header',{style:S.header},
-        e('div',null, e('h1',{style:S.logo},e('span',{style:{color:'var(--navy)'}},'Finans'),e('span',{style:{color:'var(--gold)'}},'Pro')), e('p',{style:S.headerDate}, MONTHS[now.getMonth()]+' '+now.getFullYear()+', '+now.getDate())),
-        e('button',{onClick:function(){setDark(!dark);},style:S.themeBtn}, dark?'☀️':'🌙')
-      ),
-      e('main',{style:S.main}, content),
-      // GERİ AL şeridi
-      undo ? e('div',{style:S.undoBar},
-        e('span',{style:{fontSize:13,color:'#fff',flex:1,minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}, undo.label),
-        e('button',{onClick:doUndo,style:S.undoBtn},'↶ Geri Al')
-      ) : null,
-      e('nav',{style:S.tabBar},
-        [{id:'expenses',icon:'📋',label:'Ödemeler'},{id:'debts',icon:'🤝',label:'Borçlar'}].map(function(it){
-          var on=tab===it.id;
-          return e('button',{key:it.id,onClick:function(){vibrate(5);setTab(it.id);setShowAdd(false);setShowAddSav(false);setEditId(null);},style:Object.assign({},S.tabItem,on?{color:'var(--text)'}:{})},
-            e('span',{style:{fontSize:20,opacity:on?1:0.5,filter:on?'none':'grayscale(0.5)'}},it.icon),
-            e('span',{style:Object.assign({},S.tabLabel,on?{fontWeight:700,color:'var(--text)'}:{})},it.label)
-          );
-        })
-      )
-    );
+  }catch(e){ console.warn("Veri okunamadı:", e); }
+  // kategoriler yoksa varsayılanı kur
+  if(!Array.isArray(d.categories) || !d.categories.length){
+    d.categories = DEFAULT_CATEGORIES.map(c=>({...c}));
   }
- 
-  var S = {
-    app:{height:'100%',display:'flex',flexDirection:'column',background:'var(--bg)',paddingTop:'env(safe-area-inset-top)'},
-    loading:{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh',background:'var(--bg)'},
-    spinner:{width:34,height:34,border:'3px solid var(--border-strong)',borderTopColor:'var(--ink)',borderRadius:'50%',animation:'spin 0.9s linear infinite'},
-    header:{flexShrink:0,display:'flex',justifyContent:'space-between',alignItems:'center',padding:'14px 20px',background:'var(--bg-card)',borderBottom:'1px solid var(--border)',zIndex:10},
-    logo:{fontSize:20,fontWeight:800,letterSpacing:-0.3},
-    headerDate:{fontSize:11.5,color:'var(--text-soft)',marginTop:2},
-    themeBtn:{width:40,height:40,borderRadius:12,border:'1px solid var(--border)',background:'var(--bg-soft)',fontSize:17,cursor:'pointer'},
-    main:{flex:1,padding:'14px 14px 20px',maxWidth:520,margin:'0 auto',width:'100%',overflowY:'auto',WebkitOverflowScrolling:'touch'},
- 
-    advisorCard:{borderRadius:20,padding:'18px 16px',marginBottom:12,boxShadow:'var(--shadow-md)'},
-    stepWrap:{marginTop:14,paddingTop:14,borderTop:'1px solid rgba(255,255,255,0.16)',display:'flex',flexDirection:'column',gap:11},
-    stepRow:{display:'flex',gap:11,alignItems:'flex-start'},
-    stepNum:{width:23,height:23,borderRadius:7,background:'rgba(255,255,255,0.18)',color:'#fff',fontSize:12.5,fontWeight:800,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0},
- 
-    summaryRow:{display:'flex',gap:9,marginBottom:12},
-    sumStat:{flex:1,background:'var(--bg-card)',borderRadius:15,padding:'13px 6px',textAlign:'center',border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    sumStatLabel:{fontSize:9,color:'var(--text-dim)',fontWeight:700,letterSpacing:0.4,marginBottom:5},
-    sumStatVal:{fontSize:16,fontWeight:800,lineHeight:1.1,wordBreak:'break-word'},
- 
-    dualRow:{display:'flex',gap:9,marginBottom:12},
-    dualCard:{flex:1,background:'var(--bg-card)',borderRadius:15,padding:'13px 13px',border:'1px solid var(--border)',cursor:'pointer',boxShadow:'var(--shadow-sm)'},
-    debtDualCard:{display:'flex',flexDirection:'column',background:'var(--red-soft)',border:'1px solid var(--red)',borderTop:'3px solid var(--red)'},
-    dualLabel:{fontSize:9.5,color:'var(--text-dim)',fontWeight:700,letterSpacing:0.4,marginBottom:6},
-    dualVal:{fontSize:18,fontWeight:800,lineHeight:1.1,wordBreak:'break-word'},
-    dualSub:{fontSize:10,color:'var(--text-dim)',marginTop:5,display:'inline-block'},
-    debtBreakdown:{marginTop:'auto',paddingTop:9,textAlign:'right',alignSelf:'stretch',display:'flex',flexDirection:'column',gap:3},
-    debtBreakRow:{display:'flex',justifyContent:'flex-end',gap:7,fontSize:10.5,color:'var(--text-soft)',fontWeight:700,lineHeight:1.25},
-    debtBreakAmount:{color:'var(--red)',fontWeight:800},
-    debtBreakTotal:{fontSize:11.5,color:'var(--red)',paddingTop:3},
- 
-    card2:{background:'var(--bg-card)',borderRadius:16,padding:14,marginBottom:12,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    cardTitle:{fontSize:14,fontWeight:800},
- 
-    monthNav:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'11px 14px',background:'var(--bg-card)',borderRadius:14,marginBottom:9,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    navBtn:{width:38,height:38,borderRadius:11,border:'1px solid var(--border)',background:'var(--bg-soft)',color:'var(--text)',fontSize:20,cursor:'pointer',lineHeight:1},
-    monthStrip:{display:'grid',gridTemplateColumns:'repeat(6,1fr)',gap:5,marginBottom:10},
-    chip:{padding:'8px 2px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-card)',color:'var(--text-dim)',fontSize:10.5,fontWeight:700,cursor:'pointer'},
-    chipActive:{background:'var(--ink)',color:'#fff',borderColor:'var(--ink)'},
-    chipData:{borderColor:'var(--gold)',color:'var(--gold)'},
- 
-    expSummary:{display:'flex',alignItems:'center',padding:'12px 4px',background:'var(--bg-card)',borderRadius:15,marginBottom:14,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    expSumItem:{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:3},
-    expSumLabel:{fontSize:10,color:'var(--text-dim)',fontWeight:600,textTransform:'uppercase',letterSpacing:0.3},
-    expSumVal:{fontSize:15.5,fontWeight:800,wordBreak:'break-word',textAlign:'center'},
-    expSumDiv:{width:1,height:32,background:'var(--border)'},
- 
-    secLabel:{display:'flex',justifyContent:'space-between',alignItems:'center',fontSize:11.5,fontWeight:800,color:'var(--text-soft)',letterSpacing:0.6,marginBottom:9,padding:'0 2px'},
- 
-    grid:{display:'grid',gridTemplateColumns:'1fr',gap:9},
-    card:{position:'relative',background:'var(--bg-card)',borderRadius:15,padding:'12px 12px 12px 14px',border:'1px solid var(--border)',boxShadow:'var(--shadow)',overflow:'hidden'},
-    stripe:{position:'absolute',left:0,top:0,bottom:0,width:5,borderRadius:'5px 0 0 5px'},
-    cardName:{fontSize:13.5,fontWeight:700,lineHeight:1.2,whiteSpace:'normal',wordBreak:'break-word'},
-    cardDay:{fontSize:10.5,color:'var(--text-dim)',fontWeight:600,marginTop:2},
-    remRow:{display:'flex',justifyContent:'space-between',alignItems:'baseline',padding:'7px 9px',background:'var(--bg-soft)',borderRadius:9,marginBottom:7},
-    remLabel:{fontSize:10,color:'var(--text-soft)',fontWeight:600},
-    remVal:{fontSize:14.5,fontWeight:800,whiteSpace:'nowrap'},
-    amtRow:{display:'flex',justifyContent:'space-between',alignItems:'baseline'},
-    amtVal:{fontSize:16,fontWeight:800,whiteSpace:'nowrap'},
-    payBtn:{flex:1,padding:'9px 4px',borderRadius:9,border:'1.5px solid var(--border-strong)',background:'var(--bg)',color:'var(--text)',fontSize:13,fontWeight:700,cursor:'pointer',whiteSpace:'nowrap'},
-    iconBtn:{width:34,padding:'9px 0',borderRadius:9,border:'1px solid var(--border-strong)',background:'var(--bg)',color:'var(--text-soft)',fontSize:15,fontWeight:700,cursor:'pointer',flexShrink:0,lineHeight:1},
-    miniLabel:{fontSize:10.5,color:'var(--text-dim)',fontWeight:600,display:'block',marginBottom:3},
- 
-    grandTotal:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 16px',background:'var(--bg-tint)',borderRadius:13,marginTop:4,marginBottom:4},
- 
-    addDebtBtn:{background:'var(--green-soft)',color:'var(--green)',border:'1px solid var(--green)',boxShadow:'var(--shadow-sm)'},
-    addFab:{width:'100%',padding:14,marginTop:14,borderRadius:13,border:'1px solid var(--green)',background:'var(--green-soft)',color:'var(--green)',fontSize:14.5,fontWeight:700,cursor:'pointer',boxShadow:'var(--shadow-sm)'},
-    addTop:{width:'100%',padding:'14px',marginBottom:14,borderRadius:14,border:'1px solid var(--green)',background:'var(--green-soft)',color:'var(--green)',fontSize:15,fontWeight:700,cursor:'pointer',boxShadow:'var(--shadow-sm)'},
-    panel:{background:'var(--bg-card)',borderRadius:16,padding:'12px 11px 6px',border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    panelHead:{display:'flex',alignItems:'center',gap:8,fontSize:11.5,fontWeight:800,color:'var(--red)',letterSpacing:0.6,marginBottom:10,padding:'2px 4px'},
-    panelDot:{width:8,height:8,borderRadius:'50%',background:'var(--red)',flexShrink:0},
-    addForm:{background:'var(--bg-card)',borderRadius:15,padding:15,marginTop:14,marginBottom:6,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    input:{width:'100%',padding:'12px 13px',border:'1px solid var(--border-strong)',borderRadius:10,background:'var(--bg)',color:'var(--text)',fontSize:16,outline:'none'},
-    recRow:{display:'flex',alignItems:'center',gap:10,marginTop:11,cursor:'pointer'},
-    primaryBtn:{padding:'12px 18px',borderRadius:10,border:'none',background:'var(--ink)',color:'#fff',fontSize:15,fontWeight:700,cursor:'pointer'},
-    ghostBtn:{padding:'12px 18px',borderRadius:10,border:'1px solid var(--border-strong)',background:'var(--bg)',color:'var(--text-soft)',fontSize:15,fontWeight:600,cursor:'pointer'},
- 
-    savHero:{borderRadius:18,padding:'18px 16px',marginBottom:12,boxShadow:'var(--shadow-md)'},
-    summaryCard:{borderRadius:18,padding:'17px 16px 13px',marginBottom:12,background:'linear-gradient(145deg,#0d4a4e 0%,#11635f 45%,#1a7d6e 100%)',boxShadow:'0 8px 28px rgba(13,74,78,0.32)'},
-    sumTop:{marginBottom:13},
-    sumGrid:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:7},
-    sumCell:{display:'flex',flexDirection:'column',padding:'9px 11px',borderRadius:11,background:'rgba(255,255,255,0.10)',cursor:'pointer',transition:'background .15s'},
-    summaryDebtBox:{marginTop:10,padding:'10px 11px',borderRadius:11,background:'rgba(255,255,255,0.14)',display:'flex',flexDirection:'column',alignItems:'flex-end',gap:4},
-    summaryDebtRow:{display:'flex',justifyContent:'flex-end',gap:8,fontSize:11,color:'rgba(255,255,255,0.78)',fontWeight:700,lineHeight:1.25,textAlign:'right'},
-    summaryDebtTotal:{fontSize:13,color:'#fff',paddingTop:4},
-    subTabRow:{display:'flex',gap:6,marginBottom:12,overflowX:'auto',paddingBottom:2},
-    subTab:{flex:'1 0 auto',padding:'8px 11px',borderRadius:10,border:'1px solid var(--border-strong)',background:'var(--bg-card)',color:'var(--text-soft)',fontSize:12,fontWeight:700,cursor:'pointer',whiteSpace:'nowrap'},
-    listPanel:{background:'var(--bg-card)',borderRadius:15,padding:'6px 7px',border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    rowWrap:{marginBottom:4},
-    row:{display:'flex',alignItems:'center',gap:9,padding:'8px 10px',background:'var(--bg-soft)',borderRadius:10,cursor:'pointer'},
-    rowName:{fontSize:13.5,fontWeight:700,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',lineHeight:1.2},
-    rowDay:{fontSize:10.5,color:'var(--text-dim)',fontWeight:500,marginTop:1,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'},
-    rowAmt:{fontSize:14.5,fontWeight:800,whiteSpace:'nowrap',flexShrink:0},
-    rowDetail:{padding:'9px 10px 3px',display:'flex',flexDirection:'column',gap:8},
-    detRem:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'9px 12px',background:'var(--bg-tint)',borderRadius:10},
-    openBox:{background:'var(--bg-card)',borderRadius:12,padding:12,marginBottom:4,border:'1px solid var(--border-strong)',boxShadow:'var(--shadow-sm)'},
-    paidSep:{fontSize:10,fontWeight:800,color:'var(--green)',letterSpacing:0.8,padding:'9px 6px 5px',borderTop:'1px dashed var(--border-strong)',marginTop:4},
-    grpTotalBox:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'13px 16px',marginTop:10,background:'var(--red-soft)',border:'1px solid var(--red)',borderRadius:13},
-    dataBox:{background:'var(--bg-card)',borderRadius:15,padding:16,marginTop:18,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    dataTitle:{fontSize:11.5,fontWeight:800,color:'var(--text-soft)',letterSpacing:0.6,marginBottom:6},
-    dataHint:{fontSize:12,color:'var(--text-dim)',lineHeight:1.45},
-    resetBtn:{width:'100%',marginTop:10,padding:'10px',borderRadius:10,border:'1px solid var(--border-strong)',background:'transparent',color:'var(--red)',fontSize:13,fontWeight:600,cursor:'pointer'},
-    savCard:{background:'var(--bg-card)',borderRadius:15,padding:14,marginBottom:10,border:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'},
-    adjBtn:{width:46,borderRadius:10,border:'none',color:'#fff',fontSize:22,fontWeight:700,cursor:'pointer',lineHeight:1},
- 
-    empty:{textAlign:'center',color:'var(--text-dim)',padding:'40px 20px',fontSize:14,lineHeight:1.5},
- 
-    undoBar:{position:'fixed',left:14,right:14,bottom:'calc(72px + env(safe-area-inset-bottom))',background:'var(--ink)',borderRadius:12,padding:'11px 14px',display:'flex',alignItems:'center',gap:10,boxShadow:'var(--shadow-md)',zIndex:40,maxWidth:492,margin:'0 auto',animation:'slideUp 0.25s ease'},
-    undoBtn:{background:'rgba(255,255,255,0.16)',color:'#fff',border:'none',borderRadius:8,padding:'7px 12px',fontSize:13,fontWeight:700,cursor:'pointer',flexShrink:0},
- 
-    tabBar:{flexShrink:0,display:'flex',background:'var(--bg-card)',borderTop:'1px solid var(--border)',paddingBottom:'env(safe-area-inset-bottom)',boxShadow:'0 -4px 20px rgba(15,22,32,0.10)',zIndex:30},
-    tabItem:{flex:1,padding:'9px 0 6px',border:'none',background:'transparent',cursor:'pointer',display:'flex',flexDirection:'column',alignItems:'center',gap:2,color:'var(--text-dim)'},
-    tabLabel:{fontSize:9.5,fontWeight:500,color:'var(--text-dim)'}
+  // gelir kategorisi eski verilerde yoksa başa ekle
+  if(!d.categories.find(c=>c.id==="gelir")){
+    d.categories.unshift({id:"gelir",name:"Gelirler",emoji:"💰"});
+  }
+  // eski kategori id'lerini yeni yapıya taşı (kira→ev gibi)
+  const validIds = new Set(d.categories.map(c=>c.id));
+  const remap = {kira:"ev"};
+  d.items.forEach(it=>{
+    if(remap[it.cat] && validIds.has(remap[it.cat])) it.cat = remap[it.cat];
+    if(!validIds.has(it.cat)) it.cat = "diger";
+    // borçları kart / kredi olarak ayır (isimden çıkar)
+    if(it.type==="debt" && !it.debtKind){
+      it.debtKind = /kart|card/i.test(it.name||"") ? "card" : "loan";
+    }
+  });
+  // aylık ödeme takibi: {"2026-07":["id1","id2"]}
+  if(!d.paid || typeof d.paid!=="object") d.paid = {};
+  return d;
+}
+function save(){
+  try{
+    localStorage.setItem("giderim_v1", JSON.stringify(state));
+  }catch(e){
+    // localStorage dolduysa (genelde yüklenen logolar yüzünden) uyar ama uygulamayı bozma
+    console.warn("Kayıt hatası:", e);
+    alert("Depolama alanı doldu. Bazı yüklediğin logolar çok büyük olabilir — birini kaldırmayı dene.");
+  }
+}
+
+/* ---------- Yardımcılar ---------- */
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+/* Gömülü marka renkleri — her önemli firma kendi renginde, harf/işaretle bir "rozet"
+   olarak gösterilir. İnternet olmasa da, favicon servisi çalışmasa da HER ZAMAN görünür.
+   Bunlar ticari logoların birebir kopyası değil; markayı temsil eden özgün renkli
+   monogram rozetlerdir. anahtar = domain, yoksa isim ile eşleşir. */
+const BRAND_BADGES = {
+  // Bankalar
+  "garantibbva.com.tr":{bg:"#00a758",fg:"#fff",t:"G"},
+  "isbank.com.tr":{bg:"#004a93",fg:"#fff",t:"İş"},
+  "akbank.com":{bg:"#e2001a",fg:"#fff",t:"A"},
+  "ziraatbank.com.tr":{bg:"#c8102e",fg:"#fff",t:"Z"},
+  "halkbank.com.tr":{bg:"#004b8d",fg:"#fff",t:"H"},
+  "vakifbank.com.tr":{bg:"#f7c400",fg:"#1a2338",t:"VB"},
+  "yapikredi.com.tr":{bg:"#003d7a",fg:"#fff",t:"YK"},
+  "qnb.com.tr":{bg:"#7e2b8e",fg:"#fff",t:"QNB"},
+  "denizbank.com":{bg:"#e30613",fg:"#fff",t:"D"},
+  "teb.com.tr":{bg:"#5b9b3e",fg:"#fff",t:"TEB"},
+  "sekerbank.com.tr":{bg:"#e2001a",fg:"#fff",t:"Ş"},
+  "ing.com.tr":{bg:"#ff6200",fg:"#fff",t:"ING"},
+  "hsbc.com.tr":{bg:"#db0011",fg:"#fff",t:"H"},
+  "kuveytturk.com.tr":{bg:"#00563f",fg:"#fff",t:"KT"},
+  "albaraka.com.tr":{bg:"#00a19a",fg:"#fff",t:"Al"},
+  "turkiyefinans.com.tr":{bg:"#e30613",fg:"#fff",t:"TF"},
+  "ziraatkatilim.com.tr":{bg:"#c8102e",fg:"#fff",t:"ZK"},
+  "vakifkatilim.com.tr":{bg:"#00843d",fg:"#fff",t:"VK"},
+  "emlakkatilim.com.tr":{bg:"#004b8d",fg:"#fff",t:"EK"},
+  "enpara.com":{bg:"#5c2d91",fg:"#fff",t:"en"},
+  "papara.com":{bg:"#1a1a2e",fg:"#c0f000",t:"P"},
+  "cepteteb.com.tr":{bg:"#5b9b3e",fg:"#fff",t:"C"},
+  "fibabanka.com.tr":{bg:"#e5007d",fg:"#fff",t:"F"},
+  "odeabank.com.tr":{bg:"#e2001a",fg:"#fff",t:"O"},
+  "burgan.com.tr":{bg:"#004990",fg:"#fff",t:"B"},
+  "anadolubank.com.tr":{bg:"#003d7a",fg:"#fff",t:"An"},
+  "alternatifbank.com.tr":{bg:"#e2001a",fg:"#fff",t:"AB"},
+  "getirfinans.com":{bg:"#5d3ebc",fg:"#ffd400",t:"GF"},
+  "nkolay.com":{bg:"#ff5500",fg:"#fff",t:"N"},
+  "eminevim.com.tr":{bg:"#005baa",fg:"#fff",t:"E"},
+  "fuzulev.com.tr":{bg:"#e30613",fg:"#fff",t:"Fz"},
+
+  // Bursa & faturalar
+  "buski.gov.tr":{bg:"#0088cc",fg:"#fff",t:"Su"},
+  "uedas.com.tr":{bg:"#f39200",fg:"#fff",t:"⚡"},
+  "bursagaz.com.tr":{bg:"#0072bc",fg:"#fff",t:"🔥"},
+  "bursa.bel.tr":{bg:"#00693e",fg:"#fff",t:"BB"},
+  "nilufer.bel.tr":{bg:"#009640",fg:"#fff",t:"N"},
+  "osmangazi.bel.tr":{bg:"#c8102e",fg:"#fff",t:"O"},
+  "yildirim.bel.tr":{bg:"#8b1a1a",fg:"#fff",t:"Y"},
+  "iski.istanbul":{bg:"#0088cc",fg:"#fff",t:"Su"},
+  "igdas.istanbul":{bg:"#0072bc",fg:"#fff",t:"🔥"},
+  "enerjisa.com.tr":{bg:"#f7a800",fg:"#1a2338",t:"⚡"},
+  "gib.gov.tr":{bg:"#8b1a1a",fg:"#fff",t:"₺"},
+  "sgk.gov.tr":{bg:"#00693e",fg:"#fff",t:"SGK"},
+
+  // Telekom
+  "turkcell.com.tr":{bg:"#ffc900",fg:"#1a2338",t:"T"},
+  "vodafone.com.tr":{bg:"#e60000",fg:"#fff",t:"V"},
+  "turktelekom.com.tr":{bg:"#00539f",fg:"#fff",t:"TT"},
+  "superonline.net":{bg:"#ffc900",fg:"#1a2338",t:"S"},
+  "turknet.com.tr":{bg:"#ff6a00",fg:"#fff",t:"TN"},
+  "millenicom.com.tr":{bg:"#e2001a",fg:"#fff",t:"M"},
+
+  // Abonelik / streaming / sosyal
+  "netflix.com":{bg:"#141414",fg:"#e50914",t:"N"},
+  "spotify.com":{bg:"#191414",fg:"#1db954",t:"♪"},
+  "youtube.com":{bg:"#fff",fg:"#ff0000",t:"▶"},
+  "disneyplus.com":{bg:"#0c1b52",fg:"#fff",t:"D+"},
+  "primevideo.com":{bg:"#0f171e",fg:"#00a8e1",t:"P"},
+  "blutv.com":{bg:"#1a1a2e",fg:"#00b7ff",t:"blu"},
+  "exxen.com":{bg:"#000",fg:"#ff5a00",t:"EX"},
+  "tabii.com":{bg:"#e30613",fg:"#fff",t:"t"},
+  "apple.com":{bg:"#1a1a1a",fg:"#fff",t:""},
+  "icloud.com":{bg:"#3693f3",fg:"#fff",t:"☁"},
+  "openai.com":{bg:"#10a37f",fg:"#fff",t:"AI"},
+  "claude.ai":{bg:"#d97757",fg:"#fff",t:"C"},
+  "google.com":{bg:"#fff",fg:"#4285f4",t:"G"},
+  "microsoft.com":{bg:"#fff",fg:"#00a4ef",t:"M"},
+  "whatsapp.com":{bg:"#25d366",fg:"#fff",t:"W"},
+  "instagram.com":{bg:"#e1306c",fg:"#fff",t:"IG"},
+  "x.com":{bg:"#000",fg:"#fff",t:"X"},
+  "facebook.com":{bg:"#1877f2",fg:"#fff",t:"f"},
+  "tiktok.com":{bg:"#000",fg:"#25f4ee",t:"♪"},
+  "linkedin.com":{bg:"#0a66c2",fg:"#fff",t:"in"},
+  "telegram.org":{bg:"#2aabee",fg:"#fff",t:"✈"},
+  "getir.com":{bg:"#5d3ebc",fg:"#ffd400",t:"G"},
+  "yemeksepeti.com":{bg:"#fa0050",fg:"#fff",t:"Y"},
+
+  // Market
+  "migros.com.tr":{bg:"#e2001a",fg:"#fff",t:"M"},
+  "a101.com.tr":{bg:"#003da5",fg:"#fff",t:"A"},
+  "sokmarket.com.tr":{bg:"#e2001a",fg:"#ffe600",t:"ŞOK"},
+  "bim.com.tr":{bg:"#e2001a",fg:"#fff",t:"BİM"},
+  "carrefoursa.com":{bg:"#004e9e",fg:"#e2001a",t:"C"},
+  "hepsiburada.com":{bg:"#ff6000",fg:"#fff",t:"hb"},
+  "trendyol.com":{bg:"#f27a1a",fg:"#fff",t:"ty"},
+
+  // Sigorta & emeklilik
+  "allianz.com.tr":{bg:"#003781",fg:"#fff",t:"A"},
+  "anadolusigorta.com.tr":{bg:"#e2001a",fg:"#fff",t:"AS"},
+  "axasigorta.com.tr":{bg:"#00008f",fg:"#fff",t:"AXA"},
+  "acibademsigorta.com.tr":{bg:"#009639",fg:"#fff",t:"A"},
+  "mapfre.com.tr":{bg:"#e2001a",fg:"#fff",t:"M"},
+  "turkiyesigorta.com.tr":{bg:"#e30613",fg:"#fff",t:"TS"},
+  "garantiemeklilik.com.tr":{bg:"#00a758",fg:"#fff",t:"GE"},
+  "aveonemeklilik.com.tr":{bg:"#5c2d91",fg:"#fff",t:"AE"},
+
+  // Faturalar (ek)
+  "aski.gov.tr":{bg:"#0088cc",fg:"#fff",t:"Su"},
+  "botas.gov.tr":{bg:"#003d7a",fg:"#fff",t:"🔥"},
+  "ckenerji.com.tr":{bg:"#e30613",fg:"#fff",t:"CK"},
+  "aydem.com.tr":{bg:"#00a19a",fg:"#fff",t:"Ay"},
+  "baskentedas.com.tr":{bg:"#004b8d",fg:"#fff",t:"⚡"},
+
+  // İnternet (ek)
+  "netspeed.com.tr":{bg:"#ff6a00",fg:"#fff",t:"NS"},
+  "dsmart.com.tr":{bg:"#00b7ff",fg:"#fff",t:"D"},
+  "kablonet.com.tr":{bg:"#e2001a",fg:"#fff",t:"KN"},
+
+  // Bankalar (ek)
+  "icbc.com.tr":{bg:"#c8102e",fg:"#fff",t:"IC"},
+
+  // Abonelik / sosyal (ek)
+  "gain.tv":{bg:"#000",fg:"#00e0b0",t:"G"},
+  "todtv.com.tr":{bg:"#5c2d91",fg:"#fff",t:"TOD"},
+  "fizy.com":{bg:"#ffc900",fg:"#1a2338",t:"♪"},
+  "storytel.com":{bg:"#e6224a",fg:"#fff",t:"S"},
+  "audible.com":{bg:"#f8991c",fg:"#1a2338",t:"a"},
+  "snapchat.com":{bg:"#fffc00",fg:"#1a2338",t:"👻"},
+  "discord.com":{bg:"#5865f2",fg:"#fff",t:"D"},
+  "adobe.com":{bg:"#ed2224",fg:"#fff",t:"A"},
+  "canva.com":{bg:"#00c4cc",fg:"#fff",t:"C"},
+  "github.com":{bg:"#1a1a2e",fg:"#fff",t:"GH"},
+  "notion.so":{bg:"#000",fg:"#fff",t:"N"},
+  "dropbox.com":{bg:"#0061ff",fg:"#fff",t:"D"},
+  "perplexity.ai":{bg:"#1a2b2e",fg:"#20b8cd",t:"P"},
+
+  // Ulaşım & yakıt
+  "bursakart.com.tr":{bg:"#00693e",fg:"#fff",t:"BK"},
+  "turkiye.gov.tr":{bg:"#c8102e",fg:"#fff",t:"e"},
+  "shell.com.tr":{bg:"#ffd500",fg:"#e2001a",t:"S"},
+  "bp.com":{bg:"#009b3a",fg:"#ffd400",t:"bp"},
+  "opet.com.tr":{bg:"#e2001a",fg:"#fff",t:"O"},
+  "petrolofisi.com.tr":{bg:"#004a93",fg:"#f7a800",t:"PO"},
+  "totalenergies.com.tr":{bg:"#e2001a",fg:"#004a93",t:"T"},
+  "bitaksi.com":{bg:"#ffd400",fg:"#1a2338",t:"Bi"},
+  "marti.tech":{bg:"#5d3ebc",fg:"#00e0b0",t:"M"},
+  "uber.com":{bg:"#000",fg:"#fff",t:"U"},
+
+  // Sağlık / gym
+  "macfit.com":{bg:"#e2001a",fg:"#fff",t:"MF"},
+};
+// isim bazlı ek eşleşmeler (domain yoksa) — her zaman rozet garantisi
+const BRAND_BADGES_BYNAME = {
+  "sgk / bağkur":{bg:"#00693e",fg:"#fff",t:"SGK"},
+  "sgk ödemesi":{bg:"#00693e",fg:"#fff",t:"SGK"},
+  "bağkur":{bg:"#00693e",fg:"#fff",t:"BK"},
+  "bireysel emeklilik (bes)":{bg:"#5c2d91",fg:"#fff",t:"BES"},
+  "site / apartman aidatı":{bg:"#6d84e0",fg:"#fff",t:"🏢"},
+  "aidat ödemesi":{bg:"#6d84e0",fg:"#fff",t:"🏢"},
+  "apartman aidatı":{bg:"#6d84e0",fg:"#fff",t:"🏢"},
+  "market alışverişi":{bg:"#4fae7e",fg:"#fff",t:"🛒"},
+  "ev kirası":{bg:"#c9a86a",fg:"#1a2338",t:"🏠"},
+  "ofis kirası":{bg:"#c9a86a",fg:"#1a2338",t:"🏢"},
+  "altın / birikim":{bg:"#e7c99a",fg:"#7a5a20",t:"🪙"},
+  "özel sağlık sigortası":{bg:"#009639",fg:"#fff",t:"🩺"},
+  "sağlık sigortası":{bg:"#009639",fg:"#fff",t:"🩺"},
+  "sgk / ssk primi":{bg:"#00693e",fg:"#fff",t:"SGK"},
+  "ev aidatı":{bg:"#6d84e0",fg:"#fff",t:"🏢"},
+  "ev giderleri":{bg:"#c9a86a",fg:"#1a2338",t:"🏠"},
+  "özüm kredi kartı":{bg:"#5c2d91",fg:"#fff",t:"💳"},
+  "sağlık spor / gym":{bg:"#e2001a",fg:"#fff",t:"🏋️"},
+  "kredi kartı (genel)":{bg:"#5c2d91",fg:"#fff",t:"💳"},
+  "diğer gider":{bg:"#657193",fg:"#fff",t:"📦"},
+  "maaş":{bg:"#0ea862",fg:"#fff",t:"💰"},
+  "eşimin maaşı":{bg:"#0ea862",fg:"#fff",t:"💰"},
+  "kira geliri":{bg:"#c9a25a",fg:"#fff",t:"🏠"},
+  "ek gelir":{bg:"#0c9457",fg:"#fff",t:"💵"},
+  "serbest iş / freelance":{bg:"#3d7bef",fg:"#fff",t:"💻"},
+  "prim / ikramiye":{bg:"#d99a1f",fg:"#fff",t:"🎁"},
+  "yatırım geliri":{bg:"#2fb989",fg:"#fff",t:"📈"},
+};
+function brandBadge(domain, name){
+  if(domain && BRAND_BADGES[domain]) return BRAND_BADGES[domain];
+  const key = (name||"").toLowerCase().trim();
+  if(BRAND_BADGES_BYNAME[key]) return BRAND_BADGES_BYNAME[key];
+  return null;
+}
+
+// Logo kaynakları — sırayla denenir, hiçbiri yüklenmezse renkli rozet gösterilir
+function logoSources(domain){
+  if(!domain) return [];
+  return [
+    `https://logo.clearbit.com/${domain}`,
+    `https://www.google.com/s2/favicons?sz=128&domain=${domain}`,
+    `https://${domain}/favicon.ico`,
+    `https://www.${domain}/favicon.ico`,
+    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    `https://unavatar.io/${domain}?fallback=false`,
+    `https://icon.horse/icon/${domain}`,
+  ];
+}
+function logoUrl(domain){
+  const s = logoSources(domain);
+  return s.length ? s[0] : null;
+}
+// isimden her zaman aynı renk üretir (logo yüklenmezse şık renkli rozet)
+const BADGE_COLORS = [
+  ["#8fb0ff","#6d84e0"],["#e7c99a","#c9a86a"],["#7dd3a8","#4fae7e"],
+  ["#f0a6b8","#d97a92"],["#a99bff","#8271e0"],["#7cc4e0","#4f9ec0"],
+  ["#f5c078","#d99b48"],["#9fd08a","#72ac5c"],["#c79bff","#9f70e0"],["#88c5c9","#579ba0"]
+];
+function badgeColor(name){
+  let h=0; const s=(name||"?");
+  for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0;
+  return BADGE_COLORS[h % BADGE_COLORS.length];
+}
+function fmt(n, cur){
+  const c = cur || state.currency;
+  const v = Number(n)||0;
+  return CUR_SYMBOL[c] + v.toLocaleString("tr-TR",{minimumFractionDigits: v%1===0?0:2, maximumFractionDigits:2});
+}
+function catById(id){return CATS().find(c=>c.id===id)||CATS()[CATS().length-1];}
+function monthlyEquiv(it){
+  if(it.type==="debt") return Number(it.installment)||0;
+  const a = Number(it.amount)||0;
+  if(it.cycle==="daily") return a*30;
+  if(it.cycle==="yearly") return a/12;
+  if(it.cycle==="once") return 0;
+  return a;
+}
+// ---- Aylık ödeme takibi (her ay otomatik sıfırlanır) ----
+function monthKey(){
+  const t=new Date();
+  return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");
+}
+function isPaid(id){
+  const arr = state.paid && state.paid[monthKey()];
+  return Array.isArray(arr) && arr.includes(id);
+}
+function togglePaid(id){
+  if(!state.paid) state.paid={};
+  const k = monthKey();
+  if(!Array.isArray(state.paid[k])) state.paid[k]=[];
+  const i = state.paid[k].indexOf(id);
+  if(i>=0) state.paid[k].splice(i,1); else state.paid[k].push(id);
+  // eski ayların kayıtlarını temizle (son 2 ay kalsın)
+  Object.keys(state.paid).forEach(key=>{ if(key<addMonths(-2)) delete state.paid[key]; });
+  save(); render();
+}
+window.togglePaid = togglePaid;
+// arama: yeniden çizmeden kartları filtreler (odak kaybolmaz)
+function filterCards(q){
+  q = (q||"").toLowerCase().trim();
+  document.querySelectorAll(".cards .card").forEach(c=>{
+    c.style.display = !q || (c.dataset.name||"").includes(q) ? "" : "none";
+  });
+}
+window.filterCards = filterCards;
+function addMonths(n){
+  const t=new Date(); t.setMonth(t.getMonth()+n);
+  return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0");
+}
+// ödeme günü (1-31): gider -> due, borç -> end
+function payDay(it){
+  const d = it.type==="debt" ? it.end : it.due;
+  if(!d) return 99;
+  const day = new Date(d).getDate();
+  return isNaN(day) ? 99 : day;
+}
+// karttaki gösterilecek aylık tutar
+function displayAmount(it){
+  return it.type==="debt" ? (Number(it.installment)||0) : (Number(it.amount)||0);
+}
+function initial(name){return (name||"?").trim().charAt(0).toUpperCase();}
+function fallbackBadgeStyle(name){
+  const [c1,c2] = badgeColor(name);
+  return `background:linear-gradient(135deg,${c1},${c2})`;
+}
+// Gömülü marka rozeti HTML'i (internetsiz de çalışır)
+function badgeSpan(badge, cls){
+  return `<span class="${cls||'fallback'} brand-badge" style="background:${badge.bg};color:${badge.fg}">${badge.t}</span>`;
+}
+// Logo: kullanıcının yüklediği görsel EN ÖNCELİKLİ.
+// Yoksa: renkli rozet ANINDA altta gösterilir + gerçek logo internetten üstüne yüklenmeye çalışılır.
+// Logo gelirse gerçek logo görünür; gelmezse rozet olduğu gibi kalır. Böylece hiç boş kalmaz.
+function logoHTML(it){
+  if(it.logo){
+    return `<img class="logo-img user-logo" src="${it.logo}" alt="">`;
+  }
+  const badge = brandBadge(it.domain, it.name);
+  const baseStyle = badge ? `background:${badge.bg};color:${badge.fg}` : fallbackBadgeStyle(it.name);
+  const baseTxt = badge ? badge.t : initial(it.name);
+  const baseCls = badge ? "fallback brand-badge" : "fallback";
+  const base = `<span class="${baseCls}" style="${baseStyle}">${baseTxt}</span>`;
+  const srcs = logoSources(it.domain);
+  if(!srcs.length) return base;
+  // rozet altta, gerçek logo üstte (yüklenince görünür, yüklenmezse gizli kalır)
+  return `<span class="logo-stack">${base}<img class="logo-real" src="${srcs[0]}" alt="" loading="lazy"
+    data-srcs="${srcs.join('|').replace(/"/g,'&quot;')}" data-idx="0"
+    onload="this.classList.add('loaded')" onerror="realLogoFail(this)"></span>`;
+}
+// gerçek logo yüklenemezse sıradaki kaynağı dene, hepsi biterse gizli kalır (altta rozet var)
+function realLogoFail(img){
+  const srcs = (img.getAttribute("data-srcs")||"").split("|").filter(Boolean);
+  let idx = parseInt(img.getAttribute("data-idx")||"0")+1;
+  if(idx < srcs.length){
+    img.setAttribute("data-idx", idx);
+    img.src = srcs[idx];
+  } else {
+    img.style.display = "none"; // altta rozet zaten var
+  }
+}
+window.realLogoFail = realLogoFail;
+function nextSource(img){
+  const srcs = (img.getAttribute("data-srcs")||"").split("|").filter(Boolean);
+  let idx = parseInt(img.getAttribute("data-idx")||"0")+1;
+  if(idx < srcs.length){
+    img.setAttribute("data-idx", idx);
+    img.src = srcs[idx];
+    return true;
+  }
+  return false;
+}
+// Global logo hata yakalayıcı — sıradaki kaynağı dene, olmazsa renkli rozet
+function logoFail(img){
+  if(nextSource(img)) return;
+  const span = document.createElement("span");
+  span.className = img.classList.contains("mini-logo") ? "mini-logo mini-fb" : "fallback";
+  span.setAttribute("style", img.getAttribute("data-style")||"");
+  span.textContent = img.getAttribute("data-ini")||"?";
+  if(img.parentNode) img.parentNode.replaceChild(span, img);
+}
+window.logoFail = logoFail;
+// Mini logo (kenar çubuğu) hata yakalayıcı
+function miniFail(img){ logoFail(img); }
+window.miniFail = miniFail;
+function daysBetween(dateStr){
+  if(!dateStr) return null;
+  const d = new Date(dateStr); const now = new Date();
+  return Math.ceil((d - now)/(1000*60*60*24));
+}
+function fmtDate(s){
+  if(!s) return "—";
+  return new Date(s).toLocaleDateString("tr-TR",{day:"numeric",month:"short",year:"numeric"});
+}
+
+/* ---------- Sidebar navigation ---------- */
+function renderCatNav(){
+  const el = document.getElementById("catNav");
+  el.innerHTML = "";
+  CATS().forEach(cat=>{
+    const items = state.items.filter(i=>i.cat===cat.id && i.type!=="debt");
+    const debtItems = state.items.filter(i=>i.cat===cat.id && i.type==="debt");
+    const count = items.length + debtItems.length;
+    // bu sekmenin aylık toplam gideri
+    const catMonthly = items.concat(debtItems).filter(i=>i.type!=="income").reduce((s,i)=>s+monthlyEquiv(i),0);
+    const catIncome = items.filter(i=>i.type==="income").reduce((s,i)=>s+monthlyEquiv(i),0);
+    const g = document.createElement("div");
+    g.className = "cat-group";
+    g.innerHTML = `
+      <div class="cat-head" onclick="toggleCat(this)">
+        <svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+        <span class="cat-emoji">${cat.emoji}</span>
+        <span class="cat-name-txt">${cat.name}</span>
+        <span class="cat-total">${catIncome>0?`+${fmt(catIncome)}`:(catMonthly>0?fmt(catMonthly):"")}</span>
+        <button class="cat-edit" onclick="event.stopPropagation();openCatEdit('${cat.id}')" title="Sekmeyi düzenle">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>
+        </button>
+      </div>
+      <div class="cat-items"><div class="cat-items-inner">
+        ${(items.concat(debtItems)).map(i=>{
+          const badge=brandBadge(i.domain,i.name);
+          const style=fallbackBadgeStyle(i.name);
+          const ini=initial(i.name);
+          const srcs=logoSources(i.domain);
+          let mini;
+          if(i.logo){
+            mini=`<img class="mini-logo user-logo" src="${i.logo}">`;
+          } else {
+            const baseStyle = badge ? `background:${badge.bg};color:${badge.fg}` : style;
+            const baseTxt = badge ? badge.t : ini;
+            const base = `<span class="mini-logo mini-fb ${badge?'brand-badge':''}" style="${baseStyle}">${baseTxt}</span>`;
+            if(srcs.length){
+              mini=`<span class="mini-logo logo-stack">${base}<img class="logo-real" src="${srcs[0]}" loading="lazy" data-srcs="${srcs.join('|')}" data-idx="0" onload="this.classList.add('loaded')" onerror="realLogoFail(this)"></span>`;
+            } else {
+              mini=base;
+            }
+          }
+          return `
+          <div class="cat-sub" onclick="editEntry('${i.id}')">
+            ${mini}
+            <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${i.name}</span>
+            <span class="cat-sub-amt ${i.type==='income'?'inc':''}">${i.type==="debt"?fmt(i.installment||0,i.cur):(i.type==="income"?"+":"")+fmt(monthlyEquiv(i),i.cur)}</span>
+          </div>`;
+        }).join("") || `<div class="cat-sub" style="opacity:.5;cursor:default">Henüz gider yok</div>`}
+      </div></div>`;
+    if(count>0) g.classList.add("open");
+    el.appendChild(g);
+  });
+  // sekme ekle butonu
+  const addBtn = document.createElement("div");
+  addBtn.className = "cat-add-btn";
+  addBtn.onclick = ()=>openCatEdit(null);
+  addBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Yeni sekme ekle`;
+  el.appendChild(addBtn);
+}
+function toggleCat(headEl){
+  headEl.parentElement.classList.toggle("open");
+}
+
+function setView(view, el){
+  currentView = view;
+  document.querySelectorAll(".nav-item[data-view]").forEach(n=>n.classList.remove("active"));
+  if(el) el.classList.add("active");
+  render();
+  if(window.innerWidth<=820) closeSidebar();
+}
+
+function updateMenuIcon(){
+  const sb = document.getElementById("sidebar");
+  const icon = document.getElementById("menuIcon");
+  if(!icon) return;
+  const open = !sb.classList.contains("collapsed");
+  // açıkken sola bakan ok (kapat), kapalıyken sağa bakan ok (aç)
+  icon.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
+}
+function toggleSidebar(){
+  const sb = document.getElementById("sidebar");
+  sb.classList.toggle("collapsed");
+  const closed = sb.classList.contains("collapsed");
+  document.getElementById("scrim").classList.toggle("show", !closed && window.innerWidth<=820);
+  updateMenuIcon();
+}
+function closeSidebar(){
+  document.getElementById("sidebar").classList.add("collapsed");
+  document.getElementById("scrim").classList.remove("show");
+  updateMenuIcon();
+}
+function openSidebar(){
+  document.getElementById("sidebar").classList.remove("collapsed");
+  if(window.innerWidth<=820) document.getElementById("scrim").classList.add("show");
+  updateMenuIcon();
+}
+window.openSidebar = openSidebar;
+
+/* ---------- Render main ---------- */
+function render(){
+  try{
+    renderCatNav();
+  }catch(e){ console.warn("Menü çizilemedi:", e); }
+  const content = document.getElementById("content");
+  const title = document.getElementById("viewTitle");
+
+  const expenses = state.items.filter(i=>i.type!=="debt");
+  const debts = state.items.filter(i=>i.type==="debt");
+  document.getElementById("navDebtCount").textContent = debts.length;
+
+  try{
+    if(currentView==="debts"){
+      title.textContent = "Kişisel Borçlar";
+      content.innerHTML = renderDebts(debts);
+    } else if(currentView==="calendar"){
+      title.textContent = "Takvim";
+      content.innerHTML = renderCalendar(state.items);
+    } else {
+      title.innerHTML = `Bu Ay <span class="vt-count">${state.items.length}</span>`;
+      content.innerHTML = renderOverview(state.items);
+    }
+  }catch(e){
+    console.warn("İçerik çizilemedi:", e);
+    content.innerHTML = `<div class="empty"><div class="e-emoji">⚠️</div><h3>Bir sorun oluştu</h3><p>Kayıtlar yeniden yükleniyor...</p></div>`;
+  }
+  try{ renderTotals(); }catch(e){ console.warn("Toplamlar hesaplanamadı:", e); }
+}
+
+function renderOverview(items){
+  const incomes = items.filter(i=>i.type==="income");
+  const outgo = items.filter(i=>i.type!=="income"); // gider + borç ödemeleri
+  const incomeTotal = incomes.reduce((s,i)=>s+monthlyEquiv(i),0);
+  const monthlyTotal = outgo.reduce((s,i)=>s+monthlyEquiv(i),0);
+  const balance = incomeTotal - monthlyTotal;
+  const savRate = incomeTotal>0 ? Math.round((balance/incomeTotal)*100) : null;
+  const paidTotal = outgo.filter(i=>isPaid(i.id)).reduce((s,i)=>s+monthlyEquiv(i),0);
+  const paidCount = outgo.filter(i=>isPaid(i.id)).length;
+  const pct = monthlyTotal>0 ? Math.min(100,(paidTotal/monthlyTotal)*100) : 0;
+  const monthName = new Date().toLocaleDateString("tr-TR",{month:"long",year:"numeric"});
+
+  let html = `
+    <div class="hero">
+      <div class="hero-month">${monthName.charAt(0).toUpperCase()+monthName.slice(1)}</div>
+      <div class="hero-row">
+        <div class="hero-cell">
+          <div class="hc-label">Gelir</div>
+          <div class="hc-val green">${fmt(incomeTotal)}</div>
+          <div class="hc-sub">${incomes.length} gelir kalemi</div>
+        </div>
+        <div class="hero-cell">
+          <div class="hc-label">Gider</div>
+          <div class="hc-val red">${fmt(monthlyTotal)}</div>
+          <div class="hc-sub">${outgo.length} ödeme kalemi</div>
+        </div>
+        <div class="hero-cell">
+          <div class="hc-label">Kalan bakiye</div>
+          <div class="hc-val ${balance>=0?'green':'red'}">${fmt(balance)}</div>
+          <div class="hc-sub">${savRate!==null?`tasarruf oranı %${savRate}`:"gelir ekleyince hesaplanır"}</div>
+        </div>
+      </div>
+      <div class="hero-progress"><i style="width:${pct}%"></i></div>
+      <div class="hero-progress-label">Ödenen ${fmt(paidTotal)} · Kalan ${fmt(Math.max(0,monthlyTotal-paidTotal))} · %${Math.round(pct)} tamamlandı (${paidCount}/${outgo.length})</div>
+    </div>
+    <div class="search-row">
+      <input id="searchBox" placeholder="🔍 Ödeme ara: isim yaz..." oninput="filterCards(this.value)">
+    </div>`;
+
+  if(items.length===0){
+    return html + `<div class="empty"><div class="e-emoji">📊</div><h3>Henüz gider yok</h3>
+      <p>Sağ üstteki <b>Ekle</b> ile giderlerini ekle. Her kartın logosuna dokunarak firmanın gerçek logosunu telefonundan yükleyebilirsin.</p></div>`;
+  }
+
+  // ayın 1'inden 31'ine sıralı ödeme akışı; ödenenler yerinde kalır, üstü çizilir
+  html += `<div class="cards">`;
+  items.slice().sort((a,b)=>payDay(a)-payDay(b)).forEach(it=>{
+    try{ html += cardHTML(it); }
+    catch(e){ console.warn("Kart çizilemedi:", it && it.name, e); }
+  });
+  html += `</div>`;
+  return html;
+}
+
+function cardHTML(it){
+  const isDebt = it.type==="debt";
+  const isInc = it.type==="income";
+  const dateField = isDebt ? it.end : it.due;
+  const days = daysBetween(dateField);
+  const cat = catById(it.cat);
+  const amt = displayAmount(it);
+  const isFree = amt===0;
+  const paid = isPaid(it.id);
+  const day = payDay(it);
+  const cycleLabel = isDebt
+    ? (it.debtKind==="card"?"KART":"KREDİ")
+    : isInc ? "GELİR"
+    : (it.cycle==="daily"?"GÜNLÜK":it.cycle==="yearly"?"YILLIK":it.cycle==="once"?"TEK SEFER":"AYLIK");
+  let dueText = "—";
+  if(dateField){
+    if(paid) dueText = `<b style="color:var(--green)">${isInc?"Bu ay alındı":"Bu ay ödendi"}</b>`;
+    else if(days<0) dueText = `<b style="color:var(--red)">Geçti</b> · ${fmtDate(dateField)}`;
+    else if(days===0) dueText = `<b style="color:var(--amber)">Bugün</b>`;
+    else dueText = `<b>${days} gün</b> · ${fmtDate(dateField)}`;
+  }
+  return `
+    <div class="card ${paid?'paid':''} ${isInc?'income':''}" data-name="${(it.name||'').toLowerCase()}" onclick="editEntry('${it.id}')">
+      <div class="card-top">
+        <div class="card-logo tap-logo" onclick="event.stopPropagation();quickLogoUpload('${it.id}')" title="Logoya dokun, gerçek logoyu yükle">${logoHTML(it)}</div>
+        <div style="flex:1;min-width:0">
+          <div class="card-name">${it.name}</div>
+          <div class="card-meta">${cat.emoji} ${cat.name}</div>
+          <span class="cycle-tag ${it.cycle==='yearly'?'yil':''} ${isDebt?(it.debtKind==='card'?'kart':'kredi'):''} ${isInc?'gelir':''}">${cycleLabel}</span>
+          ${day<99?`<span class="day-chip">Ayın ${day}'i</span>`:''}
+        </div>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <button class="pay-check ${paid?'on':''}" onclick="togglePaid('${it.id}')" title="${paid?'Ödemeyi geri al':'Ödendi işaretle'}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="icon-mini del" onclick="quickDelete('${it.id}')" title="Sil">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="card-price ${isFree?'free':''} ${isInc?'inc':''}">${isFree?'Ücretsiz':(isInc?'+':'')+fmt(amt, it.cur)}</div>
+      <div class="card-bottom">
+        <span class="card-due">${dueText}</span>
+        ${it.pay?`<span class="pay-chip">💳 ${it.pay}</span>`:''}
+      </div>
+    </div>`;
+}
+
+/* ---------- Takvim (1-31) ---------- */
+let selectedCalDay = null;
+function calSelectDay(d){
+  selectedCalDay = (selectedCalDay===d) ? null : d;
+  render();
+}
+window.calSelectDay = calSelectDay;
+
+function itemStatus(it){
+  if(isPaid(it.id)) return "paid";
+  const d = payDay(it);
+  if(d<99 && d < new Date().getDate()) return "late";
+  return "wait";
+}
+
+function renderCalendar(items){
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+  const firstDow = (new Date(y, m, 1).getDay()+6)%7; // Pazartesi=0
+  const today = now.getDate();
+  const monthName = now.toLocaleDateString("tr-TR",{month:"long",year:"numeric"});
+
+  // gün -> kalemler
+  const byDay = {};
+  items.forEach(it=>{
+    const d = payDay(it);
+    if(d<99 && d<=daysInMonth){ (byDay[d]=byDay[d]||[]).push(it); }
+  });
+
+  let html = `<div class="cal-card">
+    <div class="cal-title">${monthName.charAt(0).toUpperCase()+monthName.slice(1)}</div>
+    <div class="cal-grid">
+      ${["Pt","Sa","Ça","Pe","Cu","Ct","Pz"].map(d=>`<div class="cal-dow">${d}</div>`).join("")}
+      ${Array(firstDow).fill('<div class="cal-day empty"></div>').join("")}`;
+
+  for(let d=1; d<=daysInMonth; d++){
+    const arr = byDay[d]||[];
+    const dots = arr.slice(0,3).map(it=>`<i class="cal-dot ${itemStatus(it)} ${it.type==='income'?'inc':''}"></i>`).join("");
+    const more = arr.length>3 ? `<i class="cal-more">+${arr.length-3}</i>` : "";
+    html += `<div class="cal-day ${d===today?'today':''} ${selectedCalDay===d?'sel':''} ${arr.length?'has':''}"
+      onclick="${arr.length?`calSelectDay(${d})`:''}">
+      <span class="cal-num">${d}</span>
+      <span class="cal-dots">${dots}${more}</span>
+    </div>`;
+  }
+  html += `</div>
+    <div class="cal-legend">
+      <span><i class="cal-dot paid"></i> Ödendi</span>
+      <span><i class="cal-dot wait"></i> Bekliyor</span>
+      <span><i class="cal-dot late"></i> Gecikti</span>
+      <span><i class="cal-dot inc wait"></i> Gelir</span>
+    </div>
+  </div>`;
+
+  // seçili günün kalemleri
+  if(selectedCalDay && byDay[selectedCalDay]){
+    html += `<div class="cal-day-title">Ayın ${selectedCalDay}'i — ${byDay[selectedCalDay].length} kalem</div><div class="cards">`;
+    byDay[selectedCalDay].forEach(it=>{ try{ html += cardHTML(it); }catch(e){} });
+    html += `</div>`;
+  } else {
+    html += `<div class="cal-hint">Bir güne dokun, o günün ödemelerini gör.</div>`;
+  }
+  return html;
+}
+
+function renderDebts(debts){
+  const cards = debts.filter(d=>d.debtKind==="card");
+  const loans = debts.filter(d=>d.debtKind!=="card");
+  const cardMonthly = cards.reduce((s,i)=>s+(Number(i.installment)||0),0);
+  const loanMonthly = loans.reduce((s,i)=>s+(Number(i.installment)||0),0);
+  const totalMonthly = cardMonthly + loanMonthly;
+  const totalRemaining = debts.reduce((s,i)=>s+(Number(i.remaining)||0),0);
+  let html = `
+    <div class="hero">
+      <div class="hero-row">
+        <div class="hero-cell">
+          <div class="hc-label">Kredi kartı borcu · aylık</div>
+          <div class="hc-val red">${fmt(cardMonthly)}</div>
+          <div class="hc-sub">${cards.length} kart</div>
+        </div>
+        <div class="hero-cell">
+          <div class="hc-label">Kredi taksitleri · aylık</div>
+          <div class="hc-val">${fmt(loanMonthly)}</div>
+          <div class="hc-sub">${loans.length} kredi</div>
+        </div>
+        <div class="hero-cell">
+          <div class="hc-label">Aylık toplam borç ödemesi</div>
+          <div class="hc-val">${fmt(totalMonthly)}</div>
+          <div class="hc-sub">kart + kredi</div>
+        </div>
+        <div class="hero-cell">
+          <div class="hc-label">Toplam kalan borç</div>
+          <div class="hc-val red">${fmt(totalRemaining)}</div>
+          <div class="hc-sub">tüm bakiyeler</div>
+        </div>
+      </div>
+    </div>`;
+
+  if(debts.length===0){
+    return html + `<div class="empty"><div class="e-emoji">💳</div><h3>Borç kaydın yok</h3>
+      <p><b>Ekle → Borç</b> ile banka kredisi, kredi kartı veya kişisel borçlarını takip edebilirsin.</p></div>`;
+  }
+
+  const section = (label, arr)=>{
+    if(!arr.length) return "";
+    let s = `<div class="debt-section-label">${label}</div><div class="debt-list">`;
+    arr.slice().sort((a,b)=>payDay(a)-payDay(b)).forEach(it=>{
+      const total = Number(it.totalInst)||0;
+      const paidInst = Number(it.paidInst)||0;
+      const pct = total>0 ? Math.min(100,(paidInst/total)*100) : 0;
+      const paidNow = isPaid(it.id);
+      const day = payDay(it);
+      s += `
+      <div class="debt-item ${paidNow?'paid':''}" onclick="editEntry('${it.id}')">
+        <div class="debt-logo tap-logo" onclick="event.stopPropagation();quickLogoUpload('${it.id}')" title="Logoya dokun, gerçek logoyu yükle">${logoHTML(it)}</div>
+        <div class="debt-info">
+          <div class="debt-name">${it.name}</div>
+          <div class="debt-sub">
+            ${it.installment?`${fmt(it.installment,it.cur)}/ay`:''}
+            ${day<99?` · Ayın ${day}'i`:''}
+            ${total>0?` · ${paidInst}/${total} taksit`:''}
+            ${(Number(it.remaining)||0)>0?` · Kalan ${fmt(it.remaining,it.cur)}`:''}
+          </div>
+          ${total>0?`<div class="debt-prog"><i style="width:${pct}%"></i></div>`:''}
+        </div>
+        <div class="card-actions" onclick="event.stopPropagation()" style="margin-left:6px">
+          <button class="pay-check ${paidNow?'on':''}" onclick="togglePaid('${it.id}')" title="${paidNow?'Ödemeyi geri al':'Bu ay ödendi'}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="icon-mini del" onclick="quickDelete('${it.id}')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+      </div>`;
+    });
+    return s + `</div>`;
   };
- 
-  ReactDOM.createRoot(document.getElementById('root')).render(e(App));
-  </script>
+  html += section("💳 Kredi Kartları", cards);
+  html += section("🏦 Krediler", loans);
+  return html;
+}
+
+function countUpcoming(items){
+  return items.filter(i=>{const d=daysBetween(i.due);return d!==null && d>=0 && d<=7;}).length;
+}
+
+/* ---------- Totals bar ---------- */
+function renderTotals(){
+  const expenses = state.items.filter(i=>i.type!=="debt" && i.type!=="income");
+  const debts = state.items.filter(i=>i.type==="debt");
+  const cards = debts.filter(d=>d.debtKind==="card");
+  const cardMonthly = cards.reduce((s,i)=>s+(Number(i.installment)||0),0);
+  const debtMonthly = debts.reduce((s,i)=>s+(Number(i.installment)||0),0);
+  // aylık toplam = giderler + kredi/kart aylık ödemeleri (tam tablo)
+  const monthly = expenses.reduce((s,i)=>s+monthlyEquiv(i),0) + debtMonthly;
+  const totalDebt = debts.reduce((s,i)=>s+(Number(i.remaining)||0),0);
+  document.getElementById("botMonthly").textContent = fmt(monthly);
+  document.getElementById("botCard").textContent = fmt(cardMonthly);
+  document.getElementById("botDebtPay").textContent = fmt(debtMonthly);
+  document.getElementById("botRemain").textContent = fmt(totalDebt);
+  document.getElementById("botRemain").className = "bv "+(totalDebt>0?"red":"green");
+
+  // sonraki ödenmemiş ödeme (gün sırasına göre)
+  const upcoming = state.items
+    .filter(i=>!isPaid(i.id) && payDay(i)<99)
+    .sort((a,b)=>payDay(a)-payDay(b))[0];
+  const np = document.getElementById("nextPay");
+  if(upcoming){
+    np.innerHTML = `Sıradaki &nbsp; <b>${upcoming.name}</b> · Ayın ${payDay(upcoming)}'i`;
+  } else np.innerHTML = "";
+}
+
+/* ---------- Currency ---------- */
+function setCurrency(c){
+  state.currency = c; save(); render();
+}
+
+/* ---------- Modal ---------- */
+function openAdd(){
+  editingId = null;
+  entryType = "expense";
+  selectedBrand = null;
+  uploadedLogo = null;
+  selectedCycle = "monthly";
+  document.getElementById("modalTitle").textContent = "Yeni Ekle";
+  document.getElementById("delBtn").style.display = "none";
+  resetForm();
+  setEntryType("expense");
+  buildCatOptions();
+  renderBrandGrid("");
+  updateLogoPreview();
+  document.getElementById("fCur").value = state.currency;
+  document.getElementById("overlay").classList.add("show");
+}
+
+function editEntry(id){
+  const it = state.items.find(i=>i.id===id);
+  if(!it) return;
+  editingId = id;
+  entryType = it.type==="debt"?"debt":(it.type==="income"?"income":"expense");
+  selectedBrand = it.domain||it.name ? {n:it.name, d:it.domain, cat:it.cat} : null;
+  uploadedLogo = it.logo || null;
+  selectedCycle = it.cycle||"monthly";
+  document.getElementById("modalTitle").textContent = "Düzenle";
+  document.getElementById("delBtn").style.display = "block";
+  buildCatOptions();
+  setEntryType(entryType);
+  renderBrandGrid("");
+  updateLogoPreview();
+  // fill
+  document.getElementById("fName").value = it.name||"";
+  document.getElementById("fCat").value = it.cat||"diger";
+  document.getElementById("fCur").value = it.cur||state.currency;
+  document.getElementById("fNote").value = it.note||"";
+  if(entryType!=="debt"){
+    document.getElementById("fAmount").value = it.amount||"";
+    document.getElementById("fDue").value = it.due||"";
+    document.getElementById("fPay").value = it.pay||"";
+    pickCycleSilent(it.cycle||"monthly");
+  } else {
+    document.getElementById("fRemain").value = it.remaining||"";
+    document.getElementById("fInstall").value = it.installment||"";
+    document.getElementById("fTotalInst").value = it.totalInst||"";
+    document.getElementById("fPaidInst").value = it.paidInst||"";
+    document.getElementById("fEnd").value = it.end||"";
+    pickDebtKindSilent(it.debtKind||"card");
+  }
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeModal(){document.getElementById("overlay").classList.remove("show");}
+
+/* ---------- Kullanıcı logosu yükleme ---------- */
+// görseli 160px'e ölçekleyip sıkıştıran ortak yardımcı
+function compressImage(file, cb){
+  if(!file || !file.type.startsWith("image/")){ alert("Lütfen bir görsel dosyası seç."); return; }
+  const reader = new FileReader();
+  reader.onload = e=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const max = 160;
+      let {width:w, height:h} = img;
+      const scale = Math.min(1, max/Math.max(w,h));
+      w = Math.round(w*scale); h = Math.round(h*scale);
+      const canvas = document.createElement("canvas");
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(img, 0, 0, w, h);
+      cb(canvas.toDataURL("image/png"));
+    };
+    img.onerror = ()=>cb(e.target.result);
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleLogoUpload(ev){
+  const file = ev.target.files[0];
+  ev.target.value = "";
+  compressImage(file, data=>{
+    uploadedLogo = data;
+    updateLogoPreview();
+  });
+}
+
+/* Karttan tek dokunuşla logo yükleme */
+let quickLogoTargetId = null;
+function quickLogoUpload(id){
+  quickLogoTargetId = id;
+  document.getElementById("cardLogoFile").click();
+}
+window.quickLogoUpload = quickLogoUpload;
+function handleQuickLogo(ev){
+  const file = ev.target.files[0];
+  ev.target.value = "";
+  if(!quickLogoTargetId) return;
+  const id = quickLogoTargetId; quickLogoTargetId = null;
+  compressImage(file, data=>{
+    const it = state.items.find(i=>i.id===id);
+    if(it){ it.logo = data; save(); render(); }
+  });
+}
+window.handleQuickLogo = handleQuickLogo;
+function updateLogoPreview(){
+  const prev = document.getElementById("logoPreview");
+  const clear = document.getElementById("logoClearBtn");
+  if(uploadedLogo){
+    prev.innerHTML = `<img src="${uploadedLogo}">`;
+    prev.classList.add("show");
+    clear.style.display = "block";
+  } else {
+    prev.innerHTML = "";
+    prev.classList.remove("show");
+    clear.style.display = "none";
+  }
+}
+function clearUploadedLogo(){
+  uploadedLogo = null;
+  updateLogoPreview();
+}
+window.handleLogoUpload = handleLogoUpload;
+window.clearUploadedLogo = clearUploadedLogo;
+
+function resetForm(){
+  ["fName","fAmount","fDue","fPay","fNote","fRemain","fInstall","fTotalInst","fPaidInst","fEnd"]
+    .forEach(id=>{const e=document.getElementById(id);if(e)e.value="";});
+}
+
+function setEntryType(t){
+  entryType = t;
+  document.getElementById("tInc").classList.toggle("on", t==="income");
+  document.getElementById("tExp").classList.toggle("on", t==="expense");
+  document.getElementById("tDebt").classList.toggle("on", t==="debt");
+  document.getElementById("expenseFields").style.display = t!=="debt"?"block":"none";
+  document.getElementById("debtFields").style.display = t==="debt"?"block":"none";
+  document.getElementById("lblAmount").textContent = t==="debt"?"Toplam borç tutarı":"Tutar";
+  document.getElementById("fAmount").parentElement.style.display = t==="debt"?"none":"block";
+  const bs = document.getElementById("brandSearch");
+  bs.placeholder = t==="debt"
+    ? "🔍 Banka / kişi ara: Garanti, Akbank, Ziraat..."
+    : t==="income"
+    ? "🔍 Gelir: Maaş, kira geliri, ek iş..."
+    : "🔍 Ara: Turkcell, Garanti, Netflix...";
+  // gelirde kategori otomatik Gelirler'e geçsin
+  if(t==="income" && !editingId){ const s=document.getElementById("fCat"); if(s) s.value="gelir"; }
+}
+
+function pickCycle(c, el){
+  selectedCycle = c;
+  document.querySelectorAll("#cycleSeg button").forEach(b=>b.classList.remove("on"));
+  el.classList.add("on");
+}
+function pickCycleSilent(c){
+  selectedCycle=c;
+  document.querySelectorAll("#cycleSeg button").forEach(b=>{
+    b.classList.toggle("on", b.dataset.cycle===c);
+  });
+}
+
+function buildCatOptions(){
+  const sel = document.getElementById("fCat");
+  sel.innerHTML = CATS().map(c=>`<option value="${c.id}">${c.emoji} ${c.name}</option>`).join("");
+}
+
+/* ---------- Sekme (kategori) düzenleme ---------- */
+let editingCatId = null;
+const EMOJI_CHOICES = ["🏠","🧾","🏦","📶","📺","💻","🚗","🩺","🛒","📦","💡","💧","🔥","📱","🎬","🎮","✈️","🍽️","👶","🐾","💊","🎓","💰","🪙","⚡","📊","🎵","🏋️"];
+
+function openCatEdit(catId){
+  editingCatId = catId;
+  const cat = catId ? CATS().find(c=>c.id===catId) : null;
+  document.getElementById("catModalTitle").textContent = catId ? "Sekmeyi Düzenle" : "Yeni Sekme";
+  document.getElementById("catName").value = cat ? cat.name : "";
+  document.getElementById("catEmoji").value = cat ? cat.emoji : "📦";
+  document.getElementById("catDelBtn").style.display = catId ? "block" : "none";
+  // emoji seçenekleri
+  const row = document.getElementById("emojiRow");
+  row.innerHTML = EMOJI_CHOICES.map(e=>`<button type="button" onclick="document.getElementById('catEmoji').value='${e}'">${e}</button>`).join("");
+  document.getElementById("catOverlay").classList.add("show");
+}
+window.openCatEdit = openCatEdit;
+
+function closeCatModal(){document.getElementById("catOverlay").classList.remove("show");}
+window.closeCatModal = closeCatModal;
+
+function saveCat(){
+  const name = document.getElementById("catName").value.trim();
+  const emoji = document.getElementById("catEmoji").value.trim() || "📦";
+  if(!name){ alert("Lütfen sekme adı gir."); return; }
+  if(!state.categories) state.categories = DEFAULT_CATEGORIES.map(c=>({...c}));
+  if(editingCatId){
+    const c = state.categories.find(c=>c.id===editingCatId);
+    if(c){ c.name = name; c.emoji = emoji; }
+  } else {
+    const id = "cat_" + uid();
+    state.categories.push({id, name, emoji});
+  }
+  save(); closeCatModal(); render();
+}
+window.saveCat = saveCat;
+
+function deleteCat(){
+  if(!editingCatId) return;
+  const inUse = state.items.filter(i=>i.cat===editingCatId).length;
+  const msg = inUse>0
+    ? `Bu sekmede ${inUse} gider var. Sekme silinince bunlar "Diğer" sekmesine taşınır. Devam edilsin mi?`
+    : "Bu sekme silinsin mi?";
+  if(!confirm(msg)) return;
+  // içindekileri Diğer'e taşı (yoksa oluştur)
+  if(!state.categories.find(c=>c.id==="diger")){
+    state.categories.push({id:"diger", name:"Diğer", emoji:"📦"});
+  }
+  state.items.forEach(i=>{ if(i.cat===editingCatId) i.cat="diger"; });
+  state.categories = state.categories.filter(c=>c.id!==editingCatId);
+  save(); closeCatModal(); render();
+}
+window.deleteCat = deleteCat;
+
+/* ---------- Brand picker ---------- */
+function renderBrandGrid(query){
+  const grid = document.getElementById("brandGrid");
+  const q = (query||"").toLowerCase().trim();
+  grid.innerHTML = "";
+  if(q){
+    const matches = ALL_BRANDS.filter(b=>b.n.toLowerCase().includes(q));
+    if(matches.length===0){
+      grid.innerHTML = `<div class="brand-cat-label">Sonuç yok — ismi elle yazabilirsin</div>`;
+    }
+    matches.slice(0,60).forEach(b=>grid.appendChild(brandOptEl(b)));
+  } else {
+    BRANDS.forEach(g=>{
+      const lbl = document.createElement("div");
+      lbl.className="brand-cat-label"; lbl.textContent=g.g;
+      grid.appendChild(lbl);
+      g.items.forEach(b=>grid.appendChild(brandOptEl(b)));
+    });
+  }
+}
+function brandOptEl(b){
+  const el = document.createElement("div");
+  el.className = "brand-opt" + (selectedBrand && selectedBrand.n===b.n ? " sel":"");
+  const badge = brandBadge(b.d, b.n);
+  const style = fallbackBadgeStyle(b.n);
+  const ini = initial(b.n);
+  const srcs = logoSources(b.d);
+  const baseStyle = badge ? `background:${badge.bg};color:${badge.fg}` : style;
+  const baseTxt = badge ? badge.t : ini;
+  const base = `<span class="fallback ${badge?'brand-badge':''}" style="${baseStyle}">${baseTxt}</span>`;
+  let inner;
+  if(srcs.length){
+    inner=`<span class="logo-stack">${base}<img class="logo-real" src="${srcs[0]}" loading="lazy" data-srcs="${srcs.join('|')}" data-idx="0" onload="this.classList.add('loaded')" onerror="realLogoFail(this)"></span>`;
+  } else {
+    inner=base;
+  }
+  el.innerHTML = `<div class="bo-logo">${inner}</div><div class="bo-name">${b.n}</div>`;
+  el.onclick = ()=>pickBrand(b, el);
+  return el;
+}
+function pickBrand(b, el){
+  selectedBrand = b;
+  document.querySelectorAll(".brand-opt").forEach(o=>o.classList.remove("sel"));
+  el.classList.add("sel");
+  // otomatik doldur
+  const nameField = document.getElementById("fName");
+  if(!nameField.value.trim()) nameField.value = b.n;
+  if(b.cat) document.getElementById("fCat").value = b.cat;
+}
+
+/* ---------- Save ---------- */
+function saveEntry(){
+  const name = document.getElementById("fName").value.trim() || (selectedBrand?selectedBrand.n:"");
+  if(!name){ alert("Lütfen bir isim gir veya firma seç."); return; }
+  const cat = document.getElementById("fCat").value;
+  const cur = document.getElementById("fCur").value;
+  const note = document.getElementById("fNote").value.trim();
+  const domain = selectedBrand ? (selectedBrand.d||"") : (editingId ? (state.items.find(i=>i.id===editingId)?.domain||"") : "");
+
+  let entry = { id: editingId||uid(), name, cat, cur, note, domain, type: entryType };
+  if(uploadedLogo) entry.logo = uploadedLogo;
+
+  if(entryType!=="debt"){
+    entry.amount = parseFloat(document.getElementById("fAmount").value)||0;
+    entry.cycle = selectedCycle;
+    entry.due = document.getElementById("fDue").value||"";
+    entry.pay = document.getElementById("fPay").value.trim();
+  } else {
+    entry.remaining = parseFloat(document.getElementById("fRemain").value)||0;
+    entry.debtKind = selectedDebtKind || "card";
+    entry.installment = parseFloat(document.getElementById("fInstall").value)||0;
+    entry.totalInst = parseInt(document.getElementById("fTotalInst").value)||0;
+    entry.paidInst = parseInt(document.getElementById("fPaidInst").value)||0;
+    entry.end = document.getElementById("fEnd").value||"";
+    entry.cycle = "monthly";
+  }
+
+  if(editingId){
+    const idx = state.items.findIndex(i=>i.id===editingId);
+    state.items[idx] = entry;
+  } else {
+    state.items.push(entry);
+  }
+  save(); closeModal(); render();
+}
+
+function deleteCurrent(){
+  if(!editingId) return;
+  if(confirm("Bu kaydı silmek istediğine emin misin?")){
+    state.items = state.items.filter(i=>i.id!==editingId);
+    save(); closeModal(); render();
+  }
+}
+function quickDelete(id){
+  const it = state.items.find(i=>i.id===id);
+  if(confirm(`"${it?.name}" silinsin mi?`)){
+    state.items = state.items.filter(i=>i.id!==id);
+    save(); render();
+  }
+}
+
+/* ---------- Backup ---------- */
+function exportData(){
+  const blob = new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `giderim-yedek-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+}
+function importData(ev){
+  const file = ev.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e=>{
+    try{
+      const data = JSON.parse(e.target.result);
+      if(data.items){ state = data; save(); render(); alert("Yedek yüklendi ✓"); }
+      else alert("Geçersiz yedek dosyası.");
+    }catch(err){ alert("Dosya okunamadı."); }
+  };
+  reader.readAsText(file);
+  ev.target.value="";
+}
+
+/* ---------- Init ---------- */
+document.getElementById("overlay").addEventListener("click",e=>{
+  if(e.target.id==="overlay") closeModal();
+});
+document.getElementById("catOverlay").addEventListener("click",e=>{
+  if(e.target.id==="catOverlay") closeCatModal();
+});
+document.getElementById("curSelect").value = state.currency;
+
+// ---- Finans Pro'dan aktarılan gerçek giderler ----
+// ödeme günü -> bir sonraki vade tarihi (bu ay geçtiyse gelecek ay)
+function nextDue(day){
+  const t = new Date();
+  let y = t.getFullYear(), m = t.getMonth();
+  if(t.getDate() > day){ m++; if(m>11){ m=0; y++; } }
+  const d = new Date(y, m, Math.min(day,28));
+  return d.toISOString().slice(0,10);
+}
+function finansProItems(){
+  return [
+    // Sabit aylık giderler
+    {name:"Ev Kirası",cat:"ev",domain:"",type:"expense",amount:37850,cycle:"monthly",due:nextDue(1),pay:""},
+    {name:"Ev Aidatı",cat:"ev",domain:"",type:"expense",amount:3500,cycle:"monthly",due:nextDue(1),pay:""},
+    {name:"Ev Giderleri",cat:"ev",domain:"",type:"expense",amount:15000,cycle:"monthly",due:nextDue(1),pay:""},
+    {name:"SGK / SSK Primi",cat:"saglik",domain:"sgk.gov.tr",type:"expense",amount:4500,cycle:"monthly",due:nextDue(15),pay:""},
+    {name:"Sağlık Sigortası",cat:"saglik",domain:"",type:"expense",amount:3400,cycle:"monthly",due:nextDue(15),pay:""},
+    {name:"EminEvim Ev",cat:"kredi",domain:"eminevim.com.tr",type:"expense",amount:29500,cycle:"monthly",due:nextDue(28),pay:""},
+    {name:"EminEvim Araba",cat:"kredi",domain:"eminevim.com.tr",type:"expense",amount:9100,cycle:"monthly",due:nextDue(28),pay:""},
+    // Krediler (borçlar) — kalan borcu kendin girip güncelleyebilirsin
+    {name:"Akbank Kredi",cat:"kredi",domain:"akbank.com",type:"debt",debtKind:"loan",remaining:0,installment:31195,totalInst:0,paidInst:0,end:nextDue(3),note:"Kalan borcu düzenleyip gir"},
+    {name:"Akbank Kredi 2",cat:"kredi",domain:"akbank.com",type:"debt",debtKind:"loan",remaining:0,installment:25190,totalInst:0,paidInst:0,end:nextDue(3),note:"Kalan borcu düzenleyip gir"},
+    {name:"Garanti Kredi",cat:"kredi",domain:"garantibbva.com.tr",type:"debt",debtKind:"loan",remaining:0,installment:37120,totalInst:0,paidInst:0,end:nextDue(7),note:"Kalan borcu düzenleyip gir"},
+    {name:"Albaraka Türk",cat:"kredi",domain:"albaraka.com.tr",type:"debt",debtKind:"loan",remaining:0,installment:12500,totalInst:0,paidInst:0,end:nextDue(9),note:"Kalan borcu düzenleyip gir"},
+    {name:"İş Bankası Kredi",cat:"kredi",domain:"isbank.com.tr",type:"debt",debtKind:"loan",remaining:0,installment:15000,totalInst:0,paidInst:0,end:nextDue(16),note:"Kalan borcu düzenleyip gir"},
+    // Kredi kartları (aylık ödeme)
+    {name:"Garanti Kredi Kartı",cat:"kredi",domain:"garantibbva.com.tr",type:"debt",debtKind:"card",remaining:0,installment:20000,totalInst:0,paidInst:0,end:nextDue(5),note:""},
+    {name:"Özüm Kredi Kartı",cat:"kredi",domain:"",type:"debt",debtKind:"card",remaining:0,installment:7500,totalInst:0,paidInst:0,end:nextDue(5),note:""},
+    {name:"Enpara Kredi Kartı",cat:"kredi",domain:"enpara.com",type:"debt",debtKind:"card",remaining:0,installment:9000,totalInst:0,paidInst:0,end:nextDue(12),note:""},
+    {name:"Garanti Troy Kart",cat:"kredi",domain:"garantibbva.com.tr",type:"debt",debtKind:"card",remaining:0,installment:5000,totalInst:0,paidInst:0,end:nextDue(13),note:""},
+    {name:"Akbank Kredi Kartı",cat:"kredi",domain:"akbank.com",type:"debt",debtKind:"card",remaining:0,installment:15000,totalInst:0,paidInst:0,end:nextDue(23),note:""},
+  ].map(x=>({id:uid(), cur:"TRY", ...x}));
+}
+
+// İlk kurulum: doğrudan Finans Pro verileriyle başla
+if(state.items.length===0 && !localStorage.getItem("giderim_seen")){
+  localStorage.setItem("giderim_seen","1");
+  localStorage.setItem("giderim_fp_import","1");
+  state.items = finansProItems();
+  save();
+}
+
+// Mevcut kullanıcı: Finans Pro kalemlerinden eksik olanları ekle (isim eşleşmesiyle, veri kaybı yok)
+if(!localStorage.getItem("giderim_fp_import")){
+  localStorage.setItem("giderim_fp_import","1");
+  const existing = new Set(state.items.map(i=>(i.name||"").toLowerCase().trim()));
+  const toAdd = finansProItems().filter(x=>!existing.has(x.name.toLowerCase().trim()));
+  if(toAdd.length){
+    state.items = state.items.concat(toAdd);
+    save();
+  }
+}
+
+// mobilde kenar çubuğu kapalı başlasın (ok ile açılır)
+if(window.innerWidth<=820){
+  document.getElementById("sidebar").classList.add("collapsed");
+}
+updateMenuIcon();
+
+render();
+
+</script>
 </body>
 </html>
