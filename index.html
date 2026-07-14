@@ -35,10 +35,10 @@ html,body{margin:0;height:100%;}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
   background:
-    radial-gradient(1300px 650px at 12% -8%, #f4f6fc 0%, transparent 55%),
-    radial-gradient(1100px 750px at 102% 2%, #e8edf8 0%, transparent 52%),
-    radial-gradient(900px 900px at 80% 110%, #eaeef9 0%, transparent 60%),
-    linear-gradient(160deg,#eef1f8 0%,#e6ebf5 100%);
+    radial-gradient(1000px 550px at 88% -6%, #e4eafc 0%, transparent 58%),
+    radial-gradient(850px 650px at -6% 28%, #eceffa 0%, transparent 55%),
+    radial-gradient(750px 550px at 72% 108%, #f4efe4 0%, transparent 58%),
+    linear-gradient(165deg,#f1f3fa 0%,#e7ebf5 100%);
   color:var(--text);
   overflow:hidden;
   -webkit-font-smoothing:antialiased;
@@ -172,11 +172,11 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 .view-title .vt-count{color:var(--muted2);font-weight:500;font-size:16px;margin-left:4px;}
 .topbar-spacer{flex:1;}
 .add-btn{
-  height:38px;padding:0 16px;border-radius:11px;display:flex;align-items:center;gap:7px;
-  background:linear-gradient(135deg,#a3c0ff,#b6a9ff);color:#2c3a54;font-weight:700;font-size:14px;
-  box-shadow:0 5px 18px rgba(143,176,255,.4);transition:.15s;
+  height:38px;padding:0 17px;border-radius:12px;display:flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,#3f6ae0,#6f52e8);color:#fff;font-weight:650;font-size:14px;
+  box-shadow:0 6px 20px rgba(69,113,232,.4), inset 0 1px 0 rgba(255,255,255,.25);transition:.15s;
 }
-.add-btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(143,176,255,.5);}
+.add-btn:hover{transform:translateY(-1px);box-shadow:0 9px 26px rgba(69,113,232,.5), inset 0 1px 0 rgba(255,255,255,.25);}
 .cur-select{
   height:38px;padding:0 10px;border-radius:11px;background:rgba(30,41,68,.045);
   border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;
@@ -188,24 +188,35 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 
 /* Hero summary */
 .hero{
-  border-radius:var(--radius);padding:24px 26px;margin-bottom:20px;
+  border-radius:24px;padding:26px 28px;margin-bottom:16px;
   background:
-    linear-gradient(120deg,rgba(69,113,232,.09),rgba(201,162,90,.05)),
-    #ffffff;
-  border:1px solid var(--border);position:relative;overflow:hidden;
-  box-shadow:0 8px 26px rgba(31,42,68,.08);
+    radial-gradient(120% 180% at 100% -10%, rgba(120,158,255,.14) 0%, transparent 55%),
+    radial-gradient(100% 150% at -8% 110%, rgba(212,175,110,.12) 0%, transparent 58%),
+    linear-gradient(168deg,#ffffff 0%,#f6f8ff 100%);
+  border:1px solid rgba(31,42,68,.08);position:relative;overflow:hidden;
+  box-shadow:0 2px 4px rgba(31,42,68,.04), 0 18px 44px rgba(31,42,68,.1), inset 0 1px 0 rgba(255,255,255,.9);
 }
 .hero::after{
-  content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,rgba(69,113,232,.12),transparent 70%);
+  content:"";position:absolute;right:-50px;top:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(120,158,255,.16),transparent 68%);
 }
 .hero::before{
-  content:"";position:absolute;left:-30px;bottom:-60px;width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,162,90,.1),transparent 70%);
+  content:"";position:absolute;left:-40px;bottom:-80px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,110,.14),transparent 68%);
 }
+/* açık hero içi renkler */
+.hero .hc-label{color:var(--muted2);}
+.hero .hc-val{color:var(--text);}
+.hero .hc-val.green{color:var(--green);}
+.hero .hc-val.red{color:var(--red);}
+.hero .hc-sub{color:var(--muted2);}
+.hero .hero-month{color:var(--accent);}
+.hero .hero-progress{background:rgba(31,42,68,.07);}
+.hero .hero-progress > i{background:linear-gradient(90deg,#0ea862,#3ecf8e);box-shadow:0 0 10px rgba(14,168,98,.3);}
+.hero .hero-progress-label{color:var(--muted2);}
 .hero-row{display:flex;gap:40px;flex-wrap:wrap;position:relative;z-index:1;}
 .hero-cell .hc-label{font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:500;letter-spacing:.3px;}
-.hero-cell .hc-val{font-size:21px;font-weight:600;letter-spacing:-.4px;font-variant-numeric:tabular-nums;}
+.hero-cell .hc-val{font-size:24px;font-weight:650;letter-spacing:-.5px;font-variant-numeric:tabular-nums;}
 .hero-cell .hc-val.red{color:var(--red);}
 .hero-cell .hc-val.green{color:var(--green);}
 .hero-cell .hc-sub{font-size:11px;color:var(--muted2);margin-top:2px;}
@@ -213,19 +224,23 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 /* Cards grid */
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;}
 .card{
-  background:#ffffff;
-  border:1px solid var(--border);border-radius:var(--radius);
-  padding:18px;transition:.2s cubic-bezier(.3,.7,.4,1);position:relative;overflow:hidden;
-  box-shadow:0 4px 16px rgba(31,42,68,.07);
+  background:linear-gradient(172deg,#ffffff 0%,#f8faff 100%);
+  border:1px solid rgba(31,42,68,.07);border-radius:22px;
+  padding:18px;transition:.22s cubic-bezier(.3,.7,.4,1);position:relative;overflow:hidden;
+  box-shadow:0 1px 2px rgba(31,42,68,.05), 0 14px 34px rgba(31,42,68,.09);
 }
+.card::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);}
 .card:hover{border-color:var(--border-strong);
   transform:translateY(-3px);box-shadow:0 14px 34px rgba(31,42,68,.13);}
-.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.card-head .card-price{margin:0;text-align:right;}
+.card-tags{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:7px;}
 .card-logo{
-  width:48px;height:48px;border-radius:14px;
+  width:46px;height:46px;border-radius:14px;outline:1px solid rgba(31,42,68,.06);outline-offset:2px;
   background:linear-gradient(160deg,#ffffff,#eef1f7);
   display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 48px;
-  box-shadow:0 2px 8px rgba(31,42,68,.14), inset 0 0 0 1px rgba(0,0,0,.04);
+  box-shadow:0 6px 16px rgba(31,42,68,.18), inset 0 0 0 1px rgba(0,0,0,.04);
 }
 .card-logo img{width:100%;height:100%;object-fit:contain;padding:7px;}
 .card-logo .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
@@ -239,7 +254,8 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 .debt-logo .brand-badge{font-size:clamp(11px,42%,19px);padding:2px;}
 .brand-opt .brand-badge{font-size:clamp(9px,40%,15px);padding:1px;}
 .mini-fb.brand-badge{font-size:clamp(7px,44%,11px);padding:1px;}
-.card-name{font-size:14px;font-weight:600;line-height:1.25;letter-spacing:-.1px;}
+.card-name{font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.15px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .card-meta{font-size:11px;color:var(--muted);margin-top:3px;}
 .card-actions{margin-left:auto;display:flex;gap:4px;}
 .icon-mini{
@@ -248,16 +264,16 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 }
 .icon-mini:hover{background:rgba(30,41,68,.09);color:var(--text);}
 .icon-mini.del:hover{background:rgba(251,113,133,.2);color:var(--red);}
-.card-price{font-size:18px;font-weight:600;letter-spacing:-.3px;margin-bottom:2px;font-variant-numeric:tabular-nums;}
+.card-price{font-size:20px;font-weight:650;letter-spacing:-.4px;margin-top:12px;margin-bottom:2px;font-variant-numeric:tabular-nums;}
 .card-price.free{color:var(--green);}
-.card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px;
-  padding-top:12px;border-top:1px solid var(--border);}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;
+  padding-top:11px;border-top:1px solid rgba(31,42,68,.06);}
 .card-due{font-size:12px;color:var(--muted);}
 .card-due b{color:var(--text);font-weight:600;}
 .pay-chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);
   background:rgba(30,41,68,.04);padding:3px 9px;border-radius:20px;}
 .cycle-tag{display:inline-block;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;
-  padding:2px 8px;border-radius:6px;background:rgba(69,113,232,.12);color:var(--accent);margin-top:4px;}
+  padding:2px 8px;border-radius:6px;background:rgba(69,113,232,.12);color:var(--accent);}
 .cycle-tag.yil{background:rgba(52,211,153,.16);color:var(--green);}
 .progress{height:4px;border-radius:3px;background:rgba(30,41,68,.05);margin-top:12px;overflow:hidden;}
 .progress > i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),#6c8ff0);}
@@ -274,12 +290,12 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
   position:absolute;left:0;right:0;bottom:0;z-index:30;
   display:flex;align-items:center;gap:20px;
   padding:12px 22px;padding-bottom:calc(12px + env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.85);backdrop-filter:blur(24px);
-  border-top:1px solid var(--border-strong);
+  background:rgba(255,255,255,.72);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%);
+  border-top:1px solid rgba(31,42,68,.08);box-shadow:0 -10px 30px rgba(31,42,68,.07);
 }
 .bot-cell{display:flex;flex-direction:column;}
 .bot-cell .bl{font-size:9px;color:var(--muted2);text-transform:uppercase;letter-spacing:.7px;font-weight:600;}
-.bot-cell .bv{font-size:14px;font-weight:600;letter-spacing:-.2px;font-variant-numeric:tabular-nums;}
+.bot-cell .bv{font-size:14.5px;font-weight:650;letter-spacing:-.2px;font-variant-numeric:tabular-nums;}
 .bot-cell .bv.red{color:var(--red);}
 .bot-cell .bv.green{color:var(--green);}
 .bot-sep{width:1px;height:30px;background:var(--border);}
@@ -359,12 +375,12 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 .logo-hint{font-size:11.5px;color:var(--muted2);margin-top:8px;line-height:1.4;}
 .user-logo{image-rendering:auto;}
 /* Ödendi işaret dairesi */
-.pay-check{width:32px;height:32px;border-radius:50%;flex:0 0 32px;
+.pay-check{width:34px;height:34px;border-radius:50%;flex:0 0 34px;
   border:2px solid var(--border-strong);background:#fff;color:transparent;
   display:flex;align-items:center;justify-content:center;transition:.18s;}
 .pay-check:hover{border-color:var(--green);transform:scale(1.08);}
-.pay-check.on{background:var(--green);border-color:var(--green);color:#fff;
-  box-shadow:0 2px 8px rgba(14,168,98,.35);}
+.pay-check.on{background:linear-gradient(135deg,#12b06a,#3ecf8e);border-color:transparent;color:#fff;
+  box-shadow:0 4px 12px rgba(14,168,98,.45), inset 0 1px 0 rgba(255,255,255,.3);}
 /* Ödenen kart: üstü çizili, soluk */
 .card.paid{opacity:.62;background:#f6f8fb;}
 .card.paid .card-name,.card.paid .card-price{
@@ -396,11 +412,58 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 .card.income{border-left:3px solid var(--green);}
 .cat-sub-amt.inc{color:var(--green);}
 
+/* Üst özet şeridi */
+.topstats{display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px;}
+.topstats::-webkit-scrollbar{display:none;}
+.ts{flex:0 0 auto;display:flex;flex-direction:column;gap:3px;
+  background:rgba(255,255,255,.85);border:1px solid rgba(31,42,68,.07);
+  border-radius:15px;padding:10px 15px;cursor:pointer;transition:.15s;
+  box-shadow:0 3px 12px rgba(31,42,68,.06), inset 0 1px 0 rgba(255,255,255,.8);}
+.ts:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(31,42,68,.1);}
+.ts-l{font-size:10.5px;font-weight:650;color:var(--muted2);letter-spacing:.3px;white-space:nowrap;}
+.ts-v{font-size:15.5px;font-weight:700;letter-spacing:-.3px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.ts-v.green{color:var(--green);}
+.ts-v.red{color:var(--red);}
+
+/* Birikim listesi */
+.sv-refresh{margin-top:16px;padding:10px 16px;border-radius:12px;position:relative;z-index:1;
+  background:rgba(69,113,232,.09);border:1px solid rgba(69,113,232,.2);color:var(--accent);
+  font-size:13px;font-weight:650;transition:.15s;}
+.sv-refresh:hover{background:rgba(69,113,232,.15);}
+.sv-list{display:flex;flex-direction:column;gap:9px;}
+.sv-row{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:18px;
+  background:linear-gradient(172deg,#ffffff,#f8faff);border:1px solid rgba(31,42,68,.07);
+  box-shadow:0 3px 12px rgba(31,42,68,.05);transition:.15s;}
+.sv-row.has{border-color:rgba(201,162,90,.35);
+  box-shadow:0 4px 14px rgba(201,162,90,.12), inset 0 1px 0 rgba(255,255,255,.8);}
+.sv-icon{width:40px;height:40px;border-radius:12px;flex:0 0 40px;font-size:18px;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 4px 12px rgba(31,42,68,.18);}
+.sv-group{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;
+  color:var(--muted2);margin:18px 4px 9px;}
+.sv-group:first-child{margin-top:2px;}
+.sv-ticker{font-size:8.5px!important;font-weight:800;letter-spacing:.2px;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:inherit;}
+
+.sv-info{flex:1;min-width:0;}
+.sv-name{font-size:14px;font-weight:600;letter-spacing:-.1px;}
+.sv-price{font-size:11.5px;color:var(--muted2);margin-top:2px;cursor:pointer;font-variant-numeric:tabular-nums;}
+.sv-price:hover{color:var(--accent);}
+.sv-qty{width:74px;padding:9px 10px;border-radius:11px;text-align:right;
+  background:rgba(31,42,68,.04);border:1px solid rgba(31,42,68,.09);color:var(--text);
+  font-size:15px;font-weight:650;outline:none;font-variant-numeric:tabular-nums;}
+.sv-qty:focus{border-color:var(--accent);background:#fff;}
+.sv-unit{font-size:11px;color:var(--muted2);font-weight:600;width:28px;}
+.sv-total{font-size:14.5px;font-weight:700;font-variant-numeric:tabular-nums;
+  min-width:86px;text-align:right;color:var(--text);}
+
 /* Arama kutusu */
 .search-row{margin-bottom:14px;}
-.search-row input{width:100%;padding:13px 15px;border-radius:14px;
-  background:#fff;border:1px solid var(--border);color:var(--text);
-  font-size:15px;outline:none;transition:.15s;box-shadow:0 2px 10px rgba(31,42,68,.05);}
+.search-row input{width:100%;padding:13px 17px;border-radius:16px;
+  background:rgba(255,255,255,.9);border:1px solid rgba(31,42,68,.08);color:var(--text);
+  font-size:15px;outline:none;transition:.15s;
+  box-shadow:0 4px 14px rgba(31,42,68,.06), inset 0 1px 0 rgba(255,255,255,.8);}
 .search-row input:focus{border-color:var(--accent);box-shadow:0 2px 14px rgba(69,113,232,.12);}
 
 /* Takvim */
@@ -469,8 +532,9 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
   color:var(--muted2);font-weight:700;padding:6px 4px 2px;}
 
 .btn-primary{
-  width:100%;padding:14px;border-radius:13px;background:linear-gradient(135deg,#a3c0ff,#b6a9ff);
-  color:#2c3a54;font-weight:800;font-size:15px;box-shadow:0 6px 20px rgba(163,192,255,.4);transition:.15s;
+  width:100%;padding:14px;border-radius:14px;background:linear-gradient(135deg,#3f6ae0,#6f52e8);
+  color:#fff;font-weight:650;font-size:15px;
+  box-shadow:0 8px 24px rgba(69,113,232,.4), inset 0 1px 0 rgba(255,255,255,.25);transition:.15s;
 }
 .btn-primary:hover{transform:translateY(-1px);}
 .btn-ghost{width:100%;padding:12px;border-radius:13px;background:rgba(30,41,68,.04);
@@ -502,17 +566,36 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
   .add-btn span{display:inline;}
 
   .content{padding:14px;padding-bottom:150px;}
-  .cards{grid-template-columns:1fr;gap:12px;}
+  /* Çizimdeki yerleşim: kartlar 2'li sütun */
+  .cards{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .card{padding:13px;border-radius:18px;}
+  .card-head{margin-bottom:9px;}
+  .card-logo{width:40px;height:40px;flex:0 0 40px;border-radius:12px;}
+  .card-tags{gap:5px;margin-top:6px;}
+  .pay-check{width:31px;height:31px;flex:0 0 31px;}
+  .icon-mini{width:26px;height:26px;}
+  .card-head .card-price{font-size:16.5px;}
+  .card-name{font-size:14px;}
+  .card-meta{font-size:10.5px;margin-top:2px;}
+  .cycle-tag{font-size:9px;padding:2px 6px;}
+  .day-chip{font-size:9.5px;padding:2px 6px;margin-left:4px;}
+  .card-bottom{margin-top:10px;padding-top:9px;flex-wrap:wrap;gap:4px;}
+  .card-due{font-size:10.5px;}
+  .pay-chip{font-size:9.5px;padding:2px 7px;}
+  .tap-logo::after{width:15px;height:15px;font-size:11px;}
 
-  /* Hero: hücreler alt alta, ferah */
-  .hero{padding:18px 18px;}
-  .hero-row{gap:16px;flex-direction:column;}
-  .hero-cell{display:flex;align-items:baseline;justify-content:space-between;
-    border-bottom:1px solid var(--border);padding-bottom:12px;}
-  .hero-cell:last-child{border-bottom:none;padding-bottom:0;}
-  .hero-cell .hc-label{margin-bottom:0;}
-  .hero-cell .hc-val{font-size:18px;}
+  /* Hero: tek büyük bakiye + altında Gelir | Gider */
+  .hero{padding:22px 20px 18px;border-radius:22px;}
+  .hero-row{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;}
+  .hero-cell{display:block;}
+  .cell-bal{grid-column:1/-1;order:-1;text-align:left;
+    padding-bottom:16px;margin-bottom:2px;border-bottom:1px solid rgba(31,42,68,.08);}
+  .cell-bal .hc-val{font-size:34px;letter-spacing:-1px;}
+  .cell-bal .hc-sub{display:block;margin-top:4px;}
+  .hero-cell .hc-val{font-size:19px;}
   .hero-cell .hc-sub{display:none;}
+  .cell-exp{text-align:right;}
+  .hero-month{margin-bottom:12px;}
 
   /* Alt toplam çubuğu: 4 hücre sığsın */
   .botbar{gap:8px;padding:9px 12px;padding-bottom:calc(9px + env(safe-area-inset-bottom));justify-content:space-between;}
@@ -524,6 +607,16 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
 
   .scrim{position:fixed;inset:0;background:rgba(31,42,68,.3);z-index:35;display:none;}
   .scrim.show{display:block;}
+
+  /* birikim satırları mobil */
+  .sv-row{padding:11px 12px;gap:9px;}
+  .sv-icon{width:36px;height:36px;flex:0 0 36px;font-size:16px;}
+  .sv-name{font-size:12.5px;}
+  .sv-price{font-size:10.5px;}
+  .sv-qty{width:60px;font-size:14px;padding:8px 8px;}
+  .sv-unit{width:24px;font-size:10px;}
+  .sv-total{min-width:72px;font-size:13px;}
+  .ts{padding:9px 13px;}
 
   /* rahat dokunma alanları */
   .cat-head,.nav-item{min-height:48px;font-size:14.5px;}
@@ -562,6 +655,9 @@ body.sidebar-closed #menuIcon{transform:rotate(0deg);}
     <div class="sb-scroll" id="navScroll">
       <div class="nav-item active" data-view="all" onclick="setView('all',this)">
         <span class="ico">📅</span> Bu Ay
+      </div>
+      <div class="nav-item" data-view="savings" onclick="setView('savings',this)">
+        <span class="ico">🪙</span> Birikim
       </div>
       <div class="nav-item" data-view="calendar" onclick="setView('calendar',this)">
         <span class="ico">🗓️</span> Takvim
@@ -1046,6 +1142,9 @@ function load(){
   });
   // aylık ödeme takibi: {"2026-07":["id1","id2"]}
   if(!d.paid || typeof d.paid!=="object") d.paid = {};
+  // birikim varlıkları: {gram24:{qty:5,manual:null}, ...}
+  if(!d.savings || typeof d.savings!=="object") d.savings = {};
+  if(!d.goldPrices || typeof d.goldPrices!=="object") d.goldPrices = {};
   return d;
 }
 function save(){
@@ -1096,7 +1195,7 @@ const BRAND_BADGES = {
   "alternatifbank.com.tr":{bg:"#e2001a",fg:"#fff",t:"AB"},
   "getirfinans.com":{bg:"#5d3ebc",fg:"#ffd400",t:"GF"},
   "nkolay.com":{bg:"#ff5500",fg:"#fff",t:"N"},
-  "eminevim.com.tr":{bg:"#005baa",fg:"#fff",t:"E"},
+  "eminevim.com.tr":{bg:"#004a93",fg:"#fff",t:"EE"},
   "fuzulev.com.tr":{bg:"#e30613",fg:"#fff",t:"Fz"},
 
   // Bursa & faturalar
@@ -1232,6 +1331,10 @@ const BRAND_BADGES_BYNAME = {
   "sağlık spor / gym":{bg:"#e2001a",fg:"#fff",t:"🏋️"},
   "kredi kartı (genel)":{bg:"#5c2d91",fg:"#fff",t:"💳"},
   "diğer gider":{bg:"#657193",fg:"#fff",t:"📦"},
+  "eminevim":{bg:"#004a93",fg:"#fff",t:"EE"},
+  "eminevim ev":{bg:"#004a93",fg:"#fff",t:"EE"},
+  "eminevim araba":{bg:"#004a93",fg:"#fff",t:"EE"},
+  "emin evim":{bg:"#004a93",fg:"#fff",t:"EE"},
   "maaş":{bg:"#0ea862",fg:"#fff",t:"💰"},
   "eşimin maaşı":{bg:"#0ea862",fg:"#fff",t:"💰"},
   "kira geliri":{bg:"#c9a25a",fg:"#fff",t:"🏠"},
@@ -1332,6 +1435,124 @@ function payDay(it){
 function displayAmount(it){
   return it.type==="debt" ? (Number(it.installment)||0) : (Number(it.amount)||0);
 }
+
+/* ================= BİRİKİM (altın / döviz / nakit) ================= */
+const SAVINGS_CATALOG = [
+  // Altın
+  {k:"gram24", n:"Gram Altın (24 Ayar)", u:"gr",   icon:"🥇", bg:"#c9a25a", g:"Altın"},
+  {k:"gram22", n:"22 Ayar Bilezik",      u:"gr",   icon:"💛", bg:"#d4af37", g:"Altın"},
+  {k:"ceyrek", n:"Çeyrek Altın",         u:"adet", icon:"🪙", bg:"#b8860b", g:"Altın"},
+  {k:"yarim",  n:"Yarım Altın",          u:"adet", icon:"🪙", bg:"#b8860b", g:"Altın"},
+  {k:"tam",    n:"Tam Altın",            u:"adet", icon:"🪙", bg:"#a9741a", g:"Altın"},
+  {k:"ata",    n:"Ata / Cumhuriyet",     u:"adet", icon:"🏛️", bg:"#8b6914", g:"Altın"},
+  // Döviz & Nakit
+  {k:"usd",    n:"Dolar (USD)",          u:"$",    icon:"💵", bg:"#2e7d4f", g:"Döviz & Nakit"},
+  {k:"eur",    n:"Euro (EUR)",           u:"€",    icon:"💶", bg:"#274b8f", g:"Döviz & Nakit"},
+  {k:"tl",     n:"Nakit TL",             u:"₺",    icon:"💰", bg:"#4571e8", fixed:1, g:"Döviz & Nakit"},
+  // Borsa İstanbul — önemli kağıtlar (adet gir, fiyata dokunup güncel fiyatı yaz)
+  {k:"thyao", n:"Türk Hava Yolları",  t:"THYAO", u:"adet", bg:"#e30613", g:"Borsa İstanbul"},
+  {k:"tuprs", n:"Tüpraş",             t:"TUPRS", u:"adet", bg:"#00375f", g:"Borsa İstanbul"},
+  {k:"asels", n:"ASELSAN",            t:"ASELS", u:"adet", bg:"#005baa", g:"Borsa İstanbul"},
+  {k:"garan", n:"Garanti BBVA",       t:"GARAN", u:"adet", bg:"#00a758", g:"Borsa İstanbul"},
+  {k:"akbnk", n:"Akbank",             t:"AKBNK", u:"adet", bg:"#e2001a", g:"Borsa İstanbul"},
+  {k:"isctr", n:"İş Bankası (C)",     t:"ISCTR", u:"adet", bg:"#004a93", g:"Borsa İstanbul"},
+  {k:"kchol", n:"Koç Holding",        t:"KCHOL", u:"adet", bg:"#c8102e", g:"Borsa İstanbul"},
+  {k:"sahol", n:"Sabancı Holding",    t:"SAHOL", u:"adet", bg:"#003da5", g:"Borsa İstanbul"},
+  {k:"eregl", n:"Ereğli Demir Çelik", t:"EREGL", u:"adet", bg:"#37474f", g:"Borsa İstanbul"},
+  {k:"sise",  n:"Şişecam",            t:"SISE",  u:"adet", bg:"#00838f", g:"Borsa İstanbul"},
+  {k:"bimas", n:"BİM Mağazalar",      t:"BIMAS", u:"adet", bg:"#e2001a", g:"Borsa İstanbul"},
+  {k:"froto", n:"Ford Otosan",        t:"FROTO", u:"adet", bg:"#003478", g:"Borsa İstanbul"},
+  {k:"tcell", n:"Turkcell",           t:"TCELL", u:"adet", bg:"#f7b500", g:"Borsa İstanbul"},
+  // Bireysel Emeklilik — fon değerini TL olarak gir
+  {k:"bes_garanti", n:"Garanti BBVA Emeklilik", u:"₺", icon:"🛡️", bg:"#00a758", fixed:1, g:"Bireysel Emeklilik (BES)"},
+  {k:"bes_turkiye", n:"Türkiye Hayat Emeklilik", u:"₺", icon:"🛡️", bg:"#e30613", fixed:1, g:"Bireysel Emeklilik (BES)"},
+];
+// TR sayı biçimini çöz: "4.350,50" -> 4350.5 ; 4350.5 -> 4350.5
+function parseTr(v){
+  if(typeof v==="number") return v;
+  if(!v) return 0;
+  let s = String(v).trim().replace(/[^\d.,]/g,"");
+  if(s.includes(",")){ s = s.replace(/\./g,"").replace(",","."); }
+  const n = parseFloat(s);
+  return isNaN(n)?0:n;
+}
+// API anahtarını normalize edip katalogla eşle
+function matchGoldKey(rawKey){
+  const norm = rawKey.toLowerCase()
+    .replace(/ı/g,"i").replace(/ç/g,"c").replace(/ş/g,"s")
+    .replace(/ö/g,"o").replace(/ü/g,"u").replace(/ğ/g,"g")
+    .replace(/[^a-z0-9]/g,"");
+  if(norm.includes("22ayar")) return "gram22";
+  if(norm.includes("gramaltin")) return "gram24";
+  if(norm.includes("ceyrek")) return "ceyrek";
+  if(norm.includes("yarim")) return "yarim";
+  if(norm==="tamaltin"||norm.includes("tamaltin")) return "tam";
+  if(norm.includes("cumhuriyet")||norm==="ataaltin"||norm.includes("ataaltin")) return "ata";
+  if(norm==="usd"||norm.includes("dolar")||norm.includes("amerikandolari")) return "usd";
+  if(norm==="eur"||norm.includes("euro")) return "eur";
+  return null;
+}
+// Canlı fiyatları çek (birden fazla kaynak dener; gelmezse elle giriş devrede kalır)
+async function fetchGoldPrices(showAlert){
+  const sources = [
+    "https://finans.truncgil.com/v4/today.json",
+    "https://finans.truncgil.com/today.json",
+  ];
+  for(const url of sources){
+    try{
+      const r = await fetch(url, {cache:"no-store"});
+      if(!r.ok) continue;
+      const data = await r.json();
+      const prices = {};
+      Object.keys(data).forEach(key=>{
+        const k = matchGoldKey(key);
+        if(!k) return;
+        const v = data[key];
+        let price = 0;
+        if(v && typeof v==="object"){
+          price = parseTr(v["Satış"] ?? v["Selling"] ?? v["satis"] ?? v["Rate"] ?? v["Alış"] ?? v["Buying"]);
+        } else price = parseTr(v);
+        if(price>0 && !prices[k]) prices[k] = price;
+      });
+      if(Object.keys(prices).length >= 3){
+        state.goldPrices = {...prices, updated: new Date().toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})};
+        save();
+        if(currentView==="savings") render(); else renderTotals();
+        return true;
+      }
+    }catch(e){ /* sıradaki kaynağı dene */ }
+  }
+  if(showAlert) alert("Canlı fiyat alınamadı. Fiyata dokunup elle girebilirsin — girdiğin fiyat kaydedilir.");
+  return false;
+}
+window.fetchGoldPrices = fetchGoldPrices;
+
+function savPriceOf(k){
+  const cat = SAVINGS_CATALOG.find(c=>c.k===k);
+  if(cat && cat.fixed) return cat.fixed;
+  const s = state.savings[k];
+  if(s && s.manual>0) return s.manual;
+  return Number(state.goldPrices[k])||0;
+}
+function savQty(k){ const s=state.savings[k]; return s?Number(s.qty)||0:0; }
+function savingsTotal(){
+  return SAVINGS_CATALOG.reduce((sum,c)=>sum + savQty(c.k)*savPriceOf(c.k), 0);
+}
+function setQty(k, val){
+  if(!state.savings[k]) state.savings[k]={qty:0,manual:null};
+  state.savings[k].qty = parseTr(val);
+  save(); render();
+}
+window.setQty = setQty;
+function editPrice(k){
+  const cur = savPriceOf(k);
+  const inp = prompt("Birim fiyat (₺) — boş bırakırsan canlı fiyata döner:", cur||"");
+  if(inp===null) return;
+  if(!state.savings[k]) state.savings[k]={qty:0,manual:null};
+  state.savings[k].manual = inp.trim()==="" ? null : parseTr(inp);
+  save(); render();
+}
+window.editPrice = editPrice;
 function initial(name){return (name||"?").trim().charAt(0).toUpperCase();}
 function fallbackBadgeStyle(name){
   const [c1,c2] = badgeColor(name);
@@ -1471,8 +1692,9 @@ function toggleCat(headEl){
 
 function setView(view, el){
   currentView = view;
-  document.querySelectorAll(".nav-item[data-view]").forEach(n=>n.classList.remove("active"));
-  if(el) el.classList.add("active");
+  document.querySelectorAll(".nav-item[data-view]").forEach(n=>{
+    n.classList.toggle("active", n.dataset.view===view);
+  });
   render();
   if(window.innerWidth<=820) closeSidebar();
 }
@@ -1523,6 +1745,9 @@ function render(){
     } else if(currentView==="calendar"){
       title.textContent = "Takvim";
       content.innerHTML = renderCalendar(state.items);
+    } else if(currentView==="savings"){
+      title.textContent = "Birikim";
+      content.innerHTML = renderSavings();
     } else {
       title.innerHTML = `Bu Ay <span class="vt-count">${state.items.length}</span>`;
       content.innerHTML = renderOverview(state.items);
@@ -1546,21 +1771,41 @@ function renderOverview(items){
   const pct = monthlyTotal>0 ? Math.min(100,(paidTotal/monthlyTotal)*100) : 0;
   const monthName = new Date().toLocaleDateString("tr-TR",{month:"long",year:"numeric"});
 
+  // üst özet şeridi verileri
+  const debtsAll = state.items.filter(i=>i.type==="debt");
+  const debtMonthlyAll = debtsAll.reduce((s,i)=>s+(Number(i.installment)||0),0);
+  const remainAll = debtsAll.reduce((s,i)=>s+(Number(i.remaining)||0),0);
+  const savTotal = savingsTotal();
+
   let html = `
+    <div class="topstats">
+      <div class="ts" onclick="setView('savings')">
+        <span class="ts-l">🪙 Birikim</span><span class="ts-v green">${fmt(savTotal)}</span>
+      </div>
+      <div class="ts">
+        <span class="ts-l">📉 Aylık Gider</span><span class="ts-v red">${fmt(monthlyTotal)}</span>
+      </div>
+      <div class="ts" onclick="setView('debts')">
+        <span class="ts-l">💳 Borç Ödemesi/Ay</span><span class="ts-v">${fmt(debtMonthlyAll)}</span>
+      </div>
+      <div class="ts" onclick="setView('debts')">
+        <span class="ts-l">🏦 Kalan Borç</span><span class="ts-v ${remainAll>0?'red':'green'}">${fmt(remainAll)}</span>
+      </div>
+    </div>
     <div class="hero">
       <div class="hero-month">${monthName.charAt(0).toUpperCase()+monthName.slice(1)}</div>
       <div class="hero-row">
-        <div class="hero-cell">
+        <div class="hero-cell cell-inc">
           <div class="hc-label">Gelir</div>
           <div class="hc-val green">${fmt(incomeTotal)}</div>
           <div class="hc-sub">${incomes.length} gelir kalemi</div>
         </div>
-        <div class="hero-cell">
+        <div class="hero-cell cell-exp">
           <div class="hc-label">Gider</div>
           <div class="hc-val red">${fmt(monthlyTotal)}</div>
           <div class="hc-sub">${outgo.length} ödeme kalemi</div>
         </div>
-        <div class="hero-cell">
+        <div class="hero-cell cell-bal">
           <div class="hc-label">Kalan bakiye</div>
           <div class="hc-val ${balance>=0?'green':'red'}">${fmt(balance)}</div>
           <div class="hc-sub">${savRate!==null?`tasarruf oranı %${savRate}`:"gelir ekleyince hesaplanır"}</div>
@@ -1602,38 +1847,106 @@ function cardHTML(it){
     ? (it.debtKind==="card"?"KART":"KREDİ")
     : isInc ? "GELİR"
     : (it.cycle==="daily"?"GÜNLÜK":it.cycle==="yearly"?"YILLIK":it.cycle==="once"?"TEK SEFER":"AYLIK");
+  // tekrarlayan kalemler (aylık gider, günlük, gelir, kredi, kart) her ay kendini yeniler:
+  // vade metni sabit tarihe değil, bu ayın ödeme gününe göre hesaplanır
+  const isRecurring = isDebt || isInc || !it.cycle || it.cycle==="monthly" || it.cycle==="daily";
   let dueText = "—";
-  if(dateField){
-    if(paid) dueText = `<b style="color:var(--green)">${isInc?"Bu ay alındı":"Bu ay ödendi"}</b>`;
-    else if(days<0) dueText = `<b style="color:var(--red)">Geçti</b> · ${fmtDate(dateField)}`;
+  if(paid){
+    dueText = `<b style="color:var(--green)">${isInc?"Bu ay alındı":"Bu ay ödendi"}</b>`;
+  } else if(isRecurring && day<99){
+    const t = new Date().getDate();
+    if(day < t) dueText = `<b style="color:var(--red)">Gecikti</b> · Ayın ${day}'i`;
+    else if(day===t) dueText = `<b style="color:var(--amber)">Bugün</b>`;
+    else dueText = `<b>${day-t} gün</b> · Ayın ${day}'i`;
+  } else if(dateField){
+    if(days<0) dueText = `<b style="color:var(--red)">Geçti</b> · ${fmtDate(dateField)}`;
     else if(days===0) dueText = `<b style="color:var(--amber)">Bugün</b>`;
     else dueText = `<b>${days} gün</b> · ${fmtDate(dateField)}`;
   }
   return `
     <div class="card ${paid?'paid':''} ${isInc?'income':''}" data-name="${(it.name||'').toLowerCase()}" onclick="editEntry('${it.id}')">
-      <div class="card-top">
+      <div class="card-head">
         <div class="card-logo tap-logo" onclick="event.stopPropagation();quickLogoUpload('${it.id}')" title="Logoya dokun, gerçek logoyu yükle">${logoHTML(it)}</div>
-        <div style="flex:1;min-width:0">
-          <div class="card-name">${it.name}</div>
-          <div class="card-meta">${cat.emoji} ${cat.name}</div>
-          <span class="cycle-tag ${it.cycle==='yearly'?'yil':''} ${isDebt?(it.debtKind==='card'?'kart':'kredi'):''} ${isInc?'gelir':''}">${cycleLabel}</span>
-          ${day<99?`<span class="day-chip">Ayın ${day}'i</span>`:''}
-        </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
-          <button class="pay-check ${paid?'on':''}" onclick="togglePaid('${it.id}')" title="${paid?'Ödemeyi geri al':'Ödendi işaretle'}">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button class="icon-mini del" onclick="quickDelete('${it.id}')" title="Sil">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
+        <div class="card-price ${isFree?'free':''} ${isInc?'inc':''}">${isFree?'Ücretsiz':(isInc?'+':'')+fmt(amt, it.cur)}</div>
       </div>
-      <div class="card-price ${isFree?'free':''} ${isInc?'inc':''}">${isFree?'Ücretsiz':(isInc?'+':'')+fmt(amt, it.cur)}</div>
+      <div class="card-name">${it.name}</div>
+      <div class="card-tags">
+        <span class="card-meta">${cat.emoji} ${cat.name}</span>
+        <span class="cycle-tag ${it.cycle==='yearly'?'yil':''} ${isDebt?(it.debtKind==='card'?'kart':'kredi'):''} ${isInc?'gelir':''}">${cycleLabel}</span>
+        ${day<99?`<span class="day-chip">Ayın ${day}'i</span>`:''}
+      </div>
       <div class="card-bottom">
         <span class="card-due">${dueText}</span>
-        ${it.pay?`<span class="pay-chip">💳 ${it.pay}</span>`:''}
+        <button class="pay-check ${paid?'on':''}" onclick="event.stopPropagation();togglePaid('${it.id}')" title="${paid?'Ödemeyi geri al':'Ödendi işaretle'}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
       </div>
     </div>`;
+}
+
+/* ---------- Birikim görünümü ---------- */
+function renderSavings(){
+  const total = savingsTotal();
+  const grpTotal = g => SAVINGS_CATALOG.filter(c=>c.g===g)
+    .reduce((s,c)=>s+savQty(c.k)*savPriceOf(c.k),0);
+  const goldTotal = grpTotal("Altın") + grpTotal("Döviz & Nakit");
+  const fxTotal = grpTotal("Borsa İstanbul") + grpTotal("Bireysel Emeklilik (BES)");
+  const upd = state.goldPrices.updated;
+
+  let html = `
+    <div class="hero">
+      <div class="hero-month">Birikim Portföyü</div>
+      <div class="hero-row">
+        <div class="hero-cell cell-bal">
+          <div class="hc-label">Toplam birikim</div>
+          <div class="hc-val green">${fmt(total)}</div>
+          <div class="hc-sub">${upd?`fiyatlar ${upd} itibarıyla`:"canlı fiyat bekleniyor — fiyata dokunup elle girebilirsin"}</div>
+        </div>
+        <div class="hero-cell cell-inc">
+          <div class="hc-label">Altın & Döviz</div>
+          <div class="hc-val">${fmt(goldTotal)}</div>
+        </div>
+        <div class="hero-cell cell-exp">
+          <div class="hc-label">Borsa & BES</div>
+          <div class="hc-val">${fmt(fxTotal)}</div>
+        </div>
+      </div>
+      <button class="sv-refresh" onclick="fetchGoldPrices(true)">⟳ Fiyatları Yenile</button>
+    </div>
+    <div class="sv-list">`;
+
+  let lastGroup = null;
+  SAVINGS_CATALOG.forEach(c=>{
+    if(c.g !== lastGroup){
+      lastGroup = c.g;
+      html += `<div class="sv-group">${c.g}</div>`;
+    }
+    const qty = savQty(c.k);
+    const price = savPriceOf(c.k);
+    const line = qty*price;
+    const manual = state.savings[c.k] && state.savings[c.k].manual>0;
+    const iconHtml = c.t
+      ? `<span class="sv-icon sv-ticker" style="background:${c.bg}">${c.t}</span>`
+      : `<span class="sv-icon" style="background:${c.bg}">${c.icon}</span>`;
+    html += `
+      <div class="sv-row ${qty>0?'has':''}">
+        ${iconHtml}
+        <div class="sv-info">
+          <div class="sv-name">${c.n}</div>
+          <div class="sv-price" ${c.fixed?'':`onclick="editPrice('${c.k}')"`}>
+            ${c.fixed?"":(price>0?`${fmt(price)} / ${c.u}${manual?" ✎":""}`:`fiyat gir ✎`)}
+          </div>
+        </div>
+        <input class="sv-qty" type="number" inputmode="decimal" step="any" min="0"
+          value="${qty||''}" placeholder="0"
+          onclick="event.stopPropagation()" onchange="setQty('${c.k}',this.value)">
+        <span class="sv-unit">${c.u}</span>
+        <div class="sv-total">${line>0?fmt(line):"—"}</div>
+      </div>`;
+  });
+  html += `</div>
+    <div class="cal-hint">Adet/gram gir, toplam değer anlık hesaplanır. Fiyata dokunarak elle fiyat girebilirsin (✎ işareti elle girilen fiyattır).</div>`;
+  return html;
 }
 
 /* ---------- Takvim (1-31) ---------- */
@@ -2228,6 +2541,7 @@ if(window.innerWidth<=820){
 updateMenuIcon();
 
 render();
+setTimeout(()=>{ try{ fetchGoldPrices(false); }catch(e){} }, 400);
 
 </script>
 </body>
